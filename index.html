@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LootHub - Free Games, Codes & Deals Tracker</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #22c55e;
+            --text: #f8fafc;
+            --subtext: #94a3b8;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 20px;
+        }
+        h1 { margin: 0; font-size: 24px; color: var(--accent); }
+        .grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .badge {
+            background: #3b82f6;
+            color: white;
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 6px;
+            width: fit-content;
+            margin-bottom: 10px;
+        }
+        .card h3 { margin: 0 0 10px 0; font-size: 18px; }
+        .card p { color: var(--subtext); font-size: 14px; margin-bottom: 20px; }
+        .btn {
+            background-color: var(--accent);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎮 LootHub</h1>
+        <span>Real-time Free Loot Tracker</span>
+    </header>
+
+    <div class="grid" id="loot-grid">
+        <!-- Python scraper verileri buraya otomatik basacak -->
+        <div class="card">
+            <div>
+                <span class="badge">EPIC GAMES</span>
+                <h3>Free Game Claim</h3>
+                <p>Limited time 100% discount on Epic Games Store.</p>
+            </div>
+            <a href="#" class="btn">Claim Now</a>
+        </div>
+        <div class="card">
+            <div>
+                <span class="badge" style="background:#ef4444;">ROBLOX</span>
+                <h3>New Promo Code</h3>
+                <p>Active code for free avatar accessories.</p>
+            </div>
+            <a href="#" class="btn">Get Code</a>
+        </div>
+    </div>
+</body>
+</html>
