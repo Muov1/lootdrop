@@ -4,39 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070913">
+  <meta name="theme-color" content="#070912">
   <meta
     name="description"
-    content="LootHub — Discover free games, giveaways, promo codes and gaming rewards."
+    content="LootHub — Free games, giveaways, promo codes and gaming rewards."
   >
-  <title>LootHub — Free Gaming Drops</title>
+  <title>LootHub — Gaming Drops</title>
 
   <style>
     :root {
-      --bg: #060812;
-      --bg-soft: #0a0d19;
-      --surface: #0d1220;
+      --bg: #060811;
+      --bg-2: #090c16;
+      --surface: #0c101c;
       --surface-2: #111728;
       --surface-3: #151d31;
       --border: rgba(255,255,255,.075);
-      --border-hover: rgba(124,92,255,.4);
+      --border-strong: rgba(126,92,255,.42);
 
       --text: #f7f8fc;
-      --text-2: #d2d6e2;
-      --muted: #8b93a7;
-      --muted-2: #626a7c;
+      --text-soft: #d1d5e1;
+      --muted: #8b94a9;
+      --muted-dark: #626b7e;
 
-      --purple: #795cff;
-      --purple-light: #9b7cff;
-      --blue: #46b9ff;
-      --cyan: #26d9ee;
-      --green: #3de88b;
-      --yellow: #f8c85f;
-      --red: #ff6177;
+      --purple: #7e5cff;
+      --purple-2: #a16cff;
+      --blue: #43b7ff;
+      --cyan: #25d8ee;
+      --green: #3ee88b;
+      --yellow: #f6c95f;
+      --red: #ff6178;
 
-      --shadow: 0 25px 80px rgba(0,0,0,.45);
+      --shadow: 0 26px 80px rgba(0,0,0,.45);
       --radius: 18px;
-      --radius-sm: 11px;
+      --radius-sm: 10px;
     }
 
     * {
@@ -54,9 +54,9 @@
       overflow-x: hidden;
       color: var(--text);
       background:
-        radial-gradient(circle at 8% 0%, rgba(121,92,255,.17), transparent 25%),
-        radial-gradient(circle at 95% 10%, rgba(38,217,238,.07), transparent 22%),
-        linear-gradient(180deg, #060812 0%, #080b16 55%, #05070d 100%);
+        radial-gradient(circle at 7% 0%, rgba(126,92,255,.17), transparent 25%),
+        radial-gradient(circle at 96% 8%, rgba(67,183,255,.07), transparent 22%),
+        linear-gradient(180deg, #060811 0%, #080b15 55%, #05070d 100%);
       font-family:
         Inter,
         ui-sans-serif,
@@ -73,12 +73,16 @@
       inset: 0;
       z-index: -2;
       pointer-events: none;
-      opacity: .55;
+      opacity: .5;
       background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.017) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.017) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: linear-gradient(to bottom, black, transparent 92%);
+    }
+
+    body.modal-open {
+      overflow: hidden;
     }
 
     button,
@@ -96,15 +100,20 @@
     }
 
     /* =========================================================
-       TOP TICKER
+       APP / TOPBAR
     ========================================================== */
+
+    .app {
+      min-height: 100vh;
+      width: 100%;
+    }
 
     .ticker {
       width: 100%;
       height: 37px;
       overflow: hidden;
       border-bottom: 1px solid rgba(255,255,255,.045);
-      background: rgba(3,5,11,.8);
+      background: rgba(3,5,11,.82);
       backdrop-filter: blur(18px);
     }
 
@@ -114,8 +123,8 @@
       min-width: 100%;
       height: 100%;
       align-items: center;
-      animation: ticker 34s linear infinite;
       white-space: nowrap;
+      animation: ticker 34s linear infinite;
     }
 
     .ticker-item {
@@ -125,13 +134,13 @@
       padding: 0 22px;
       color: var(--muted);
       font-size: 9px;
-      font-weight: 800;
+      font-weight: 850;
       letter-spacing: .55px;
       text-transform: uppercase;
     }
 
     .ticker-item strong {
-      color: var(--text-2);
+      color: var(--text-soft);
     }
 
     .live-dot {
@@ -140,16 +149,12 @@
       flex: 0 0 auto;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 12px rgba(61,232,139,.85);
+      box-shadow: 0 0 12px rgba(62,232,139,.85);
     }
 
     @keyframes ticker {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
 
     /* =========================================================
@@ -162,7 +167,7 @@
       z-index: 1000;
       height: 74px;
       border-bottom: 1px solid var(--border);
-      background: rgba(6,8,18,.84);
+      background: rgba(6,8,18,.86);
       backdrop-filter: blur(24px);
     }
 
@@ -176,7 +181,7 @@
     }
 
     .logo {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
@@ -186,37 +191,19 @@
     }
 
     .logo-mark {
-      position: relative;
       width: 39px;
       height: 39px;
       display: grid;
       place-items: center;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.11);
       border-radius: 12px;
-      background: linear-gradient(135deg,#694aff,#a068ff);
-      box-shadow: 0 9px 28px rgba(121,92,255,.3);
+      color: white;
+      background: linear-gradient(135deg,#694aff,#a06aff);
+      box-shadow: 0 10px 28px rgba(126,92,255,.3);
     }
 
-    .logo-mark::after {
-      content: "";
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.2);
-      filter: blur(8px);
-    }
-
-    .logo-mark span {
-      position: relative;
-      z-index: 2;
-      font-size: 18px;
-      font-weight: 950;
-    }
-
-    .logo-light {
-      color: #cfc5ff;
+    .logo-muted {
+      color: #cfc6ff;
     }
 
     .nav-links {
@@ -250,7 +237,7 @@
       gap: 8px;
     }
 
-    .utc {
+    .clock {
       height: 38px;
       display: inline-flex;
       align-items: center;
@@ -258,17 +245,17 @@
       padding: 0 10px;
       border: 1px solid var(--border);
       border-radius: 9px;
-      background: rgba(255,255,255,.023);
-      color: var(--text-2);
+      color: var(--text-soft);
+      background: rgba(255,255,255,.022);
       font-size: 10px;
       font-weight: 850;
       font-variant-numeric: tabular-nums;
     }
 
-    .utc-label {
-      color: var(--muted-2);
+    .clock-label {
+      color: var(--muted-dark);
       font-size: 8px;
-      letter-spacing: .7px;
+      letter-spacing: .75px;
     }
 
     .language {
@@ -284,8 +271,8 @@
       gap: 6px;
       border: 1px solid var(--border);
       border-radius: 9px;
-      background: rgba(255,255,255,.023);
-      color: var(--text-2);
+      color: var(--text-soft);
+      background: rgba(255,255,255,.022);
       cursor: pointer;
       font-size: 10px;
       font-weight: 900;
@@ -293,15 +280,15 @@
     }
 
     .language-button:hover {
-      border-color: var(--border-hover);
-      background: rgba(121,92,255,.08);
+      border-color: var(--border-strong);
+      background: rgba(126,92,255,.08);
       color: white;
     }
 
     .language-arrow {
       color: var(--muted);
       font-size: 8px;
-      transition: transform .2s ease;
+      transition: transform .18s ease;
     }
 
     .language.open .language-arrow {
@@ -310,8 +297,8 @@
 
     .language-menu {
       position: absolute;
-      right: 0;
       top: calc(100% + 9px);
+      right: 0;
       width: 145px;
       padding: 6px;
       visibility: hidden;
@@ -334,7 +321,6 @@
     .language-option {
       width: 100%;
       display: flex;
-      align-items: center;
       justify-content: space-between;
       padding: 9px 10px;
       border: 0;
@@ -350,7 +336,7 @@
     .language-option:hover,
     .language-option.selected {
       color: white;
-      background: rgba(121,92,255,.1);
+      background: rgba(126,92,255,.1);
     }
 
     .mobile-toggle {
@@ -359,20 +345,16 @@
       height: 38px;
       border: 1px solid var(--border);
       border-radius: 9px;
-      background: rgba(255,255,255,.023);
-      color: var(--text-2);
+      color: var(--text-soft);
+      background: rgba(255,255,255,.022);
       cursor: pointer;
     }
-
-    /* =========================================================
-       MOBILE MENU
-    ========================================================== */
 
     .mobile-menu {
       position: fixed;
       left: 12px;
       right: 12px;
-      top: 121px;
+      top: 120px;
       z-index: 900;
       display: none;
       padding: 8px;
@@ -380,7 +362,7 @@
       border-radius: 14px;
       background: rgba(10,14,26,.98);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(22px);
     }
 
     .mobile-menu.open {
@@ -407,19 +389,19 @@
     .hero {
       position: relative;
       width: 100%;
-      padding: clamp(60px,8vw,105px) clamp(14px,5vw,72px) 58px;
+      padding: clamp(58px, 8vw, 105px) clamp(14px, 5vw, 72px) 58px;
       overflow: hidden;
     }
 
     .hero-glow {
       position: absolute;
-      width: 650px;
-      height: 650px;
+      width: 630px;
+      height: 630px;
       right: -220px;
       top: -260px;
       border-radius: 50%;
-      background: rgba(121,92,255,.09);
-      filter: blur(90px);
+      background: rgba(126,92,255,.09);
+      filter: blur(95px);
       pointer-events: none;
     }
 
@@ -431,50 +413,43 @@
       align-items: center;
     }
 
-    .hero-copy {
-      max-width: 880px;
-    }
-
     .hero-chip {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 19px;
       padding: 7px 10px;
-      border: 1px solid rgba(121,92,255,.22);
+      border: 1px solid rgba(126,92,255,.22);
       border-radius: 999px;
-      background: rgba(121,92,255,.08);
-      color: #ccc4ff;
+      background: rgba(126,92,255,.08);
+      color: #cbc2ff;
       font-size: 9px;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .hero-chip-dot {
+    .hero-chip .live-dot {
       width: 6px;
       height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 11px rgba(61,232,139,.75);
     }
 
     .hero h1 {
       max-width: 920px;
-      font-size: clamp(46px,6.4vw,90px);
-      line-height: .95;
+      font-size: clamp(45px,6.3vw,90px);
+      line-height: .96;
       letter-spacing: -5px;
       font-weight: 950;
     }
 
-    .hero-gradient {
+    .gradient {
       display: inline-block;
       background: linear-gradient(
         100deg,
-        #ffffff 10%,
-        #d8d0ff 40%,
+        #fff 8%,
+        #d8d0ff 38%,
         #9c7cff 70%,
-        #68d8ff 100%
+        #69d7ff 100%
       );
       -webkit-background-clip: text;
       background-clip: text;
@@ -485,15 +460,14 @@
       max-width: 720px;
       margin-top: 25px;
       color: var(--muted);
-      font-size: clamp(13px,1.35vw,16px);
+      font-size: clamp(13px,1.3vw,16px);
       line-height: 1.75;
     }
 
     .hero-actions {
       display: flex;
-      align-items: center;
-      gap: 9px;
       flex-wrap: wrap;
+      gap: 9px;
       margin-top: 30px;
     }
 
@@ -516,17 +490,17 @@
       border: 1px solid rgba(255,255,255,.08);
       color: white;
       background: linear-gradient(135deg,#694aff,#9a62ff);
-      box-shadow: 0 12px 30px rgba(121,92,255,.24);
+      box-shadow: 0 12px 30px rgba(126,92,255,.24);
     }
 
     .primary-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 17px 38px rgba(121,92,255,.35);
+      box-shadow: 0 17px 38px rgba(126,92,255,.35);
     }
 
     .secondary-btn {
       border: 1px solid var(--border);
-      color: var(--text-2);
+      color: var(--text-soft);
       background: rgba(255,255,255,.025);
     }
 
@@ -538,7 +512,7 @@
     }
 
     /* =========================================================
-       HERO VISUAL
+       HERO DASHBOARD
     ========================================================== */
 
     .hero-visual {
@@ -554,7 +528,7 @@
       border: 1px solid rgba(255,255,255,.09);
       border-radius: 21px;
       background:
-        radial-gradient(circle at 80% 0%, rgba(121,92,255,.18), transparent 32%),
+        radial-gradient(circle at 80% 0%, rgba(126,92,255,.18), transparent 32%),
         linear-gradient(145deg,rgba(18,25,43,.97),rgba(9,13,24,.97));
       box-shadow:
         var(--shadow),
@@ -562,7 +536,7 @@
       transform: rotateY(-7deg) rotateX(3deg);
     }
 
-    .dashboard-top {
+    .dashboard-head {
       height: 47px;
       display: flex;
       align-items: center;
@@ -571,12 +545,12 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .window-dots {
+    .dots {
       display: flex;
       gap: 6px;
     }
 
-    .window-dot {
+    .dots span {
       width: 7px;
       height: 7px;
       border-radius: 50%;
@@ -590,7 +564,7 @@
       color: var(--muted);
       font-size: 8px;
       font-weight: 900;
-      letter-spacing: .9px;
+      letter-spacing: .8px;
     }
 
     .dashboard-content {
@@ -605,8 +579,8 @@
       padding: 0 10px;
       border: 1px solid var(--border);
       border-radius: 8px;
+      color: var(--muted-dark);
       background: rgba(0,0,0,.18);
-      color: var(--muted-2);
       font-size: 8px;
     }
 
@@ -625,19 +599,13 @@
     }
 
     .fake-art {
-      position: relative;
       height: 66px;
-      background:
-        radial-gradient(circle at 20% 20%,rgba(121,92,255,.45),transparent 34%),
-        radial-gradient(circle at 80% 80%,rgba(38,217,238,.18),transparent 30%),
-        #12192a;
-    }
-
-    .fake-art span {
-      position: absolute;
-      inset: 0;
       display: grid;
       place-items: center;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(126,92,255,.45),transparent 34%),
+        radial-gradient(circle at 80% 80%,rgba(37,216,238,.18),transparent 30%),
+        #12192a;
       font-size: 23px;
     }
 
@@ -646,7 +614,7 @@
     }
 
     .fake-platform {
-      color: #768198;
+      color: #758095;
       font-size: 6px;
       font-weight: 900;
       letter-spacing: .8px;
@@ -672,21 +640,21 @@
     }
 
     .fake-action {
-      color: #a99bff;
+      color: #aa9cff;
       font-size: 7px;
       font-weight: 950;
     }
 
     /* =========================================================
-       CONTENT
+       CONTENT HEAD
     ========================================================== */
 
     .content {
       width: 100%;
-      padding: 5px clamp(14px,3vw,48px) 70px;
+      padding: 5px clamp(14px, 3vw, 48px) 75px;
     }
 
-    .content-header {
+    .content-head {
       display: grid;
       grid-template-columns: 1fr minmax(280px,390px);
       gap: 22px;
@@ -696,7 +664,7 @@
 
     .eyebrow {
       margin-bottom: 7px;
-      color: #a99aff;
+      color: #a99bff;
       font-size: 9px;
       font-weight: 950;
       letter-spacing: 1.35px;
@@ -710,7 +678,7 @@
     }
 
     .section-text {
-      max-width: 700px;
+      max-width: 720px;
       margin-top: 6px;
       color: var(--muted);
       font-size: 11px;
@@ -726,7 +694,7 @@
       left: 13px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--muted-2);
+      color: var(--muted-dark);
       font-size: 13px;
       pointer-events: none;
     }
@@ -745,13 +713,13 @@
     }
 
     .search-input::placeholder {
-      color: var(--muted-2);
+      color: var(--muted-dark);
     }
 
     .search-input:focus {
-      border-color: rgba(121,92,255,.5);
-      background: rgba(121,92,255,.04);
-      box-shadow: 0 0 0 4px rgba(121,92,255,.055);
+      border-color: rgba(126,92,255,.5);
+      background: rgba(126,92,255,.04);
+      box-shadow: 0 0 0 4px rgba(126,92,255,.055);
     }
 
     .search-clear {
@@ -796,7 +764,7 @@
       display: none;
     }
 
-    .filter-button {
+    .filter {
       flex: 0 0 auto;
       height: 35px;
       padding: 0 11px;
@@ -810,15 +778,15 @@
       transition: .18s ease;
     }
 
-    .filter-button:hover {
+    .filter:hover {
       color: white;
       background: rgba(255,255,255,.05);
     }
 
-    .filter-button.active {
+    .filter.active {
       color: white;
-      border-color: rgba(121,92,255,.38);
-      background: rgba(121,92,255,.12);
+      border-color: rgba(126,92,255,.38);
+      background: rgba(126,92,255,.12);
     }
 
     .results {
@@ -853,14 +821,15 @@
         opacity: 1;
         transform: scale(1);
       }
+
       50% {
         opacity: .45;
-        transform: scale(.76);
+        transform: scale(.75);
       }
     }
 
     /* =========================================================
-       CARDS
+       DYNAMIC GRID
     ========================================================== */
 
     .grid {
@@ -875,30 +844,30 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background:
-        linear-gradient(180deg,rgba(16,22,38,.91),rgba(10,14,25,.95));
+        linear-gradient(
+          180deg,
+          rgba(16,22,38,.92),
+          rgba(10,14,25,.96)
+        );
       transition:
-        transform .24s ease,
-        border-color .24s ease,
-        box-shadow .24s ease;
-      animation: cardIn .4s ease both;
+        transform .23s ease,
+        border-color .23s ease,
+        box-shadow .23s ease;
+      animation: cardIn .35s ease both;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      border-color: var(--border-hover);
+      border-color: var(--border-strong);
       box-shadow:
         0 18px 45px rgba(0,0,0,.25),
-        0 0 0 1px rgba(121,92,255,.035);
-    }
-
-    .card.hidden {
-      display: none;
+        0 0 0 1px rgba(126,92,255,.035);
     }
 
     @keyframes cardIn {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(9px);
       }
       to {
         opacity: 1;
@@ -933,45 +902,45 @@
       transform: translateX(100%);
     }
 
-    .visual-purple {
+    .theme-purple {
       background:
-        radial-gradient(circle at 20% 20%,rgba(124,92,255,.57),transparent 30%),
-        radial-gradient(circle at 85% 80%,rgba(38,217,238,.19),transparent 28%),
+        radial-gradient(circle at 18% 20%,rgba(126,92,255,.58),transparent 30%),
+        radial-gradient(circle at 84% 78%,rgba(37,216,238,.18),transparent 28%),
         linear-gradient(135deg,#171e36,#0c1120);
     }
 
-    .visual-blue {
+    .theme-blue {
       background:
-        radial-gradient(circle at 78% 25%,rgba(77,163,255,.3),transparent 29%),
-        radial-gradient(circle at 20% 80%,rgba(124,92,255,.25),transparent 35%),
+        radial-gradient(circle at 78% 25%,rgba(70,174,255,.3),transparent 29%),
+        radial-gradient(circle at 18% 80%,rgba(126,92,255,.24),transparent 35%),
         linear-gradient(135deg,#131d35,#0a101d);
     }
 
-    .visual-red {
+    .theme-red {
       background:
-        radial-gradient(circle at 52% 38%,rgba(255,93,119,.3),transparent 32%),
-        radial-gradient(circle at 15% 75%,rgba(255,255,255,.06),transparent 28%),
+        radial-gradient(circle at 52% 38%,rgba(255,97,120,.3),transparent 32%),
+        radial-gradient(circle at 15% 76%,rgba(255,255,255,.06),transparent 28%),
         linear-gradient(135deg,#241821,#10121c);
     }
 
-    .visual-green {
+    .theme-green {
       background:
-        radial-gradient(circle at 78% 22%,rgba(61,232,139,.24),transparent 31%),
+        radial-gradient(circle at 78% 22%,rgba(62,232,139,.24),transparent 31%),
         radial-gradient(circle at 20% 80%,rgba(70,160,255,.2),transparent 31%),
         linear-gradient(135deg,#13271f,#0c1415);
     }
 
-    .visual-gold {
+    .theme-gold {
       background:
-        radial-gradient(circle at 25% 24%,rgba(248,200,95,.28),transparent 30%),
-        radial-gradient(circle at 82% 75%,rgba(121,92,255,.2),transparent 30%),
+        radial-gradient(circle at 25% 24%,rgba(246,201,95,.28),transparent 30%),
+        radial-gradient(circle at 82% 75%,rgba(126,92,255,.2),transparent 30%),
         linear-gradient(135deg,#251d16,#101319);
     }
 
-    .visual-cyan {
+    .theme-cyan {
       background:
-        radial-gradient(circle at 80% 20%,rgba(38,217,238,.29),transparent 32%),
-        radial-gradient(circle at 23% 73%,rgba(121,92,255,.34),transparent 30%),
+        radial-gradient(circle at 80% 20%,rgba(37,216,238,.29),transparent 32%),
+        radial-gradient(circle at 23% 73%,rgba(126,92,255,.34),transparent 30%),
         linear-gradient(135deg,#101e33,#09111c);
     }
 
@@ -981,52 +950,52 @@
       z-index: 1;
       display: grid;
       place-items: center;
-      font-size: 64px;
+      font-size: 63px;
       filter: drop-shadow(0 17px 24px rgba(0,0,0,.38));
     }
 
     .platform {
       position: absolute;
-      top: 11px;
       left: 11px;
+      top: 11px;
       z-index: 4;
       padding: 6px 8px;
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 7px;
-      color: #d0c9ff;
-      background: rgba(6,9,16,.74);
+      color: #d0c8ff;
+      background: rgba(6,9,16,.75);
       backdrop-filter: blur(9px);
       font-size: 8px;
       font-weight: 950;
       letter-spacing: .65px;
     }
 
-    .badge {
+    .deal-badge {
       position: absolute;
-      top: 11px;
       right: 11px;
+      top: 11px;
       z-index: 4;
       padding: 6px 8px;
-      border-radius: 7px;
-      background: rgba(6,9,16,.74);
       border: 1px solid rgba(255,255,255,.09);
-      backdrop-filter: blur(9px);
+      border-radius: 7px;
       color: var(--green);
+      background: rgba(6,9,16,.75);
+      backdrop-filter: blur(9px);
       font-size: 8px;
       font-weight: 950;
       letter-spacing: .5px;
     }
 
-    .badge.discount {
+    .deal-badge.discount {
       color: var(--yellow);
     }
 
-    .badge.code {
+    .deal-badge.code {
       color: #a9ddff;
     }
 
-    .badge.reward {
-      color: #ffb0bc;
+    .deal-badge.reward {
+      color: #ffb1be;
     }
 
     .card-body {
@@ -1034,7 +1003,7 @@
     }
 
     .category {
-      color: var(--muted-2);
+      color: var(--muted-dark);
       font-size: 8px;
       font-weight: 950;
       letter-spacing: 1px;
@@ -1044,6 +1013,7 @@
     .card-title {
       margin-top: 6px;
       font-size: 15px;
+      line-height: 1.3;
       font-weight: 900;
       letter-spacing: -.3px;
     }
@@ -1054,6 +1024,23 @@
       color: var(--muted);
       font-size: 10px;
       line-height: 1.62;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      padding: 4px 6px;
+      border: 1px solid rgba(255,255,255,.055);
+      border-radius: 6px;
+      color: var(--muted-dark);
+      background: rgba(255,255,255,.02);
+      font-size: 7px;
+      font-weight: 800;
     }
 
     .divider {
@@ -1075,49 +1062,44 @@
       font-weight: 950;
     }
 
-    .old-price {
-      margin-top: 2px;
-      color: var(--muted-2);
-      font-size: 8px;
-      text-decoration: line-through;
-    }
-
-    .action-btn {
+    .card-action {
       min-height: 33px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 5px;
       padding: 0 10px;
-      border: 1px solid rgba(121,92,255,.23);
+      border: 1px solid rgba(126,92,255,.23);
       border-radius: 8px;
-      background: rgba(121,92,255,.08);
-      color: #d0c7ff;
+      color: #d1c8ff;
+      background: rgba(126,92,255,.08);
       cursor: pointer;
       font-size: 8px;
       font-weight: 950;
       transition: .18s ease;
     }
 
-    .action-btn:hover {
+    .card-action:hover {
       color: white;
-      border-color: rgba(121,92,255,.62);
+      border-color: rgba(126,92,255,.62);
       background: var(--purple);
-      box-shadow: 0 8px 20px rgba(121,92,255,.22);
+      box-shadow: 0 8px 20px rgba(126,92,255,.22);
     }
 
-    .locked-note {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 7px;
-      color: var(--muted-2);
-      font-size: 8px;
-      font-weight: 700;
+    .card-action.unlocked {
+      color: #8ef1b7;
+      border-color: rgba(62,232,139,.17);
+      background: rgba(62,232,139,.06);
+    }
+
+    .card-action.unlocked:hover {
+      color: #06110a;
+      background: var(--green);
+      border-color: var(--green);
     }
 
     /* =========================================================
-       CODE BOX
+       CODE
     ========================================================== */
 
     .code-box {
@@ -1125,16 +1107,16 @@
       align-items: stretch;
       overflow: hidden;
       margin-top: 11px;
-      border: 1px dashed rgba(121,92,255,.34);
+      border: 1px dashed rgba(126,92,255,.34);
       border-radius: 9px;
-      background: rgba(121,92,255,.045);
+      background: rgba(126,92,255,.045);
     }
 
     .code-value {
       flex: 1;
       min-width: 0;
       padding: 9px;
-      color: #d6cdff;
+      color: #d5cdff;
       font-family:
         ui-monospace,
         SFMono-Regular,
@@ -1150,15 +1132,21 @@
       text-overflow: ellipsis;
       filter: blur(4px);
       user-select: none;
+      transition: filter .25s ease;
+    }
+
+    .code-value.revealed {
+      filter: none;
+      user-select: text;
     }
 
     .copy-btn {
       flex: 0 0 auto;
       padding: 0 10px;
       border: 0;
-      border-left: 1px dashed rgba(121,92,255,.3);
-      color: #ae9fff;
-      background: rgba(121,92,255,.08);
+      border-left: 1px dashed rgba(126,92,255,.3);
+      color: #ac9dff;
+      background: rgba(126,92,255,.08);
       cursor: pointer;
       font-size: 8px;
       font-weight: 950;
@@ -1167,17 +1155,32 @@
 
     .copy-btn:hover {
       color: white;
-      background: rgba(121,92,255,.2);
+      background: rgba(126,92,255,.2);
+    }
+
+    .copy-btn.ready {
+      color: #8ef1b7;
+      background: rgba(62,232,139,.07);
+    }
+
+    .locked-note {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 7px;
+      color: var(--muted-dark);
+      font-size: 8px;
+      font-weight: 700;
     }
 
     /* =========================================================
-       EMPTY
+       LOAD MORE / EMPTY
     ========================================================== */
 
     .empty {
       grid-column: 1 / -1;
+      min-height: 250px;
       display: none;
-      min-height: 260px;
       align-items: center;
       justify-content: center;
       flex-direction: column;
@@ -1197,10 +1200,10 @@
       display: grid;
       place-items: center;
       margin-bottom: 12px;
-      border: 1px solid rgba(121,92,255,.17);
+      border: 1px solid rgba(126,92,255,.17);
       border-radius: 14px;
-      background: rgba(121,92,255,.08);
-      color: #a99cff;
+      background: rgba(126,92,255,.08);
+      color: #ab9eff;
       font-size: 20px;
     }
 
@@ -1210,15 +1213,44 @@
     }
 
     .empty-text {
-      max-width: 360px;
+      max-width: 370px;
       margin-top: 6px;
       color: var(--muted);
       font-size: 10px;
       line-height: 1.6;
     }
 
+    .load-more-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .load-more {
+      min-height: 42px;
+      padding: 0 18px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(255,255,255,.025);
+      color: var(--text-soft);
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 900;
+      transition: .18s ease;
+    }
+
+    .load-more:hover {
+      color: white;
+      border-color: rgba(126,92,255,.35);
+      background: rgba(126,92,255,.09);
+    }
+
+    .load-more.hidden {
+      display: none;
+    }
+
     /* =========================================================
-       FEATURES
+       INFO STRIP
     ========================================================== */
 
     .features {
@@ -1229,10 +1261,9 @@
     }
 
     .feature {
-      position: relative;
-      overflow: hidden;
       min-height: 145px;
       padding: 19px;
+      overflow: hidden;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background:
@@ -1242,7 +1273,7 @@
 
     .feature:hover {
       transform: translateY(-3px);
-      border-color: rgba(121,92,255,.25);
+      border-color: rgba(126,92,255,.24);
     }
 
     .feature-icon {
@@ -1271,18 +1302,17 @@
     }
 
     /* =========================================================
-       NEWSLETTER
+       ALERT PANEL
     ========================================================== */
 
     .alert-panel {
-      position: relative;
-      overflow: hidden;
       margin-top: 44px;
       padding: clamp(25px,4vw,38px);
-      border: 1px solid rgba(121,92,255,.18);
+      overflow: hidden;
+      border: 1px solid rgba(126,92,255,.18);
       border-radius: 21px;
       background:
-        radial-gradient(circle at 82% 15%,rgba(121,92,255,.17),transparent 31%),
+        radial-gradient(circle at 82% 15%,rgba(126,92,255,.17),transparent 31%),
         linear-gradient(145deg,rgba(18,25,43,.92),rgba(9,13,24,.96));
     }
 
@@ -1329,13 +1359,9 @@
       font-size: 10px;
     }
 
-    .subscribe-input::placeholder {
-      color: var(--muted-2);
-    }
-
     .subscribe-input:focus {
-      border-color: rgba(121,92,255,.5);
-      box-shadow: 0 0 0 4px rgba(121,92,255,.05);
+      border-color: rgba(126,92,255,.48);
+      box-shadow: 0 0 0 4px rgba(126,92,255,.05);
     }
 
     /* =========================================================
@@ -1361,7 +1387,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      color: var(--text-2);
+      color: var(--text-soft);
       font-size: 11px;
       font-weight: 900;
     }
@@ -1375,30 +1401,28 @@
       color: white;
       background: linear-gradient(135deg,#694aff,#9a62ff);
       font-size: 9px;
-      font-weight: 950;
     }
 
     .footer-copy {
-      color: var(--muted-2);
+      color: var(--muted-dark);
       font-size: 8px;
-      font-weight: 650;
     }
 
     .footer-links {
       display: flex;
-      align-items: center;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
     .footer-link {
-      color: var(--muted-2);
+      color: var(--muted-dark);
       font-size: 8px;
       font-weight: 750;
       transition: .18s ease;
     }
 
     .footer-link:hover {
-      color: var(--text-2);
+      color: var(--text-soft);
     }
 
     /* =========================================================
@@ -1413,7 +1437,7 @@
       align-items: center;
       justify-content: center;
       padding: 18px;
-      background: rgba(2,3,8,.76);
+      background: rgba(2,3,8,.78);
       backdrop-filter: blur(13px);
     }
 
@@ -1422,13 +1446,12 @@
     }
 
     .gate-modal {
-      position: relative;
       width: min(500px,100%);
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 20px;
       background:
-        radial-gradient(circle at 50% 0%,rgba(121,92,255,.17),transparent 35%),
+        radial-gradient(circle at 50% 0%,rgba(126,92,255,.17),transparent 35%),
         linear-gradient(160deg,#11182a,#090d18);
       box-shadow: var(--shadow);
       animation: modalIn .25s ease both;
@@ -1437,7 +1460,7 @@
     @keyframes modalIn {
       from {
         opacity: 0;
-        transform: translateY(14px) scale(.98);
+        transform: translateY(13px) scale(.98);
       }
       to {
         opacity: 1;
@@ -1445,7 +1468,7 @@
       }
     }
 
-    .gate-header {
+    .gate-head {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1454,7 +1477,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .gate-header-title {
+    .gate-head-left {
       display: flex;
       align-items: center;
       gap: 9px;
@@ -1467,9 +1490,9 @@
       height: 31px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(121,92,255,.18);
+      border: 1px solid rgba(126,92,255,.18);
       border-radius: 9px;
-      background: rgba(121,92,255,.09);
+      background: rgba(126,92,255,.09);
       color: #b19fff;
     }
 
@@ -1489,15 +1512,14 @@
       background: rgba(255,255,255,.07);
     }
 
-    .gate-content {
-      padding: 25px 20px 20px;
+    .gate-body {
+      padding: 24px 20px 20px;
       text-align: center;
     }
 
-    .ad-preview {
-      position: relative;
-      width: 100%;
+    .ad-box {
       min-height: 145px;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1506,34 +1528,31 @@
       border: 1px solid rgba(255,255,255,.06);
       border-radius: 14px;
       background:
-        radial-gradient(circle at 50% 50%,rgba(121,92,255,.18),transparent 42%),
+        radial-gradient(circle at 50% 50%,rgba(126,92,255,.18),transparent 42%),
         linear-gradient(135deg,#101629,#080c17);
     }
 
-    .ad-preview::before {
+    .ad-box::after {
       content: "";
       position: absolute;
+      left: -45%;
+      top: 50%;
       width: 190%;
       height: 1px;
-      top: 50%;
-      left: -45%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(121,92,255,.65),
-        rgba(38,217,238,.4),
-        transparent
-      );
-      animation: scanline 2.8s linear infinite;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(126,92,255,.65),
+          rgba(37,216,238,.45),
+          transparent
+        );
+      animation: scan 2.7s linear infinite;
     }
 
-    @keyframes scanline {
-      from {
-        transform: translateY(-65px);
-      }
-      to {
-        transform: translateY(65px);
-      }
+    @keyframes scan {
+      from { transform: translateY(-65px); }
+      to { transform: translateY(65px); }
     }
 
     .ad-label {
@@ -1542,8 +1561,8 @@
       padding: 6px 9px;
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 7px;
-      color: var(--muted);
       background: rgba(0,0,0,.2);
+      color: var(--muted);
       font-size: 8px;
       font-weight: 900;
       letter-spacing: 1px;
@@ -1566,14 +1585,13 @@
     }
 
     .gate-title {
-      margin-top: 20px;
+      margin-top: 19px;
       font-size: 19px;
       font-weight: 950;
-      letter-spacing: -.4px;
     }
 
-    .gate-text {
-      max-width: 390px;
+    .gate-description {
+      max-width: 400px;
       margin: 7px auto 0;
       color: var(--muted);
       font-size: 9px;
@@ -1582,55 +1600,61 @@
 
     .gate-actions {
       display: flex;
-      justify-content: center;
       gap: 8px;
+      justify-content: center;
       margin-top: 18px;
     }
 
-    .gate-button {
+    .gate-btn {
       min-height: 40px;
       min-width: 125px;
       border-radius: 9px;
-      border: 1px solid var(--border);
       cursor: pointer;
       font-size: 9px;
       font-weight: 950;
       transition: .18s ease;
     }
 
-    .gate-button.cancel {
-      background: rgba(255,255,255,.025);
+    .gate-cancel {
+      border: 1px solid var(--border);
       color: var(--muted);
+      background: rgba(255,255,255,.025);
     }
 
-    .gate-button.cancel:hover {
+    .gate-cancel:hover {
+      color: white;
       background: rgba(255,255,255,.055);
-      color: white;
     }
 
-    .gate-button.watch {
+    .gate-watch {
+      border: 1px solid rgba(126,92,255,.25);
       color: white;
-      border-color: rgba(121,92,255,.25);
       background: linear-gradient(135deg,#694aff,#9a62ff);
-      box-shadow: 0 10px 25px rgba(121,92,255,.2);
+      box-shadow: 0 10px 25px rgba(126,92,255,.2);
     }
 
-    .gate-button.watch:hover {
+    .gate-watch:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(121,92,255,.3);
+      box-shadow: 0 14px 30px rgba(126,92,255,.3);
     }
 
-    .gate-progress-wrap {
+    .gate-watch:disabled {
+      cursor: not-allowed;
+      opacity: .55;
+      transform: none;
+    }
+
+    .progress-wrap {
       display: none;
       margin-top: 17px;
       text-align: left;
     }
 
-    .gate-progress-wrap.show {
+    .progress-wrap.visible {
       display: block;
     }
 
-    .progress-label {
+    .progress-meta {
       display: flex;
       justify-content: space-between;
       color: var(--muted);
@@ -1651,46 +1675,46 @@
       height: 100%;
       border-radius: inherit;
       background: linear-gradient(90deg,var(--purple),var(--cyan));
-      transition: width .25s linear;
+      transition: width .1s linear;
     }
 
-    .unlock-area {
+    .unlock-wrap {
       display: none;
       margin-top: 18px;
     }
 
-    .unlock-area.show {
+    .unlock-wrap.visible {
       display: block;
     }
 
     .unlock-success {
       padding: 13px;
-      border: 1px solid rgba(61,232,139,.16);
+      border: 1px solid rgba(62,232,139,.15);
       border-radius: 10px;
-      background: rgba(61,232,139,.06);
-      color: #9af3bf;
+      background: rgba(62,232,139,.06);
+      color: #98f1bb;
       font-size: 9px;
-      font-weight: 800;
+      font-weight: 850;
     }
 
-    .unlock-button {
+    .unlock-action {
       width: 100%;
       min-height: 41px;
       margin-top: 8px;
-      border: 1px solid rgba(61,232,139,.2);
+      border: 1px solid rgba(62,232,139,.2);
       border-radius: 9px;
-      background: rgba(61,232,139,.08);
-      color: #91efb9;
+      background: rgba(62,232,139,.08);
+      color: #90efb9;
       cursor: pointer;
       font-size: 9px;
       font-weight: 950;
       transition: .18s ease;
     }
 
-    .unlock-button:hover {
+    .unlock-action:hover {
+      color: #06110a;
       background: var(--green);
-      color: #07110b;
-      box-shadow: 0 10px 24px rgba(61,232,139,.2);
+      box-shadow: 0 10px 24px rgba(62,232,139,.2);
     }
 
     /* =========================================================
@@ -1701,7 +1725,7 @@
       position: fixed;
       right: 18px;
       bottom: 18px;
-      z-index: 4000;
+      z-index: 5000;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -1709,8 +1733,8 @@
     }
 
     .toast {
-      min-width: 250px;
-      max-width: 350px;
+      min-width: 255px;
+      max-width: 360px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -1720,10 +1744,10 @@
       background: rgba(11,16,28,.97);
       box-shadow: var(--shadow);
       backdrop-filter: blur(20px);
-      animation: toastIn .25s ease forwards;
+      animation: toastIn .24s ease forwards;
     }
 
-    .toast.removing {
+    .toast.out {
       animation: toastOut .22s ease forwards;
     }
 
@@ -1733,9 +1757,9 @@
       flex: 0 0 auto;
       display: grid;
       place-items: center;
+      border: 1px solid rgba(62,232,139,.14);
       border-radius: 8px;
-      background: rgba(61,232,139,.08);
-      border: 1px solid rgba(61,232,139,.14);
+      background: rgba(62,232,139,.08);
       color: #83efae;
       font-size: 10px;
       font-weight: 950;
@@ -1747,7 +1771,7 @@
       font-weight: 950;
     }
 
-    .toast-message {
+    .toast-text {
       margin-top: 2px;
       color: var(--muted);
       font-size: 8px;
@@ -1757,7 +1781,7 @@
     @keyframes toastIn {
       from {
         opacity: 0;
-        transform: translateY(9px) scale(.98);
+        transform: translateY(8px) scale(.98);
       }
       to {
         opacity: 1;
@@ -1776,7 +1800,7 @@
        RESPONSIVE
     ========================================================== */
 
-    @media (max-width: 1080px) {
+    @media (max-width:1080px) {
       .nav-links {
         display: none;
       }
@@ -1800,12 +1824,12 @@
       }
     }
 
-    @media (max-width: 800px) {
-      .utc {
+    @media (max-width:800px) {
+      .clock {
         display: none;
       }
 
-      .content-header {
+      .content-head {
         grid-template-columns: 1fr;
       }
 
@@ -1818,7 +1842,7 @@
       }
     }
 
-    @media (max-width: 570px) {
+    @media (max-width:570px) {
       .ticker-item {
         padding: 0 14px;
       }
@@ -1829,10 +1853,6 @@
 
       .navbar-inner {
         padding: 0 12px;
-      }
-
-      .language-button {
-        min-width: 61px;
       }
 
       .hero {
@@ -1888,27 +1908,33 @@
         flex-direction: column;
       }
 
-      .footer-links {
-        flex-wrap: wrap;
-      }
-
       .gate-actions {
         flex-direction: column-reverse;
       }
 
-      .gate-button {
+      .gate-btn {
+        width: 100%;
+      }
+
+      .toast-container {
+        left: 12px;
+        right: 12px;
+      }
+
+      .toast {
+        min-width: 0;
         width: 100%;
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
+    @media (prefers-reduced-motion:reduce) {
       *,
       *::before,
       *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
       }
     }
   </style>
@@ -1916,1967 +1942,2165 @@
 
 <body>
 
-  <div id="app">
+<div class="app">
 
-    <!-- =======================================================
-         LIVE TICKER
-    ======================================================== -->
+  <!-- =========================================================
+       LIVE TICKER
+  ========================================================== -->
 
-    <div class="ticker">
-      <div class="ticker-track">
+  <div class="ticker">
+    <div class="ticker-track">
 
-        <div class="ticker-item">
-          <span class="live-dot"></span>
-          <strong data-i18n="live">Live</strong>
-          <span data-i18n="globalTracking">global drops are being tracked</span>
-        </div>
-
-        <div class="ticker-item">
-          🎮 <strong>128</strong>
-          <span data-i18n="freeFound">free opportunities found today</span>
-        </div>
-
-        <div class="ticker-item">
-          🔥 <strong>2,481</strong>
-          <span data-i18n="tracked">opportunities tracked</span>
-        </div>
-
-        <div class="ticker-item">
-          🎁 <strong>37</strong>
-          <span data-i18n="activeCodes">active promo codes</span>
-        </div>
-
-        <div class="ticker-item">
-          🌍 <span data-i18n="globalCoverage">global gaming coverage</span>
-        </div>
-
-        <div class="ticker-item">
-          ⚡ <span data-i18n="continuous">continuously updated</span>
-        </div>
-
-        <!-- Duplicate -->
-        <div class="ticker-item">
-          <span class="live-dot"></span>
-          <strong data-i18n="live">Live</strong>
-          <span data-i18n="globalTracking">global drops are being tracked</span>
-        </div>
-
-        <div class="ticker-item">
-          🎮 <strong>128</strong>
-          <span data-i18n="freeFound">free opportunities found today</span>
-        </div>
-
-        <div class="ticker-item">
-          🔥 <strong>2,481</strong>
-          <span data-i18n="tracked">opportunities tracked</span>
-        </div>
-
-        <div class="ticker-item">
-          🎁 <strong>37</strong>
-          <span data-i18n="activeCodes">active promo codes</span>
-        </div>
-
+      <div class="ticker-item">
+        <span class="live-dot"></span>
+        <strong>LIVE</strong>
+        <span>global drops are being tracked</span>
       </div>
+
+      <div class="ticker-item">
+        🎮 <strong id="tickerTotal">0</strong>
+        <span>gaming opportunities</span>
+      </div>
+
+      <div class="ticker-item">
+        🎁 <strong id="tickerCodes">0</strong>
+        <span>promo codes</span>
+      </div>
+
+      <div class="ticker-item">
+        🌍 <strong>GLOBAL</strong>
+        <span>gaming coverage</span>
+      </div>
+
+      <div class="ticker-item">
+        ⚡ <strong>LIVE</strong>
+        <span>feed updates automatically</span>
+      </div>
+
+      <div class="ticker-item">
+        <span class="live-dot"></span>
+        <strong>LIVE</strong>
+        <span>global drops are being tracked</span>
+      </div>
+
+      <div class="ticker-item">
+        🎮 <strong id="tickerTotal2">0</strong>
+        <span>gaming opportunities</span>
+      </div>
+
+      <div class="ticker-item">
+        🎁 <strong id="tickerCodes2">0</strong>
+        <span>promo codes</span>
+      </div>
+
     </div>
-
-    <!-- =======================================================
-         NAVIGATION
-    ======================================================== -->
-
-    <header class="navbar">
-      <div class="navbar-inner">
-
-        <a href="#" class="logo">
-          <span class="logo-mark"><span>L</span></span>
-          <span>Loot<span class="logo-light">Hub</span></span>
-        </a>
-
-        <nav class="nav-links">
-          <a class="nav-link active" href="#drops" data-i18n="discover">
-            Discover
-          </a>
-
-          <a class="nav-link" href="#drops" data-i18n="freeGames">
-            Free Games
-          </a>
-
-          <a class="nav-link" href="#drops" data-i18n="promoCodes">
-            Promo Codes
-          </a>
-
-          <a class="nav-link" href="#drops" data-i18n="rewards">
-            Rewards
-          </a>
-        </nav>
-
-        <div class="nav-spacer"></div>
-
-        <div class="nav-actions">
-
-          <div class="utc">
-            <span class="utc-label">UTC</span>
-            <span id="utcClock">00:00:00</span>
-          </div>
-
-          <div class="language" id="language">
-            <button
-              class="language-button"
-              id="languageButton"
-              type="button"
-              aria-expanded="false"
-            >
-              <span id="languageCurrent">EN</span>
-              <span class="language-arrow">▼</span>
-            </button>
-
-            <div class="language-menu">
-
-              <button
-                class="language-option selected"
-                type="button"
-                data-language="en"
-              >
-                <span>English</span>
-                <span>EN</span>
-              </button>
-
-              <button
-                class="language-option"
-                type="button"
-                data-language="tr"
-              >
-                <span>Türkçe</span>
-                <span>TR</span>
-              </button>
-
-              <button
-                class="language-option"
-                type="button"
-                data-language="es"
-              >
-                <span>Español</span>
-                <span>ES</span>
-              </button>
-
-            </div>
-          </div>
-
-          <button
-            class="mobile-toggle"
-            id="mobileToggle"
-            type="button"
-            aria-expanded="false"
-            aria-label="Menu"
-          >
-            ☰
-          </button>
-
-        </div>
-
-      </div>
-    </header>
-
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#drops" data-i18n="discover">Discover</a>
-      <a href="#drops" data-i18n="freeGames">Free Games</a>
-      <a href="#drops" data-i18n="promoCodes">Promo Codes</a>
-      <a href="#drops" data-i18n="rewards">Rewards</a>
-    </div>
-
-    <!-- =======================================================
-         HERO
-    ======================================================== -->
-
-    <section class="hero">
-
-      <div class="hero-glow"></div>
-
-      <div class="hero-inner">
-
-        <div class="hero-copy">
-
-          <div class="hero-chip">
-            <span class="hero-chip-dot"></span>
-            <span data-i18n="heroChip">Global gaming discovery</span>
-          </div>
-
-          <h1>
-            <span data-i18n="heroLine1">The best loot is out there.</span>
-            <br>
-            <span class="hero-gradient" data-i18n="heroLine2">
-              We'll find it first.
-            </span>
-          </h1>
-
-          <p class="hero-description" data-i18n="heroDescription">
-            LootHub collects free games, giveaways, promo codes and gaming
-            rewards into one clean, fast and constantly updated hub.
-          </p>
-
-          <div class="hero-actions">
-
-            <a href="#drops" class="primary-btn">
-              ✦
-              <span data-i18n="explore">Explore drops</span>
-            </a>
-
-            <button
-              class="secondary-btn"
-              type="button"
-              id="howItWorks"
-            >
-              ◉
-              <span data-i18n="howItWorks">How it works</span>
-            </button>
-
-          </div>
-
-        </div>
-
-        <!-- Dashboard visual -->
-        <div class="hero-visual" aria-hidden="true">
-
-          <div class="dashboard">
-
-            <div class="dashboard-top">
-              <div class="window-dots">
-                <span class="window-dot"></span>
-                <span class="window-dot"></span>
-                <span class="window-dot"></span>
-              </div>
-
-              <div class="dashboard-live">
-                <span class="live-dot"></span>
-                LIVE FEED
-              </div>
-            </div>
-
-            <div class="dashboard-content">
-
-              <div class="fake-search">
-                ⌕
-                <span>Search gaming drops...</span>
-              </div>
-
-              <div class="fake-grid">
-
-                <div class="fake-card">
-                  <div class="fake-art">
-                    <span>🛡️</span>
-                  </div>
-                  <div class="fake-info">
-                    <div class="fake-platform">EPIC GAMES</div>
-                    <div class="fake-title">Mystery Quest</div>
-                    <div class="fake-bottom">
-                      <span class="fake-free">FREE</span>
-                      <span class="fake-action">UNLOCK →</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="fake-card">
-                  <div class="fake-art">
-                    <span>🚀</span>
-                  </div>
-                  <div class="fake-info">
-                    <div class="fake-platform">STEAM</div>
-                    <div class="fake-title">Void Protocol</div>
-                    <div class="fake-bottom">
-                      <span class="fake-free">FREE</span>
-                      <span class="fake-action">VIEW →</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="fake-card">
-                  <div class="fake-art">
-                    <span>🎁</span>
-                  </div>
-                  <div class="fake-info">
-                    <div class="fake-platform">ROBLOX</div>
-                    <div class="fake-title">Promo Reward</div>
-                    <div class="fake-bottom">
-                      <span class="fake-free">CODE</span>
-                      <span class="fake-action">UNLOCK →</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="fake-card">
-                  <div class="fake-art">
-                    <span>⛏️</span>
-                  </div>
-                  <div class="fake-info">
-                    <div class="fake-platform">MINECRAFT</div>
-                    <div class="fake-title">Emerald Pack</div>
-                    <div class="fake-bottom">
-                      <span class="fake-free">REWARD</span>
-                      <span class="fake-action">UNLOCK →</span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- =======================================================
-         DROPS
-    ======================================================== -->
-
-    <main class="content" id="drops">
-
-      <div class="content-header">
-
-        <div>
-          <div class="eyebrow" data-i18n="eyebrow">
-            Live discovery
-          </div>
-
-          <h2 class="section-title" data-i18n="latestDrops">
-            Latest gaming drops
-          </h2>
-
-          <p class="section-text" data-i18n="latestDescription">
-            Free opportunities and rewards gathered from the gaming ecosystem.
-          </p>
-        </div>
-
-        <div class="search">
-
-          <span class="search-icon">⌕</span>
-
-          <input
-            id="searchInput"
-            class="search-input"
-            type="search"
-            autocomplete="off"
-            data-i18n-placeholder="searchPlaceholder"
-            placeholder="Search games, platforms or rewards..."
-          >
-
-          <button
-            id="searchClear"
-            class="search-clear"
-            type="button"
-            aria-label="Clear search"
-          >
-            ×
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- CATEGORY FILTERS -->
-
-      <div class="filters">
-
-        <button
-          class="filter-button active"
-          data-filter="all"
-          type="button"
-          data-i18n="all"
-        >
-          All
-        </button>
-
-        <button
-          class="filter-button"
-          data-filter="free"
-          type="button"
-          data-i18n="freeGames"
-        >
-          Free Games
-        </button>
-
-        <button
-          class="filter-button"
-          data-filter="epic"
-          type="button"
-        >
-          Epic Games
-        </button>
-
-        <button
-          class="filter-button"
-          data-filter="steam"
-          type="button"
-        >
-          Steam
-        </button>
-
-        <button
-          class="filter-button"
-          data-filter="roblox"
-          type="button"
-        >
-          Roblox
-        </button>
-
-        <button
-          class="filter-button"
-          data-filter="minecraft"
-          type="button"
-        >
-          Minecraft
-        </button>
-
-        <button
-          class="filter-button"
-          data-filter="xbox"
-          type="button"
-        >
-          Xbox
-        </button>
-
-      </div>
-
-      <div class="results">
-        <span class="result-count" id="resultCount">8 opportunities</span>
-
-        <span class="live-status">
-          <span class="live-dot"></span>
-          <span data-i18n="liveUpdating">Live updating</span>
-        </span>
-      </div>
-
-      <!-- =====================================================
-           CARD GRID
-      ====================================================== -->
-
-      <section class="grid" id="dealGrid">
-
-        <!-- 1 -->
-        <article
-          class="card"
-          data-platform="epic"
-          data-type="free"
-          data-search="mystery quest epic games adventure giveaway free"
-        >
-
-          <div class="card-visual visual-purple">
-            <span class="platform">EPIC GAMES</span>
-            <span class="badge">100% FREE</span>
-            <span class="visual-icon">🛡️</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Weekly Giveaway</div>
-
-            <h3 class="card-title">Mystery Quest</h3>
-
-            <p class="card-description">
-              Premium adventure experience available as a limited free claim.
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="card-bottom">
-
-              <div>
-                <div class="price">FREE</div>
-                <div class="old-price">$29.99</div>
-              </div>
-
-              <button
-                class="action-btn"
-                type="button"
-                data-action="unlock"
-                data-name="Mystery Quest"
-              >
-                🔒 Unlock
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad to reveal
-            </div>
-
-          </div>
-        </article>
-
-        <!-- 2 -->
-        <article
-          class="card"
-          data-platform="steam"
-          data-type="free"
-          data-search="void protocol steam sci fi free game giveaway"
-        >
-
-          <div class="card-visual visual-blue">
-            <span class="platform">STEAM</span>
-            <span class="badge">FREE</span>
-            <span class="visual-icon">🚀</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Free Game</div>
-
-            <h3 class="card-title">Void Protocol</h3>
-
-            <p class="card-description">
-              Fast sci-fi action currently available through a limited promotion.
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="card-bottom">
-
-              <div>
-                <div class="price">FREE</div>
-                <div class="old-price">$24.99</div>
-              </div>
-
-              <button
-                class="action-btn"
-                type="button"
-                data-action="unlock"
-                data-name="Void Protocol"
-              >
-                🔒 Unlock
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad to reveal
-            </div>
-
-          </div>
-        </article>
-
-        <!-- 3 -->
-        <article
-          class="card"
-          data-platform="roblox"
-          data-type="code"
-          data-search="roblox promo code avatar ugc reward cosmetic"
-        >
-
-          <div class="card-visual visual-red">
-            <span class="platform">ROBLOX</span>
-            <span class="badge code">PROMO CODE</span>
-            <span class="visual-icon">🎁</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Promo Code</div>
-
-            <h3 class="card-title">Avatar Reward</h3>
-
-            <p class="card-description">
-              Limited code for an exclusive avatar cosmetic.
-            </p>
-
-            <div class="code-box">
-
-              <span
-                class="code-value"
-                data-code="LOOT-7X9Q-2026"
-              >
-                LOOT-7X9Q-2026
-              </span>
-
-              <button
-                class="copy-btn"
-                type="button"
-                data-copy="LOOT-7X9Q-2026"
-              >
-                🔒 Copy
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad before copying
-            </div>
-
-          </div>
-        </article>
-
-        <!-- 4 -->
-        <article
-          class="card"
-          data-platform="minecraft"
-          data-type="free"
-          data-search="minecraft emerald server pack reward free cosmetic"
-        >
-
-          <div class="card-visual visual-green">
-            <span class="platform">MINECRAFT</span>
-            <span class="badge reward">REWARD</span>
-            <span class="visual-icon">⛏️</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Gaming Reward</div>
-
-            <h3 class="card-title">Emerald Server Pack</h3>
-
-            <p class="card-description">
-              Community reward pack containing limited server cosmetics.
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="card-bottom">
-
-              <div>
-                <div class="price">FREE</div>
-                <div class="old-price">LIMITED</div>
-              </div>
-
-              <button
-                class="action-btn"
-                type="button"
-                data-action="unlock"
-                data-name="Emerald Server Pack"
-              >
-                🔒 Unlock
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad to reveal
-            </div>
-
-          </div>
-        </article>
-
-        <!-- 5 -->
-        <article
-          class="card"
-          data-platform="epic"
-          data-type="free"
-          data-search="neon raiders epic cyberpunk shooter free giveaway"
-        >
-
-          <div class="card-visual visual-cyan">
-            <span class="platform">EPIC GAMES</span>
-            <span class="badge">100% FREE</span>
-            <span class="visual-icon">👾</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Free Game</div>
-
-            <h3 class="card-title">Neon Raiders</h3>
-
-            <p class="card-description">
-              Cyberpunk shooter currently featured in a free giveaway.
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="card-bottom">
-
-              <div>
-                <div class="price">FREE</div>
-                <div class="old-price">$19.99</div>
-              </div>
-
-              <button
-                class="action-btn"
-                type="button"
-                data-action="unlock"
-                data-name="Neon Raiders"
-              >
-                🔒 Unlock
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad to reveal
-            </div>
-
-          </div>
-        </article>
-
-        <!-- 6 -->
-        <article
-          class="card"
-          data-platform="steam"
-          data-type="free"
-          data-search="kingdoms reborn steam free strategy game"
-        >
-
-          <div class="card-visual visual-gold">
-            <span class="platform">STEAM</span>
-            <span class="badge">FREE</span>
-            <span class="visual-icon">🏰</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Free Weekend</div>
-
-            <h3 class="card-title">Kingdoms Reborn</h3>
-
-            <p class="card-description">
-              Strategy sandbox with a temporary free-play opportunity.
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="card-bottom">
-
-              <div>
-                <div class="price">FREE</div>
-                <div class="old-price">$29.99</div>
-              </div>
-
-              <button
-                class="action-btn"
-                type="button"
-                data-action="unlock"
-                data-name="Kingdoms Reborn"
-              >
-                🔒 Unlock
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad to reveal
-            </div>
-
-          </div>
-        </article>
-
-        <!-- 7 -->
-        <article
-          class="card"
-          data-platform="roblox"
-          data-type="code"
-          data-search="roblox crystal ugc promo code cosmetic reward"
-        >
-
-          <div class="card-visual visual-red">
-            <span class="platform">ROBLOX</span>
-            <span class="badge code">NEW CODE</span>
-            <span class="visual-icon">💎</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Promo Code</div>
-
-            <h3 class="card-title">Crystal UGC Drop</h3>
-
-            <p class="card-description">
-              Unlock a limited cosmetic while the promotional code is active.
-            </p>
-
-            <div class="code-box">
-
-              <span
-                class="code-value"
-                data-code="CRYSTAL-XP26"
-              >
-                CRYSTAL-XP26
-              </span>
-
-              <button
-                class="copy-btn"
-                type="button"
-                data-copy="CRYSTAL-XP26"
-              >
-                🔒 Copy
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad before copying
-            </div>
-
-          </div>
-        </article>
-
-        <!-- 8 -->
-        <article
-          class="card"
-          data-platform="xbox"
-          data-type="free"
-          data-search="xbox velocity rush racing free play"
-        >
-
-          <div class="card-visual visual-green">
-            <span class="platform">XBOX</span>
-            <span class="badge">FREE PLAY</span>
-            <span class="visual-icon">🏎️</span>
-          </div>
-
-          <div class="card-body">
-
-            <div class="category">Free Play</div>
-
-            <h3 class="card-title">Velocity Rush</h3>
-
-            <p class="card-description">
-              Race through futuristic cities during a limited free-play event.
-            </p>
-
-            <div class="divider"></div>
-
-            <div class="card-bottom">
-
-              <div>
-                <div class="price">FREE</div>
-                <div class="old-price">$39.99</div>
-              </div>
-
-              <button
-                class="action-btn"
-                type="button"
-                data-action="unlock"
-                data-name="Velocity Rush"
-              >
-                🔒 Unlock
-              </button>
-
-            </div>
-
-            <div class="locked-note">
-              ◉ Watch a short ad to reveal
-            </div>
-
-          </div>
-        </article>
-
-        <!-- Empty state -->
-        <div class="empty" id="emptyState">
-
-          <div class="empty-icon">⌕</div>
-
-          <div class="empty-title" data-i18n="nothingFound">
-            No drops found
-          </div>
-
-          <p class="empty-text" data-i18n="nothingText">
-            Try another search term or choose another category.
-          </p>
-
-        </div>
-
-      </section>
-
-      <!-- =====================================================
-           FEATURES
-      ====================================================== -->
-
-      <section class="features">
-
-        <article class="feature">
-          <div class="feature-icon">⚡</div>
-
-          <h3 class="feature-title" data-i18n="feature1Title">
-            Fast discovery
-          </h3>
-
-          <p class="feature-text" data-i18n="feature1Text">
-            Find free games, rewards and promotional opportunities without
-            jumping between dozens of sites.
-          </p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-icon">🌍</div>
-
-          <h3 class="feature-title" data-i18n="feature2Title">
-            Global coverage
-          </h3>
-
-          <p class="feature-text" data-i18n="feature2Text">
-            Built around multiple gaming ecosystems and localized content.
-          </p>
-        </article>
-
-        <article class="feature">
-          <div class="feature-icon">🔔</div>
-
-          <h3 class="feature-title" data-i18n="feature3Title">
-            Never miss a drop
-          </h3>
-
-          <p class="feature-text" data-i18n="feature3Text">
-            Surface time-sensitive opportunities before they disappear.
-          </p>
-        </article>
-
-      </section>
-
-      <!-- =====================================================
-           ALERT PANEL
-      ====================================================== -->
-
-      <section class="alert-panel">
-
-        <div class="alert-label" data-i18n="alertLabel">
-          Drop alerts
-        </div>
-
-        <h2 class="alert-title" data-i18n="alertTitle">
-          Get new loot before everyone else.
-        </h2>
-
-        <p class="alert-description" data-i18n="alertDescription">
-          Join the LootHub alert list to receive updates about newly discovered
-          free games, rewards and promotional codes.
-        </p>
-
-        <form class="subscribe" id="subscribeForm">
-
-          <input
-            class="subscribe-input"
-            id="emailInput"
-            type="email"
-            required
-            autocomplete="email"
-            data-i18n-placeholder="emailPlaceholder"
-            placeholder="Enter your email address"
-          >
-
-          <button class="primary-btn" type="submit">
-            ✦
-            <span data-i18n="notifyMe">Notify me</span>
-          </button>
-
-        </form>
-
-      </section>
-
-    </main>
-
-    <!-- =======================================================
-         FOOTER
-    ======================================================== -->
-
-    <footer class="footer">
-
-      <div class="footer-inner">
-
-        <div class="footer-brand">
-          <span class="footer-mark">L</span>
-          <span>LootHub</span>
-          <span class="footer-copy">
-            © 2026 LootHub
-          </span>
-        </div>
-
-        <div class="footer-links">
-
-          <a href="#drops" class="footer-link" data-i18n="about">
-            About
-          </a>
-
-          <a href="#drops" class="footer-link" data-i18n="privacy">
-            Privacy
-          </a>
-
-          <a href="#drops" class="footer-link" data-i18n="terms">
-            Terms
-          </a>
-
-          <a
-            href="#"
-            class="footer-link"
-            id="discordLink"
-            data-i18n="discord"
-          >
-            Discord
-          </a>
-
-        </div>
-
-      </div>
-
-    </footer>
-
   </div>
 
   <!-- =========================================================
-       AD GATE
+       NAVIGATION
   ========================================================== -->
 
-  <div
-    class="modal-backdrop"
-    id="gateBackdrop"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="gateTitle"
-  >
+  <header class="navbar">
+    <div class="navbar-inner">
 
-    <div class="gate-modal">
+      <a href="#" class="logo">
+        <span class="logo-mark">L</span>
+        <span>Loot<span class="logo-muted">Hub</span></span>
+      </a>
 
-      <div class="gate-header">
+      <nav class="nav-links">
+        <a class="nav-link active" href="#drops">Discover</a>
+        <a class="nav-link" href="#drops">Free Games</a>
+        <a class="nav-link" href="#drops">Promo Codes</a>
+        <a class="nav-link" href="#features">Rewards</a>
+      </nav>
 
-        <div class="gate-header-title">
-          <span class="gate-icon">▶</span>
-          <span data-i18n="gateHeader">Reward unlock</span>
+      <div class="nav-spacer"></div>
+
+      <div class="nav-actions">
+
+        <div class="clock">
+          <span class="clock-label">UTC</span>
+          <span id="utcClock">00:00:00</span>
+        </div>
+
+        <div class="language" id="language">
+
+          <button
+            class="language-button"
+            id="languageButton"
+            type="button"
+            aria-expanded="false"
+          >
+            <span id="languageCurrent">EN</span>
+            <span class="language-arrow">▼</span>
+          </button>
+
+          <div class="language-menu">
+
+            <button class="language-option selected" type="button" data-language="en">
+              <span>English</span>
+              <span>EN</span>
+            </button>
+
+            <button class="language-option" type="button" data-language="tr">
+              <span>Türkçe</span>
+              <span>TR</span>
+            </button>
+
+            <button class="language-option" type="button" data-language="es">
+              <span>Español</span>
+              <span>ES</span>
+            </button>
+
+          </div>
         </div>
 
         <button
-          class="close-modal"
-          id="closeGate"
+          class="mobile-toggle"
+          id="mobileToggle"
           type="button"
-          aria-label="Close"
+          aria-expanded="false"
+          aria-label="Menu"
+        >
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#drops">Discover</a>
+    <a href="#drops">Free Games</a>
+    <a href="#drops">Promo Codes</a>
+    <a href="#features">Rewards</a>
+  </div>
+
+  <!-- =========================================================
+       HERO
+  ========================================================== -->
+
+  <section class="hero">
+
+    <div class="hero-glow"></div>
+
+    <div class="hero-inner">
+
+      <div>
+
+        <div class="hero-chip">
+          <span class="live-dot"></span>
+          Global gaming discovery
+        </div>
+
+        <h1>
+          The best loot is
+          <br>
+          <span class="gradient">out there.</span>
+        </h1>
+
+        <p class="hero-description">
+          LootHub gathers free games, giveaways, promo codes and gaming rewards
+          into one constantly updated discovery platform.
+        </p>
+
+        <div class="hero-actions">
+
+          <a href="#drops" class="primary-btn">
+            ✦
+            Explore drops
+          </a>
+
+          <button class="secondary-btn" id="howItWorks" type="button">
+            ◉
+            How it works
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+
+        <div class="dashboard">
+
+          <div class="dashboard-head">
+            <div class="dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="dashboard-live">
+              <span class="live-dot"></span>
+              LIVE FEED
+            </div>
+          </div>
+
+          <div class="dashboard-content">
+
+            <div class="fake-search">
+              ⌕
+              <span>Search gaming drops...</span>
+            </div>
+
+            <div class="fake-grid">
+
+              <div class="fake-card">
+                <div class="fake-art">🛡️</div>
+                <div class="fake-info">
+                  <div class="fake-platform">EPIC GAMES</div>
+                  <div class="fake-title">Mystery Quest</div>
+                  <div class="fake-bottom">
+                    <span class="fake-free">FREE</span>
+                    <span class="fake-action">UNLOCK →</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fake-card">
+                <div class="fake-art">🚀</div>
+                <div class="fake-info">
+                  <div class="fake-platform">STEAM</div>
+                  <div class="fake-title">Void Protocol</div>
+                  <div class="fake-bottom">
+                    <span class="fake-free">FREE</span>
+                    <span class="fake-action">VIEW →</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fake-card">
+                <div class="fake-art">🎁</div>
+                <div class="fake-info">
+                  <div class="fake-platform">ROBLOX</div>
+                  <div class="fake-title">Avatar Reward</div>
+                  <div class="fake-bottom">
+                    <span class="fake-free">CODE</span>
+                    <span class="fake-action">COPY →</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="fake-card">
+                <div class="fake-art">⛏️</div>
+                <div class="fake-info">
+                  <div class="fake-platform">MINECRAFT</div>
+                  <div class="fake-title">Emerald Pack</div>
+                  <div class="fake-bottom">
+                    <span class="fake-free">REWARD</span>
+                    <span class="fake-action">UNLOCK →</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
+  <main class="content" id="drops">
+
+    <div class="content-head">
+
+      <div>
+        <div class="eyebrow">Live discovery</div>
+
+        <h2 class="section-title">
+          Latest gaming drops
+        </h2>
+
+        <p class="section-text">
+          A dynamic feed designed to consume gaming opportunities from APIs,
+          Python collectors and external sources.
+        </p>
+      </div>
+
+      <div class="search">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+          id="searchInput"
+          class="search-input"
+          type="search"
+          autocomplete="off"
+          placeholder="Search games, platforms, codes..."
+        >
+
+        <button
+          id="searchClear"
+          class="search-clear"
+          type="button"
+          aria-label="Clear search"
         >
           ×
         </button>
 
       </div>
 
-      <div class="gate-content">
+    </div>
 
-        <div class="ad-preview">
+    <!-- =======================================================
+         FILTERS
+    ======================================================== -->
 
-          <div class="ad-label" data-i18n="adSimulation">
-            AD SIMULATION
-          </div>
+    <div class="filters" id="filters">
 
-          <div class="ad-title" data-i18n="adTitle">
-            Sponsored content
-          </div>
+      <button class="filter active" type="button" data-filter="all">
+        All
+      </button>
 
-          <div class="ad-subtitle" data-i18n="adSubtitle">
-            This is a local frontend simulation.
-          </div>
+      <button class="filter" type="button" data-filter="free">
+        Free Games
+      </button>
 
-        </div>
+      <button class="filter" type="button" data-filter="epic">
+        Epic Games
+      </button>
 
-        <h3 class="gate-title" id="gateTitle">
-          Watch to unlock
-        </h3>
+      <button class="filter" type="button" data-filter="steam">
+        Steam
+      </button>
 
-        <p class="gate-text" id="gateText">
-          Watch the simulated advertisement to unlock this LootHub opportunity.
+      <button class="filter" type="button" data-filter="roblox">
+        Roblox
+      </button>
+
+      <button class="filter" type="button" data-filter="minecraft">
+        Minecraft
+      </button>
+
+      <button class="filter" type="button" data-filter="xbox">
+        Xbox
+      </button>
+
+      <button class="filter" type="button" data-filter="giveaway">
+        Giveaways
+      </button>
+
+    </div>
+
+    <div class="results">
+
+      <span class="result-count" id="resultCount">
+        Loading opportunities...
+      </span>
+
+      <span class="live-status">
+        <span class="live-dot"></span>
+        <span>Live feed</span>
+      </span>
+
+    </div>
+
+    <!-- =======================================================
+         DYNAMIC CARD CONTAINER
+    ======================================================== -->
+
+    <section
+      class="grid"
+      id="dealGrid"
+      aria-live="polite"
+    ></section>
+
+    <div class="empty" id="emptyState">
+
+      <div class="empty-icon">⌕</div>
+
+      <div class="empty-title">
+        No drops found
+      </div>
+
+      <p class="empty-text">
+        Try another search term or choose a different category.
+      </p>
+
+    </div>
+
+    <div class="load-more-wrap">
+      <button
+        class="load-more"
+        id="loadMore"
+        type="button"
+      >
+        Load more drops
+      </button>
+    </div>
+
+    <!-- =======================================================
+         FEATURES
+    ======================================================== -->
+
+    <section class="features" id="features">
+
+      <article class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3 class="feature-title">Fast discovery</h3>
+        <p class="feature-text">
+          Centralize free games, promotional content and gaming rewards
+          without manually visiting every source.
         </p>
+      </article>
 
-        <div class="gate-actions" id="gateActions">
+      <article class="feature">
+        <div class="feature-icon">🌍</div>
+        <h3 class="feature-title">Source agnostic</h3>
+        <p class="feature-text">
+          The frontend accepts normalized records regardless of whether they
+          came from an API, Python collector or another approved source.
+        </p>
+      </article>
 
-          <button
-            class="gate-button cancel"
-            type="button"
-            id="cancelGate"
-            data-i18n="cancel"
-          >
-            Cancel
-          </button>
+      <article class="feature">
+        <div class="feature-icon">🔓</div>
+        <h3 class="feature-title">Persistent unlocks</h3>
+        <p class="feature-text">
+          Once an opportunity is unlocked, its state is remembered locally
+          so the same visitor is not repeatedly sent through the ad gate.
+        </p>
+      </article>
 
-          <button
-            class="gate-button watch"
-            type="button"
-            id="watchAd"
-            data-i18n="watchAd"
-          >
-            Watch ad
-          </button>
+    </section>
 
+    <!-- =======================================================
+         ALERT PANEL
+    ======================================================== -->
+
+    <section class="alert-panel">
+
+      <div class="alert-label">
+        Drop alerts
+      </div>
+
+      <h2 class="alert-title">
+        Catch new loot before it disappears.
+      </h2>
+
+      <p class="alert-description">
+        Join the LootHub notification list for newly discovered games,
+        codes and limited-time opportunities.
+      </p>
+
+      <form class="subscribe" id="subscribeForm">
+
+        <input
+          class="subscribe-input"
+          id="emailInput"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="Enter your email address"
+        >
+
+        <button class="primary-btn" type="submit">
+          ✦
+          Notify me
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer class="footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <span class="footer-mark">L</span>
+        <span>LootHub</span>
+        <span class="footer-copy">© 2026</span>
+      </div>
+
+      <div class="footer-links">
+
+        <a href="#drops" class="footer-link">Discover</a>
+        <a href="#features" class="footer-link">About</a>
+        <a href="#features" class="footer-link">Privacy</a>
+        <a href="#features" class="footer-link">Terms</a>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+</div>
+
+<!-- =========================================================
+     AD GATE MODAL
+========================================================== -->
+
+<div
+  class="modal-backdrop"
+  id="gateBackdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="gateTitle"
+>
+
+  <div class="gate-modal">
+
+    <div class="gate-head">
+
+      <div class="gate-head-left">
+        <span class="gate-icon">▶</span>
+        <span>Reward unlock</span>
+      </div>
+
+      <button
+        class="close-modal"
+        id="closeGate"
+        type="button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="gate-body">
+
+      <div class="ad-box">
+
+        <div class="ad-label">
+          AD SIMULATION
         </div>
 
-        <div class="gate-progress-wrap" id="progressWrap">
-
-          <div class="progress-label">
-            <span data-i18n="watching">Watching advertisement</span>
-            <span id="progressNumber">0%</span>
-          </div>
-
-          <div class="progress-track">
-            <div class="progress-bar" id="progressBar"></div>
-          </div>
-
+        <div class="ad-title">
+          Sponsored content
         </div>
 
-        <div class="unlock-area" id="unlockArea">
-
-          <div class="unlock-success" id="unlockMessage">
-            ✓ Reward unlocked successfully.
-          </div>
-
-          <button
-            class="unlock-button"
-            id="unlockButton"
-            type="button"
-          >
-            Continue →
-          </button>
-
+        <div class="ad-subtitle">
+          Local frontend simulation
         </div>
 
       </div>
+
+      <h3 class="gate-title" id="gateTitle">
+        Watch to unlock
+      </h3>
+
+      <p class="gate-description" id="gateDescription">
+        Watch the simulated advertisement to unlock this opportunity.
+      </p>
+
+      <div class="gate-actions" id="gateActions">
+
+        <button
+          class="gate-btn gate-cancel"
+          id="cancelGate"
+          type="button"
+        >
+          Cancel
+        </button>
+
+        <button
+          class="gate-btn gate-watch"
+          id="watchAd"
+          type="button"
+        >
+          Watch ad
+        </button>
+
+      </div>
+
+      <div class="progress-wrap" id="progressWrap">
+
+        <div class="progress-meta">
+          <span>Watching advertisement</span>
+          <span id="progressNumber">0%</span>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+      </div>
+
+      <div class="unlock-wrap" id="unlockWrap">
+
+        <div class="unlock-success" id="unlockSuccess">
+          ✓ Reward unlocked successfully.
+        </div>
+
+        <button
+          class="unlock-action"
+          id="unlockAction"
+          type="button"
+        >
+          Continue →
+        </button>
+
+      </div>
+
     </div>
+
   </div>
+</div>
 
-  <!-- TOAST -->
-  <div class="toast-container" id="toastContainer"></div>
+<!-- =========================================================
+     TOAST CONTAINER
+========================================================== -->
 
-  <script>
-    /* =========================================================
-       LOOTHUB APPLICATION
-    ========================================================== */
+<div class="toast-container" id="toastContainer"></div>
 
-    const translations = {
-      en: {
-        live: "Live",
-        globalTracking: "global drops are being tracked",
-        freeFound: "free opportunities found today",
-        tracked: "opportunities tracked",
-        activeCodes: "active promo codes",
-        globalCoverage: "global gaming coverage",
-        continuous: "continuously updated",
+<script>
+  /* ==========================================================
+     LOOTHUB CONFIGURATION
 
-        discover: "Discover",
-        freeGames: "Free Games",
-        promoCodes: "Promo Codes",
-        rewards: "Rewards",
+     Leave API_URL empty to use the built-in demo dataset.
 
-        heroChip: "Global gaming discovery",
-        heroLine1: "The best loot is out there.",
-        heroLine2: "We'll find it first.",
-        heroDescription:
-          "LootHub collects free games, giveaways, promo codes and gaming rewards into one clean, fast and constantly updated hub.",
-        explore: "Explore drops",
-        howItWorks: "How it works",
+     Expected API response:
+       {
+         "items": [
+           {
+             "id": "unique-id",
+             "title": "Game title",
+             "description": "Description",
+             "platform": "roblox",
+             "type": "code",
+             "category": "Promo Code",
+             "badge": "NEW CODE",
+             "price": "FREE",
+             "oldPrice": "",
+             "icon": "🎁",
+             "theme": "red",
+             "code": "EXAMPLE-CODE",
+             "tags": ["ugc", "promo"],
+             "sourceUrl": "https://example.com",
+             "expiresAt": "2026-09-20T00:00:00Z"
+           }
+         ]
+       }
 
-        eyebrow: "Live discovery",
-        latestDrops: "Latest gaming drops",
-        latestDescription:
-          "Free opportunities and rewards gathered from the gaming ecosystem.",
-        searchPlaceholder:
-          "Search games, platforms or rewards...",
+     Supported platform values:
+       epic, steam, roblox, minecraft, xbox
 
-        all: "All",
-        liveUpdating: "Live updating",
-        nothingFound: "No drops found",
-        nothingText:
-          "Try another search term or choose another category.",
+     Supported type values:
+       free, code, giveaway
 
-        feature1Title: "Fast discovery",
-        feature1Text:
-          "Find free games, rewards and promotional opportunities without jumping between dozens of sites.",
-        feature2Title: "Global coverage",
-        feature2Text:
-          "Built around multiple gaming ecosystems and localized content.",
-        feature3Title: "Never miss a drop",
-        feature3Text:
-          "Surface time-sensitive opportunities before they disappear.",
+     ========================================================== */
 
-        alertLabel: "Drop alerts",
-        alertTitle: "Get new loot before everyone else.",
-        alertDescription:
-          "Join the LootHub alert list to receive updates about newly discovered free games, rewards and promotional codes.",
-        emailPlaceholder: "Enter your email address",
-        notifyMe: "Notify me",
+  const LOOT_HUB_CONFIG = {
+    API_URL: "",
+    PAGE_SIZE: 12,
+    AD_SIMULATION_MS: 5000,
+    STORAGE_KEY: "loothub-unlocked-v1"
+  };
 
-        about: "About",
-        privacy: "Privacy",
-        terms: "Terms",
-        discord: "Discord",
+  /* ==========================================================
+     DEMO DATA
 
-        gateHeader: "Reward unlock",
-        adSimulation: "AD SIMULATION",
-        adTitle: "Sponsored content",
-        adSubtitle: "This is a local frontend simulation.",
-        cancel: "Cancel",
-        watchAd: "Watch ad",
-        watching: "Watching advertisement",
-        watchToUnlock: "Watch to unlock",
-        gateDescription:
-          "Watch the simulated advertisement to unlock this LootHub opportunity.",
-        unlocked: "✓ Reward unlocked successfully.",
-        continue: "Continue →",
+     This dataset is only the local fallback so the site works
+     immediately on Vercel without a backend.
+     ========================================================== */
 
-        subscribed: "You are now on the LootHub alert list.",
-        howMessage:
-          "Choose a drop, opt in to the advertisement, complete the simulated viewing period, then unlock the content.",
-        discordMessage:
-          "Discord integration can be connected here once the LootHub community server is ready."
-      },
+  const DEMO_ITEMS = [
+    {
+      id: "demo-epic-mystery-quest",
+      title: "Mystery Quest",
+      description: "Premium adventure experience available as a limited free claim.",
+      platform: "epic",
+      type: "free",
+      category: "Weekly Giveaway",
+      badge: "100% FREE",
+      price: "FREE",
+      oldPrice: "$29.99",
+      icon: "🛡️",
+      theme: "purple",
+      tags: ["adventure", "giveaway", "free"],
+      sourceUrl: "https://www.epicgames.com/"
+    },
+    {
+      id: "demo-steam-void-protocol",
+      title: "Void Protocol",
+      description: "Fast sci-fi action currently available through a limited promotion.",
+      platform: "steam",
+      type: "free",
+      category: "Free Game",
+      badge: "FREE",
+      price: "FREE",
+      oldPrice: "$24.99",
+      icon: "🚀",
+      theme: "blue",
+      tags: ["sci-fi", "action", "steam"],
+      sourceUrl: "https://store.steampowered.com/"
+    },
+    {
+      id: "demo-roblox-avatar-reward",
+      title: "Avatar Reward",
+      description: "Limited code for an exclusive Roblox avatar cosmetic.",
+      platform: "roblox",
+      type: "code",
+      category: "Promo Code",
+      badge: "PROMO CODE",
+      price: "FREE",
+      icon: "🎁",
+      theme: "red",
+      code: "LOOT-7X9Q-2026",
+      tags: ["avatar", "ugc", "promo"],
+      sourceUrl: "https://www.roblox.com/"
+    },
+    {
+      id: "demo-minecraft-emerald-pack",
+      title: "Emerald Server Pack",
+      description: "Community reward pack containing limited server cosmetics.",
+      platform: "minecraft",
+      type: "free",
+      category: "Gaming Reward",
+      badge: "REWARD",
+      price: "FREE",
+      icon: "⛏️",
+      theme: "green",
+      tags: ["minecraft", "server", "reward"],
+      sourceUrl: "#"
+    },
+    {
+      id: "demo-epic-neon-raiders",
+      title: "Neon Raiders",
+      description: "Cyberpunk shooter currently featured in a free giveaway.",
+      platform: "epic",
+      type: "giveaway",
+      category: "Free Giveaway",
+      badge: "100% FREE",
+      price: "FREE",
+      oldPrice: "$19.99",
+      icon: "👾",
+      theme: "cyan",
+      tags: ["cyberpunk", "shooter", "giveaway"],
+      sourceUrl: "https://www.epicgames.com/"
+    },
+    {
+      id: "demo-steam-kingdoms-reborn",
+      title: "Kingdoms Reborn",
+      description: "Strategy sandbox with a temporary free-play opportunity.",
+      platform: "steam",
+      type: "free",
+      category: "Free Weekend",
+      badge: "FREE",
+      price: "FREE",
+      oldPrice: "$29.99",
+      icon: "🏰",
+      theme: "gold",
+      tags: ["strategy", "sandbox", "steam"],
+      sourceUrl: "https://store.steampowered.com/"
+    },
+    {
+      id: "demo-roblox-crystal-ugc",
+      title: "Crystal UGC Drop",
+      description: "Unlock a limited cosmetic while the promotional code is active.",
+      platform: "roblox",
+      type: "code",
+      category: "Promo Code",
+      badge: "NEW CODE",
+      price: "FREE",
+      icon: "💎",
+      theme: "red",
+      code: "CRYSTAL-XP26",
+      tags: ["ugc", "limited", "cosmetic"],
+      sourceUrl: "https://www.roblox.com/"
+    },
+    {
+      id: "demo-xbox-velocity-rush",
+      title: "Velocity Rush",
+      description: "Race through futuristic cities during a limited free-play event.",
+      platform: "xbox",
+      type: "free",
+      category: "Free Play",
+      badge: "FREE PLAY",
+      price: "FREE",
+      oldPrice: "$39.99",
+      icon: "🏎️",
+      theme: "green",
+      tags: ["racing", "xbox", "free-play"],
+      sourceUrl: "#"
+    },
+    {
+      id: "demo-minecraft-nether-key",
+      title: "Nether Event Key",
+      description: "Limited event key for an eligible Minecraft community reward.",
+      platform: "minecraft",
+      type: "code",
+      category: "Community Code",
+      badge: "NEW CODE",
+      price: "FREE",
+      icon: "🔥",
+      theme: "red",
+      code: "NETHER-26-FREE",
+      tags: ["minecraft", "event", "code"],
+      sourceUrl: "#"
+    },
+    {
+      id: "demo-epic-shadow-drift",
+      title: "Shadow Drift",
+      description: "Dark futuristic racing experience available through a giveaway.",
+      platform: "epic",
+      type: "giveaway",
+      category: "Giveaway",
+      badge: "CLAIM",
+      price: "FREE",
+      oldPrice: "$19.99",
+      icon: "🏁",
+      theme: "purple",
+      tags: ["racing", "epic", "giveaway"],
+      sourceUrl: "https://www.epicgames.com/"
+    },
+    {
+      id: "demo-roblox-summer-code",
+      title: "Summer Avatar Code",
+      description: "Seasonal cosmetic code for a limited Roblox avatar item.",
+      platform: "roblox",
+      type: "code",
+      category: "Promo Code",
+      badge: "LIMITED",
+      price: "FREE",
+      icon: "🌴",
+      theme: "cyan",
+      code: "SUMMER-LOOT-26",
+      tags: ["roblox", "avatar", "summer"],
+      sourceUrl: "https://www.roblox.com/"
+    },
+    {
+      id: "demo-steam-orbit-fall",
+      title: "Orbitfall",
+      description: "Space survival title currently featured as a free promotion.",
+      platform: "steam",
+      type: "free",
+      category: "Free Promotion",
+      badge: "FREE",
+      price: "FREE",
+      oldPrice: "$21.99",
+      icon: "🌌",
+      theme: "blue",
+      tags: ["space", "survival", "steam"],
+      sourceUrl: "https://store.steampowered.com/"
+    }
+  ];
 
-      tr: {
-        live: "Canlı",
-        globalTracking: "küresel fırsatlar takip ediliyor",
-        freeFound: "bugün bulunan ücretsiz fırsat",
-        tracked: "takip edilen fırsat",
-        activeCodes: "aktif promosyon kodu",
-        globalCoverage: "küresel oyun kapsamı",
-        continuous: "sürekli güncelleniyor",
+  /* ==========================================================
+     APPLICATION STATE
+     ========================================================== */
 
-        discover: "Keşfet",
-        freeGames: "Ücretsiz Oyunlar",
-        promoCodes: "Promosyon Kodları",
-        rewards: "Ödüller",
+  const state = {
+    allItems: [],
+    filteredItems: [],
+    renderedCount: 0,
+    search: "",
+    filter: "all",
+    pendingItem: null,
+    adTimer: null,
+    unlockStore: loadUnlockStore()
+  };
 
-        heroChip: "Küresel oyun keşfi",
-        heroLine1: "En iyi loot her yerde.",
-        heroLine2: "Biz önce buluruz.",
-        heroDescription:
-          "LootHub; ücretsiz oyunları, çekilişleri, promosyon kodlarını ve oyun ödüllerini hızlı ve düzenli bir merkezde toplar.",
-        explore: "Fırsatları keşfet",
-        howItWorks: "Nasıl çalışır?",
+  /* ==========================================================
+     DOM REFERENCES
+     ========================================================== */
 
-        eyebrow: "Canlı keşif",
-        latestDrops: "Son oyun fırsatları",
-        latestDescription:
-          "Oyun ekosisteminden toplanan ücretsiz fırsatlar ve ödüller.",
-        searchPlaceholder:
-          "Oyun, platform veya ödül ara...",
+  const dealGrid = document.getElementById("dealGrid");
+  const emptyState = document.getElementById("emptyState");
+  const resultCount = document.getElementById("resultCount");
+  const loadMoreButton = document.getElementById("loadMore");
 
-        all: "Tümü",
-        liveUpdating: "Canlı güncelleniyor",
-        nothingFound: "Fırsat bulunamadı",
-        nothingText:
-          "Başka bir arama yapın veya farklı bir kategori seçin.",
+  const searchInput = document.getElementById("searchInput");
+  const searchClear = document.getElementById("searchClear");
+  const filterButtons = document.querySelectorAll(".filter");
 
-        feature1Title: "Hızlı keşif",
-        feature1Text:
-          "Onlarca site arasında dolaşmadan ücretsiz oyunları, ödülleri ve fırsatları bulun.",
-        feature2Title: "Küresel kapsam",
-        feature2Text:
-          "Birden fazla oyun ekosistemi ve farklı bölgeler düşünülerek tasarlandı.",
-        feature3Title: "Hiçbir fırsatı kaçırma",
-        feature3Text:
-          "Süreli fırsatları kaybolmadan önce öne çıkarır.",
+  const language = document.getElementById("language");
+  const languageButton = document.getElementById("languageButton");
+  const languageCurrent = document.getElementById("languageCurrent");
+  const languageOptions = document.querySelectorAll(".language-option");
 
-        alertLabel: "Fırsat bildirimleri",
-        alertTitle: "Yeni lootları herkesten önce yakala.",
-        alertDescription:
-          "LootHub bildirim listesine katılın ve yeni ücretsiz oyunlardan, ödüllerden ve promosyon kodlarından haberdar olun.",
-        emailPlaceholder: "E-posta adresinizi girin",
-        notifyMe: "Bildir",
+  const mobileToggle = document.getElementById("mobileToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-        about: "Hakkımızda",
-        privacy: "Gizlilik",
-        terms: "Koşullar",
-        discord: "Discord",
+  const gateBackdrop = document.getElementById("gateBackdrop");
+  const closeGateButton = document.getElementById("closeGate");
+  const cancelGateButton = document.getElementById("cancelGate");
+  const watchAdButton = document.getElementById("watchAd");
+  const progressWrap = document.getElementById("progressWrap");
+  const progressBar = document.getElementById("progressBar");
+  const progressNumber = document.getElementById("progressNumber");
+  const unlockWrap = document.getElementById("unlockWrap");
+  const unlockAction = document.getElementById("unlockAction");
+  const unlockSuccess = document.getElementById("unlockSuccess");
+  const gateTitle = document.getElementById("gateTitle");
+  const gateDescription = document.getElementById("gateDescription");
 
-        gateHeader: "Ödül kilidi",
-        adSimulation: "REKLAM SİMÜLASYONU",
-        adTitle: "Sponsorlu içerik",
-        adSubtitle: "Bu yerel frontend simülasyonudur.",
-        cancel: "İptal",
-        watchAd: "Reklamı izle",
-        watching: "Reklam izleniyor",
-        watchToUnlock: "Açmak için izle",
-        gateDescription:
-          "Bu LootHub fırsatını açmak için simüle edilmiş reklamı izleyin.",
-        unlocked: "✓ Ödül başarıyla açıldı.",
-        continue: "Devam et →",
+  /* ==========================================================
+     UTILITIES
+     ========================================================== */
 
-        subscribed: "LootHub bildirim listesine kaydoldunuz.",
-        howMessage:
-          "Bir fırsat seçin, reklamı izlemeyi kabul edin, simüle edilmiş izleme süresini tamamlayın ve içeriğin kilidini açın.",
-        discordMessage:
-          "LootHub topluluk sunucusu hazır olduğunda Discord entegrasyonu buraya bağlanabilir."
-      },
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
 
-      es: {
-        live: "En vivo",
-        globalTracking: "siguiendo oportunidades globales",
-        freeFound: "oportunidades gratuitas encontradas hoy",
-        tracked: "oportunidades rastreadas",
-        activeCodes: "códigos promocionales activos",
-        globalCoverage: "cobertura gaming global",
-        continuous: "actualización continua",
+  function normalize(value) {
+    return String(value ?? "")
+      .toLocaleLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .trim();
+  }
 
-        discover: "Descubrir",
-        freeGames: "Juegos Gratis",
-        promoCodes: "Códigos Promocionales",
-        rewards: "Recompensas",
+  function isUnlocked(id) {
+    return Boolean(state.unlockStore[id]);
+  }
 
-        heroChip: "Descubrimiento gaming global",
-        heroLine1: "El mejor loot está ahí fuera.",
-        heroLine2: "Nosotros lo encontramos primero.",
-        heroDescription:
-          "LootHub reúne juegos gratuitos, sorteos, códigos promocionales y recompensas gaming en un centro rápido y actualizado.",
-        explore: "Explorar ofertas",
-        howItWorks: "Cómo funciona",
+  function loadUnlockStore() {
+    try {
+      const stored = localStorage.getItem(
+        LOOT_HUB_CONFIG.STORAGE_KEY
+      );
 
-        eyebrow: "Descubrimiento en vivo",
-        latestDrops: "Últimas oportunidades",
-        latestDescription:
-          "Oportunidades gratuitas y recompensas recopiladas del ecosistema gaming.",
-        searchPlaceholder:
-          "Buscar juegos, plataformas o recompensas...",
-
-        all: "Todo",
-        liveUpdating: "Actualización en vivo",
-        nothingFound: "No se encontraron ofertas",
-        nothingText:
-          "Prueba otra búsqueda o selecciona otra categoría.",
-
-        feature1Title: "Descubrimiento rápido",
-        feature1Text:
-          "Encuentra juegos gratis, recompensas y promociones sin visitar decenas de sitios.",
-        feature2Title: "Cobertura global",
-        feature2Text:
-          "Diseñado alrededor de múltiples ecosistemas de videojuegos.",
-        feature3Title: "No te pierdas nada",
-        feature3Text:
-          "Destaca oportunidades limitadas antes de que desaparezcan.",
-
-        alertLabel: "Alertas de oportunidades",
-        alertTitle: "Consigue el nuevo loot antes que todos.",
-        alertDescription:
-          "Únete a la lista de LootHub para recibir novedades sobre juegos gratis, recompensas y códigos promocionales.",
-        emailPlaceholder: "Introduce tu correo",
-        notifyMe: "Avisarme",
-
-        about: "Acerca de",
-        privacy: "Privacidad",
-        terms: "Términos",
-        discord: "Discord",
-
-        gateHeader: "Desbloquear recompensa",
-        adSimulation: "SIMULACIÓN DE ANUNCIO",
-        adTitle: "Contenido patrocinado",
-        adSubtitle: "Esta es una simulación local del frontend.",
-        cancel: "Cancelar",
-        watchAd: "Ver anuncio",
-        watching: "Viendo anuncio",
-        watchToUnlock: "Ver para desbloquear",
-        gateDescription:
-          "Mira el anuncio simulado para desbloquear esta oportunidad de LootHub.",
-        unlocked: "✓ Recompensa desbloqueada correctamente.",
-        continue: "Continuar →",
-
-        subscribed: "Ya estás en la lista de alertas de LootHub.",
-        howMessage:
-          "Elige una oportunidad, acepta ver el anuncio, completa la simulación y desbloquea el contenido.",
-        discordMessage:
-          "La integración de Discord puede conectarse aquí cuando la comunidad de LootHub esté lista."
+      if (!stored) {
+        return {};
       }
+
+      const parsed = JSON.parse(stored);
+
+      if (!parsed || typeof parsed !== "object") {
+        return {};
+      }
+
+      return parsed;
+    } catch {
+      return {};
+    }
+  }
+
+  function persistUnlockStore() {
+    try {
+      localStorage.setItem(
+        LOOT_HUB_CONFIG.STORAGE_KEY,
+        JSON.stringify(state.unlockStore)
+      );
+    } catch {
+      /* Storage can be unavailable in private/restricted environments. */
+    }
+  }
+
+  function setUnlocked(id) {
+    state.unlockStore[id] = {
+      unlockedAt: new Date().toISOString()
     };
 
-    let currentLanguage = "en";
-    let currentFilter = "all";
-    let pendingAction = null;
-    let adTimer = null;
+    persistUnlockStore();
+  }
 
-    const language = document.getElementById("language");
-    const languageButton = document.getElementById("languageButton");
-    const languageCurrent = document.getElementById("languageCurrent");
-    const languageOptions = document.querySelectorAll(".language-option");
+  function isCodeItem(item) {
+    return item.type === "code" && Boolean(item.code);
+  }
 
-    const searchInput = document.getElementById("searchInput");
-    const searchClear = document.getElementById("searchClear");
-    const filterButtons = document.querySelectorAll(".filter-button");
-    const cards = Array.from(document.querySelectorAll(".card"));
-    const emptyState = document.getElementById("emptyState");
-    const resultCount = document.getElementById("resultCount");
+  function getThemeClass(theme) {
+    const allowed = [
+      "purple",
+      "blue",
+      "red",
+      "green",
+      "gold",
+      "cyan"
+    ];
 
-    const gateBackdrop = document.getElementById("gateBackdrop");
-    const closeGate = document.getElementById("closeGate");
-    const cancelGate = document.getElementById("cancelGate");
-    const watchAd = document.getElementById("watchAd");
-    const progressWrap = document.getElementById("progressWrap");
-    const progressBar = document.getElementById("progressBar");
-    const progressNumber = document.getElementById("progressNumber");
-    const unlockArea = document.getElementById("unlockArea");
-    const unlockButton = document.getElementById("unlockButton");
-    const gateTitle = document.getElementById("gateTitle");
-    const gateText = document.getElementById("gateText");
-    const unlockMessage = document.getElementById("unlockMessage");
+    return allowed.includes(theme)
+      ? `theme-${theme}`
+      : "theme-purple";
+  }
 
-    const mobileToggle = document.getElementById("mobileToggle");
-    const mobileMenu = document.getElementById("mobileMenu");
+  function getPlatformLabel(platform) {
+    const labels = {
+      epic: "EPIC GAMES",
+      steam: "STEAM",
+      roblox: "ROBLOX",
+      minecraft: "MINECRAFT",
+      xbox: "XBOX"
+    };
 
-    /* =========================================================
-       LANGUAGE
-    ========================================================== */
+    return labels[platform] || String(platform || "OTHER").toUpperCase();
+  }
 
-    function setLanguage(lang) {
-      if (!translations[lang]) {
-        return;
-      }
-
-      currentLanguage = lang;
-
-      document.documentElement.lang = lang;
-      languageCurrent.textContent = lang.toUpperCase();
-
-      document.querySelectorAll("[data-i18n]").forEach((element) => {
-        const key = element.dataset.i18n;
-
-        if (translations[lang][key]) {
-          element.textContent = translations[lang][key];
-        }
-      });
-
-      document.querySelectorAll("[data-i18n-placeholder]").forEach((element) => {
-        const key = element.dataset.i18nPlaceholder;
-
-        if (translations[lang][key]) {
-          element.placeholder = translations[lang][key];
-        }
-      });
-
-      languageOptions.forEach((option) => {
-        option.classList.toggle(
-          "selected",
-          option.dataset.language === lang
-        );
-      });
-
-      localStorage.setItem("loothub-language", lang);
-
-      if (pendingAction) {
-        updateGateText();
-      }
-
-      filterCards();
+  function getFilterTypeMatches(item) {
+    if (state.filter === "all") {
+      return true;
     }
 
-    languageButton.addEventListener("click", (event) => {
-      event.stopPropagation();
+    if (
+      state.filter === "epic" ||
+      state.filter === "steam" ||
+      state.filter === "roblox" ||
+      state.filter === "minecraft" ||
+      state.filter === "xbox"
+    ) {
+      return item.platform === state.filter;
+    }
 
-      const isOpen = language.classList.toggle("open");
+    return item.type === state.filter;
+  }
 
-      languageButton.setAttribute(
-        "aria-expanded",
-        String(isOpen)
+  function getSearchMatches(item) {
+    if (!state.search) {
+      return true;
+    }
+
+    const haystack = normalize([
+      item.title,
+      item.description,
+      item.platform,
+      item.type,
+      item.category,
+      item.badge,
+      ...(Array.isArray(item.tags) ? item.tags : [])
+    ].join(" "));
+
+    return haystack.includes(state.search);
+  }
+
+  /* ==========================================================
+     API NORMALIZATION
+     ========================================================== */
+
+  function normalizeApiItem(raw, index) {
+    if (!raw || typeof raw !== "object") {
+      return null;
+    }
+
+    const platform = normalize(raw.platform || "other");
+    const type = normalize(raw.type || "free");
+
+    const item = {
+      id: String(
+        raw.id ||
+        `${platform}-${normalize(raw.title || "drop")}-${index}`
+      ),
+
+      title: String(raw.title || "Untitled Drop"),
+
+      description: String(
+        raw.description ||
+        "A new gaming opportunity discovered by LootHub."
+      ),
+
+      platform,
+
+      type,
+
+      category: String(
+        raw.category ||
+        (type === "code" ? "Promo Code" : "Gaming Opportunity")
+      ),
+
+      badge: String(
+        raw.badge ||
+        (type === "code" ? "CODE" : "FREE")
+      ),
+
+      price: String(
+        raw.price ||
+        "FREE"
+      ),
+
+      oldPrice: String(
+        raw.oldPrice ||
+        ""
+      ),
+
+      icon: String(
+        raw.icon ||
+        "🎮"
+      ),
+
+      theme: String(
+        raw.theme ||
+        "purple"
+      ),
+
+      code: raw.code ? String(raw.code) : "",
+
+      tags: Array.isArray(raw.tags)
+        ? raw.tags.map((tag) => String(tag))
+        : [],
+
+      sourceUrl: String(
+        raw.sourceUrl ||
+        "#"
+      ),
+
+      expiresAt: raw.expiresAt
+        ? String(raw.expiresAt)
+        : null
+    };
+
+    return item;
+  }
+
+  function normalizePayload(payload) {
+    let source = payload;
+
+    if (payload && Array.isArray(payload.items)) {
+      source = payload.items;
+    }
+
+    if (!Array.isArray(source)) {
+      return [];
+    }
+
+    return source
+      .map((item, index) => normalizeApiItem(item, index))
+      .filter(Boolean);
+  }
+
+  /* ==========================================================
+     DATA LOADING
+     ========================================================== */
+
+  async function loadData() {
+    setLoadingState();
+
+    if (!LOOT_HUB_CONFIG.API_URL) {
+      state.allItems = DEMO_ITEMS.slice();
+
+      updateTickerStats();
+      applyFilters();
+
+      return;
+    }
+
+    try {
+      const response = await fetch(
+        LOOT_HUB_CONFIG.API_URL,
+        {
+          method: "GET",
+          headers: {
+            "Accept": "application/json"
+          },
+          cache: "no-store"
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `API responded with ${response.status}`
+        );
+      }
+
+      const payload = await response.json();
+
+      const normalized = normalizePayload(payload);
+
+      state.allItems = normalized;
+
+      updateTickerStats();
+      applyFilters();
+
+      showToast(
+        normalized.length
+          ? `Loaded ${normalized.length.toLocaleString()} live opportunities.`
+          : "The API returned no active opportunities."
+      );
+
+    } catch (error) {
+      state.allItems = DEMO_ITEMS.slice();
+
+      updateTickerStats();
+      applyFilters();
+
+      showToast(
+        "Live API unavailable. Showing local demo data."
+      );
+    }
+  }
+
+  function setLoadingState() {
+    resultCount.textContent = "Loading opportunities...";
+    dealGrid.innerHTML = "";
+
+    emptyState.classList.remove("show");
+    loadMoreButton.classList.add("hidden");
+  }
+
+  /* ==========================================================
+     FILTER PIPELINE
+     ========================================================== */
+
+  function applyFilters() {
+    state.filteredItems = state.allItems.filter((item) => {
+      return (
+        getFilterTypeMatches(item) &&
+        getSearchMatches(item)
       );
     });
 
-    languageOptions.forEach((option) => {
-      option.addEventListener("click", () => {
-        setLanguage(option.dataset.language);
+    state.renderedCount = 0;
 
-        language.classList.remove("open");
-        languageButton.setAttribute("aria-expanded", "false");
+    dealGrid.innerHTML = "";
 
-        const langName =
-          option.dataset.language === "en"
-            ? "English"
-            : option.dataset.language === "tr"
-            ? "Türkçe"
-            : "Español";
+    updateResultCount();
+    renderNextPage();
+  }
 
-        showToast(
-          currentLanguage === "tr"
-            ? `Dil ${langName} olarak değiştirildi.`
-            : currentLanguage === "es"
-            ? `Idioma cambiado a ${langName}.`
-            : `Language changed to ${langName}.`
-        );
-      });
-    });
+  function updateResultCount() {
+    const total = state.filteredItems.length;
 
-    document.addEventListener("click", (event) => {
-      if (!language.contains(event.target)) {
-        language.classList.remove("open");
-        languageButton.setAttribute("aria-expanded", "false");
-      }
-    });
+    resultCount.textContent =
+      `${total.toLocaleString()} opportunity${total === 1 ? "" : "ies"}`;
 
-    /* =========================================================
-       SEARCH / FILTER
-    ========================================================== */
-
-    function normalize(value) {
-      return String(value)
-        .toLocaleLowerCase(
-          currentLanguage === "tr" ? "tr-TR" : "en-US"
-        )
-        .trim();
+    if (total === 1) {
+      resultCount.textContent = "1 opportunity";
     }
 
-    function filterCards() {
-      const query = normalize(searchInput.value);
-      let count = 0;
+    if (total === 0) {
+      resultCount.textContent = "0 opportunities";
+    }
+  }
 
-      cards.forEach((card) => {
-        const platform = card.dataset.platform;
-        const type = card.dataset.type;
-        const searchable = normalize(card.dataset.search || "");
+  function renderNextPage() {
+    const start = state.renderedCount;
+    const end = Math.min(
+      start + LOOT_HUB_CONFIG.PAGE_SIZE,
+      state.filteredItems.length
+    );
 
-        const filterMatches =
-          currentFilter === "all" ||
-          currentFilter === platform ||
-          currentFilter === type;
-
-        const searchMatches =
-          query === "" ||
-          searchable.includes(query);
-
-        const visible = filterMatches && searchMatches;
-
-        card.classList.toggle("hidden", !visible);
-
-        if (visible) {
-          count++;
-        }
-      });
-
-      emptyState.classList.toggle("show", count === 0);
-
-      if (currentLanguage === "tr") {
-        resultCount.textContent = `${count} fırsat`;
-      } else if (currentLanguage === "es") {
-        resultCount.textContent = `${count} oportunidades`;
-      } else {
-        resultCount.textContent =
-          `${count} ${count === 1 ? "opportunity" : "opportunities"}`;
-      }
+    if (start >= end) {
+      updateEmptyAndLoadMore();
+      return;
     }
 
-    searchInput.addEventListener("input", () => {
-      searchClear.classList.toggle(
-        "visible",
-        searchInput.value.length > 0
-      );
+    const fragment = document.createDocumentFragment();
 
-      filterCards();
-    });
-
-    searchClear.addEventListener("click", () => {
-      searchInput.value = "";
-      searchClear.classList.remove("visible");
-      searchInput.focus();
-      filterCards();
-    });
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        filterButtons.forEach((item) => {
-          item.classList.remove("active");
-        });
-
-        button.classList.add("active");
-        currentFilter = button.dataset.filter;
-
-        filterCards();
-      });
-    });
-
-    /* =========================================================
-       AD GATE
-    ========================================================== */
-
-    function openGate(action) {
-      pendingAction = action;
-
-      resetGate();
-
-      gateBackdrop.classList.add("open");
-      document.body.style.overflow = "hidden";
-
-      updateGateText();
+    for (let i = start; i < end; i++) {
+      const item = state.filteredItems[i];
+      fragment.appendChild(createCard(item));
     }
 
-    function updateGateText() {
-      if (!pendingAction) {
-        return;
-      }
+    dealGrid.appendChild(fragment);
 
-      gateTitle.textContent =
-        translations[currentLanguage].watchToUnlock;
+    state.renderedCount = end;
 
-      gateText.textContent =
-        pendingAction.type === "copy"
-          ? (
-              currentLanguage === "tr"
-                ? `"${pendingAction.name}" kodunu açmak için simüle edilmiş reklamı izleyin.`
-                : currentLanguage === "es"
-                ? `Mira el anuncio simulado para desbloquear el código "${pendingAction.name}".`
-                : `Watch the simulated advertisement to unlock the "${pendingAction.name}" code.`
+    updateEmptyAndLoadMore();
+  }
+
+  function updateEmptyAndLoadMore() {
+    const hasResults = state.filteredItems.length > 0;
+
+    emptyState.classList.toggle(
+      "show",
+      !hasResults
+    );
+
+    loadMoreButton.classList.toggle(
+      "hidden",
+      !hasResults ||
+      state.renderedCount >= state.filteredItems.length
+    );
+  }
+
+  /* ==========================================================
+     CARD CREATION
+     ========================================================== */
+
+  function createCard(item) {
+    const card = document.createElement("article");
+
+    card.className = "card";
+
+    card.dataset.id = item.id;
+    card.dataset.platform = item.platform;
+    card.dataset.type = item.type;
+
+    const unlocked = isUnlocked(item.id);
+    const codeItem = isCodeItem(item);
+
+    const tags = Array.isArray(item.tags)
+      ? item.tags.slice(0, 4)
+      : [];
+
+    const tagsHTML = tags.length
+      ? `
+        <div class="tags">
+          ${tags
+            .map(
+              (tag) =>
+                `<span class="tag">${escapeHTML(tag)}</span>`
             )
-          : (
-              currentLanguage === "tr"
-                ? `"${pendingAction.name}" fırsatını açmak için simüle edilmiş reklamı izleyin.`
-                : currentLanguage === "es"
-                ? `Mira el anuncio simulado para desbloquear "${pendingAction.name}".`
-                : `Watch the simulated advertisement to unlock "${pendingAction.name}".`
-            );
+            .join("")}
+        </div>
+      `
+      : "";
 
-      unlockMessage.textContent =
-        translations[currentLanguage].unlocked;
+    const actionHTML = codeItem
+      ? `
+        <div class="code-box">
 
-      unlockButton.textContent =
-        translations[currentLanguage].continue;
+          <span
+            class="code-value ${unlocked ? "revealed" : ""}"
+            data-code-id="${escapeHTML(item.id)}"
+          >${escapeHTML(item.code)}</span>
+
+          <button
+            class="copy-btn ${unlocked ? "ready" : ""}"
+            type="button"
+            data-copy-id="${escapeHTML(item.id)}"
+          >${unlocked ? "Copy" : "🔒 Copy"}</button>
+
+        </div>
+
+        <div class="locked-note">
+          ${unlocked ? "✓ Unlocked and ready to copy" : "◉ Watch a short ad before copying"}
+        </div>
+      `
+      : `
+        <div class="divider"></div>
+
+        <div class="card-bottom">
+
+          <div>
+            <div class="price">${escapeHTML(item.price)}</div>
+
+            ${
+              item.oldPrice
+                ? `<div class="old-price">${escapeHTML(item.oldPrice)}</div>`
+                : ""
+            }
+          </div>
+
+          <button
+            class="card-action ${unlocked ? "unlocked" : ""}"
+            type="button"
+            data-unlock-id="${escapeHTML(item.id)}"
+          >
+            ${
+              unlocked
+                ? "✓ Unlocked"
+                : "🔒 Unlock"
+            }
+          </button>
+
+        </div>
+
+        <div class="locked-note">
+          ${
+            unlocked
+              ? "✓ Already unlocked"
+              : "◉ Watch a short ad to reveal"
+          }
+        </div>
+      `;
+
+    card.innerHTML = `
+      <div class="card-visual ${getThemeClass(item.theme)}">
+
+        <span class="platform">
+          ${escapeHTML(getPlatformLabel(item.platform))}
+        </span>
+
+        <span
+          class="deal-badge ${
+            item.type === "code"
+              ? "code"
+              : item.type === "giveaway"
+              ? "reward"
+              : ""
+          }"
+        >
+          ${escapeHTML(item.badge)}
+        </span>
+
+        <span class="visual-icon">
+          ${escapeHTML(item.icon)}
+        </span>
+
+      </div>
+
+      <div class="card-body">
+
+        <div class="category">
+          ${escapeHTML(item.category)}
+        </div>
+
+        <h3 class="card-title">
+          ${escapeHTML(item.title)}
+        </h3>
+
+        <p class="card-description">
+          ${escapeHTML(item.description)}
+        </p>
+
+        ${tagsHTML}
+
+        ${actionHTML}
+
+      </div>
+    `;
+
+    bindCardEvents(card, item);
+
+    return card;
+  }
+
+  function bindCardEvents(card, item) {
+    const unlockButton =
+      card.querySelector("[data-unlock-id]");
+
+    const copyButton =
+      card.querySelector("[data-copy-id]");
+
+    if (unlockButton) {
+      unlockButton.addEventListener("click", () => {
+        handleUnlockClick(item);
+      });
     }
 
-    function resetGate() {
-      if (adTimer) {
-        clearInterval(adTimer);
-        adTimer = null;
+    if (copyButton) {
+      copyButton.addEventListener("click", () => {
+        handleCopyClick(item);
+      });
+    }
+  }
+
+  /* ==========================================================
+     UNLOCK STATE LOGIC
+     ========================================================== */
+
+  function handleUnlockClick(item) {
+    if (isUnlocked(item.id)) {
+      finishUnlockedAction(item);
+      return;
+    }
+
+    openAdGate(item, "unlock");
+  }
+
+  function handleCopyClick(item) {
+    if (!isCodeItem(item)) {
+      return;
+    }
+
+    if (isUnlocked(item.id)) {
+      copyCodeFromItem(item);
+      return;
+    }
+
+    openAdGate(item, "copy");
+  }
+
+  function finishUnlockedAction(item) {
+    if (isCodeItem(item)) {
+      copyCodeFromItem(item);
+      return;
+    }
+
+    if (item.sourceUrl && item.sourceUrl !== "#") {
+      window.open(
+        item.sourceUrl,
+        "_blank",
+        "noopener,noreferrer"
+      );
+
+      return;
+    }
+
+    showToast(
+      "This drop is unlocked. No external destination was provided."
+    );
+  }
+
+  async function copyCodeFromItem(item) {
+    if (!item.code) {
+      showToast("This opportunity does not contain a code.");
+      return;
+    }
+
+    const success = await copyText(item.code);
+
+    if (success) {
+      showToast(
+        `"${item.code}" copied to clipboard.`
+      );
+
+      updateVisibleCard(item.id);
+    } else {
+      showToast(
+        "Clipboard access was blocked by the browser."
+      );
+    }
+  }
+
+  async function copyText(text) {
+    try {
+      if (
+        navigator.clipboard &&
+        window.isSecureContext
+      ) {
+        await navigator.clipboard.writeText(text);
+        return true;
       }
 
-      progressWrap.classList.remove("show");
-      unlockArea.classList.remove("show");
+      const textarea =
+        document.createElement("textarea");
 
-      progressBar.style.width = "0%";
-      progressNumber.textContent = "0%";
+      textarea.value = text;
 
-      watchAd.style.display = "";
-      watchAd.disabled = false;
+      textarea.setAttribute(
+        "readonly",
+        ""
+      );
 
-      cancelGate.style.display = "";
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
 
-      gateTitle.textContent =
-        translations[currentLanguage].watchToUnlock;
+      document.body.appendChild(textarea);
 
-      gateText.textContent =
-        translations[currentLanguage].gateDescription;
+      textarea.select();
+
+      const result =
+        document.execCommand("copy");
+
+      textarea.remove();
+
+      return result;
+
+    } catch {
+      return false;
+    }
+  }
+
+  function updateVisibleCard(id) {
+    const item = state.allItems.find(
+      (entry) => entry.id === id
+    );
+
+    if (!item) {
+      return;
     }
 
-    function closeAdGate() {
-      if (adTimer) {
-        clearInterval(adTimer);
-        adTimer = null;
-      }
+    const oldCard =
+      dealGrid.querySelector(
+        `[data-id="${CSS.escape(id)}"]`
+      );
 
-      gateBackdrop.classList.remove("open");
-      document.body.style.overflow = "";
-
-      pendingAction = null;
+    if (!oldCard) {
+      return;
     }
 
-    closeGate.addEventListener("click", closeAdGate);
-    cancelGate.addEventListener("click", closeAdGate);
+    const newCard = createCard(item);
 
-    gateBackdrop.addEventListener("click", (event) => {
+    oldCard.replaceWith(newCard);
+  }
+
+  /* ==========================================================
+     AD GATE
+     ========================================================== */
+
+  function openAdGate(item, action) {
+    if (isUnlocked(item.id)) {
+      finishUnlockedAction(item);
+      return;
+    }
+
+    state.pendingItem = {
+      item,
+      action
+    };
+
+    resetAdGate();
+
+    gateBackdrop.classList.add("open");
+    document.body.classList.add("modal-open");
+
+    gateTitle.textContent =
+      action === "copy"
+        ? "Watch to reveal the code"
+        : "Watch to unlock";
+
+    gateDescription.textContent =
+      action === "copy"
+        ? `Watch the simulated advertisement to reveal "${item.title}" and copy its code.`
+        : `Watch the simulated advertisement to unlock "${item.title}".`;
+  }
+
+  function resetAdGate() {
+    if (state.adTimer) {
+      clearInterval(state.adTimer);
+      state.adTimer = null;
+    }
+
+    progressWrap.classList.remove("visible");
+    unlockWrap.classList.remove("visible");
+
+    progressBar.style.width = "0%";
+    progressNumber.textContent = "0%";
+
+    watchAdButton.disabled = false;
+    watchAdButton.style.display = "";
+
+    cancelGateButton.style.display = "";
+
+    unlockAction.textContent = "Continue →";
+
+    unlockSuccess.textContent =
+      "✓ Reward unlocked successfully.";
+  }
+
+  function closeAdGate() {
+    if (state.adTimer) {
+      clearInterval(state.adTimer);
+      state.adTimer = null;
+    }
+
+    gateBackdrop.classList.remove("open");
+    document.body.classList.remove("modal-open");
+
+    state.pendingItem = null;
+  }
+
+  closeGateButton.addEventListener(
+    "click",
+    closeAdGate
+  );
+
+  cancelGateButton.addEventListener(
+    "click",
+    closeAdGate
+  );
+
+  gateBackdrop.addEventListener(
+    "click",
+    (event) => {
       if (event.target === gateBackdrop) {
         closeAdGate();
       }
-    });
+    }
+  );
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && gateBackdrop.classList.contains("open")) {
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (
+        event.key === "Escape" &&
+        gateBackdrop.classList.contains("open")
+      ) {
         closeAdGate();
       }
-    });
+    }
+  );
 
-    /* =========================================================
-       SIMULATED AD
-    ========================================================== */
+  /* ==========================================================
+     SIMULATED REWARDED AD
+     ========================================================== */
 
-    watchAd.addEventListener("click", () => {
-      if (!pendingAction || adTimer) {
+  watchAdButton.addEventListener(
+    "click",
+    () => {
+      if (
+        state.adTimer ||
+        !state.pendingItem
+      ) {
         return;
       }
 
-      watchAd.disabled = true;
-      cancelGate.style.display = "none";
+      watchAdButton.disabled = true;
+      cancelGateButton.style.display = "none";
+      progressWrap.classList.add("visible");
 
-      progressWrap.classList.add("show");
+      const startedAt = performance.now();
 
-      let progress = 0;
-      const duration = 5000;
-      const interval = 100;
+      state.adTimer = setInterval(() => {
+        const elapsed =
+          performance.now() - startedAt;
 
-      adTimer = setInterval(() => {
-        progress += (interval / duration) * 100;
-
-        const rounded = Math.min(100, Math.round(progress));
-
-        progressBar.style.width = `${rounded}%`;
-        progressNumber.textContent = `${rounded}%`;
-
-        if (rounded >= 100) {
-          clearInterval(adTimer);
-          adTimer = null;
-
-          unlockArea.classList.add("show");
-
-          watchAd.style.display = "none";
-
-          gateTitle.textContent =
-            translations[currentLanguage].unlocked.replace("✓ ", "");
-
-          gateText.textContent =
-            currentLanguage === "tr"
-              ? "İçerik başarıyla açıldı."
-              : currentLanguage === "es"
-              ? "El contenido se ha desbloqueado correctamente."
-              : "The content has been unlocked successfully.";
-        }
-      }, interval);
-    });
-
-    /* =========================================================
-       UNLOCK ACTION
-    ========================================================== */
-
-    unlockButton.addEventListener("click", async () => {
-      if (!pendingAction) {
-        return;
-      }
-
-      const action = pendingAction;
-
-      if (action.type === "copy") {
-        const success = await copyText(action.code);
-
-        if (success) {
-          showToast(
-            currentLanguage === "tr"
-              ? `"${action.code}" panoya kopyalandı.`
-              : currentLanguage === "es"
-              ? `"${action.code}" copiado al portapapeles.`
-              : `"${action.code}" copied to clipboard.`
-          );
-
-          revealCode(action.code);
-        }
-
-      } else {
-        showToast(
-          currentLanguage === "tr"
-            ? `"${action.name}" içeriği açıldı. Gerçek mağaza bağlantısını burada API ile bağlayabilirsiniz.`
-            : currentLanguage === "es"
-            ? `"${action.name}" desbloqueado. Aquí puedes conectar la URL real mediante la API.`
-            : `"${action.name}" unlocked. Connect the real destination URL here through your API.`
+        const percentage = Math.min(
+          100,
+          Math.round(
+            (elapsed /
+              LOOT_HUB_CONFIG.AD_SIMULATION_MS) *
+              100
+          )
         );
+
+        progressBar.style.width =
+          `${percentage}%`;
+
+        progressNumber.textContent =
+          `${percentage}%`;
+
+        if (percentage >= 100) {
+          clearInterval(state.adTimer);
+          state.adTimer = null;
+
+          unlockCurrentItem();
+        }
+      }, 100);
+    }
+  );
+
+  function unlockCurrentItem() {
+    if (!state.pendingItem) {
+      return;
+    }
+
+    const {
+      item
+    } = state.pendingItem;
+
+    setUnlocked(item.id);
+
+    progressBar.style.width = "100%";
+    progressNumber.textContent = "100%";
+
+    watchAdButton.style.display = "none";
+
+    gateTitle.textContent =
+      "Reward unlocked";
+
+    gateDescription.textContent =
+      "The opportunity is now permanently unlocked for this browser.";
+
+    unlockSuccess.textContent =
+      isCodeItem(item)
+        ? "✓ Code revealed. You can now copy it."
+        : "✓ Drop unlocked successfully.";
+
+    unlockWrap.classList.add("visible");
+
+    updateVisibleCard(item.id);
+  }
+
+  unlockAction.addEventListener(
+    "click",
+    async () => {
+      if (!state.pendingItem) {
+        return;
       }
+
+      const {
+        item,
+        action
+      } = state.pendingItem;
 
       closeAdGate();
-    });
 
-    /* =========================================================
-       CARD ACTIONS
-    ========================================================== */
-
-    document.querySelectorAll('[data-action="unlock"]').forEach((button) => {
-      button.addEventListener("click", () => {
-        openGate({
-          type: "unlock",
-          name: button.dataset.name
-        });
-      });
-    });
-
-    document.querySelectorAll(".copy-btn").forEach((button) => {
-      button.addEventListener("click", () => {
-        const code = button.dataset.copy;
-
-        if (!code) {
-          return;
-        }
-
-        openGate({
-          type: "copy",
-          code,
-          name: code
-        });
-      });
-    });
-
-    function revealCode(code) {
-      document.querySelectorAll(".code-value").forEach((element) => {
-        if (element.dataset.code === code) {
-          element.style.filter = "none";
-          element.style.userSelect = "text";
-        }
-      });
-
-      document.querySelectorAll(".copy-btn").forEach((button) => {
-        if (button.dataset.copy === code) {
-          button.textContent = "✓ Copied";
-          button.style.color = "#80efad";
-
-          setTimeout(() => {
-            button.textContent = "Copy";
-            button.style.color = "";
-          }, 2200);
-        }
-      });
-    }
-
-    /* =========================================================
-       CLIPBOARD
-    ========================================================== */
-
-    async function copyText(text) {
-      try {
-        if (navigator.clipboard && window.isSecureContext) {
-          await navigator.clipboard.writeText(text);
-          return true;
-        }
-
-        const textarea = document.createElement("textarea");
-
-        textarea.value = text;
-        textarea.style.position = "fixed";
-        textarea.style.opacity = "0";
-
-        document.body.appendChild(textarea);
-        textarea.focus();
-        textarea.select();
-
-        const copied = document.execCommand("copy");
-
-        textarea.remove();
-
-        return copied;
-
-      } catch (error) {
-        return false;
+      if (action === "copy") {
+        await copyCodeFromItem(item);
+        return;
       }
-    }
 
-    /* =========================================================
-       HOW IT WORKS
-    ========================================================== */
+      if (
+        item.sourceUrl &&
+        item.sourceUrl !== "#"
+      ) {
+        window.open(
+          item.sourceUrl,
+          "_blank",
+          "noopener,noreferrer"
+        );
 
-    document.getElementById("howItWorks").addEventListener("click", () => {
+        return;
+      }
+
       showToast(
-        translations[currentLanguage].howMessage
+        `"${item.title}" is unlocked.`
       );
-    });
+    }
+  );
 
-    /* =========================================================
-       NEWSLETTER
-    ========================================================== */
+  /* ==========================================================
+     SEARCH
+     ========================================================== */
 
-    document
-      .getElementById("subscribeForm")
-      .addEventListener("submit", (event) => {
-        event.preventDefault();
+  searchInput.addEventListener(
+    "input",
+    () => {
+      state.search =
+        normalize(searchInput.value);
 
-        const email = document
-          .getElementById("emailInput")
-          .value
-          .trim();
+      searchClear.classList.toggle(
+        "visible",
+        Boolean(searchInput.value)
+      );
 
-        if (!email) {
-          return;
-        }
+      applyFilters();
+    }
+  );
 
-        localStorage.setItem("loothub-email", email);
+  searchClear.addEventListener(
+    "click",
+    () => {
+      searchInput.value = "";
+      state.search = "";
 
-        event.target.reset();
+      searchClear.classList.remove(
+        "visible"
+      );
+
+      searchInput.focus();
+
+      applyFilters();
+    }
+  );
+
+  /* ==========================================================
+     FILTERS
+     ========================================================== */
+
+  filterButtons.forEach((button) => {
+    button.addEventListener(
+      "click",
+      () => {
+        filterButtons.forEach(
+          (item) => item.classList.remove("active")
+        );
+
+        button.classList.add("active");
+
+        state.filter =
+          button.dataset.filter || "all";
+
+        applyFilters();
+      }
+    );
+  });
+
+  /* ==========================================================
+     LOAD MORE
+     ========================================================== */
+
+  loadMoreButton.addEventListener(
+    "click",
+    () => {
+      renderNextPage();
+    }
+  );
+
+  /* ==========================================================
+     LANGUAGE
+     ========================================================== */
+
+  languageButton.addEventListener(
+    "click",
+    (event) => {
+      event.stopPropagation();
+
+      const open =
+        language.classList.toggle("open");
+
+      languageButton.setAttribute(
+        "aria-expanded",
+        String(open)
+      );
+    }
+  );
+
+  languageOptions.forEach((option) => {
+    option.addEventListener(
+      "click",
+      () => {
+        const value =
+          option.dataset.language || "en";
+
+        languageCurrent.textContent =
+          value.toUpperCase();
+
+        languageOptions.forEach(
+          (item) =>
+            item.classList.toggle(
+              "selected",
+              item === option
+            )
+        );
+
+        language.classList.remove("open");
+
+        languageButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        localStorage.setItem(
+          "loothub-language",
+          value
+        );
 
         showToast(
-          translations[currentLanguage].subscribed
+          value === "tr"
+            ? "Dil Türkçe olarak değiştirildi."
+            : value === "es"
+            ? "Idioma cambiado a Español."
+            : "Language changed to English."
         );
-      });
+      }
+    );
+  });
 
-    /* =========================================================
-       DISCORD
-    ========================================================== */
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (!language.contains(event.target)) {
+        language.classList.remove("open");
 
-    document.getElementById("discordLink").addEventListener("click", (event) => {
-      event.preventDefault();
+        languageButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+      }
+    }
+  );
 
-      showToast(
-        translations[currentLanguage].discordMessage
-      );
-    });
+  /* ==========================================================
+     MOBILE MENU
+     ========================================================== */
 
-    /* =========================================================
-       MOBILE NAV
-    ========================================================== */
+  mobileToggle.addEventListener(
+    "click",
+    () => {
+      const open =
+        mobileMenu.classList.toggle("open");
 
-    mobileToggle.addEventListener("click", () => {
-      const open = mobileMenu.classList.toggle("open");
+      mobileToggle.textContent =
+        open ? "×" : "☰";
 
       mobileToggle.setAttribute(
         "aria-expanded",
         String(open)
       );
-
-      mobileToggle.textContent = open ? "×" : "☰";
-    });
-
-    document.querySelectorAll(".mobile-menu a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-        mobileToggle.setAttribute("aria-expanded", "false");
-        mobileToggle.textContent = "☰";
-      });
-    });
-
-    /* =========================================================
-       UTC CLOCK
-    ========================================================== */
-
-    function updateUTC() {
-      const now = new Date();
-
-      const hours = String(now.getUTCHours()).padStart(2, "0");
-      const minutes = String(now.getUTCMinutes()).padStart(2, "0");
-      const seconds = String(now.getUTCSeconds()).padStart(2, "0");
-
-      document.getElementById("utcClock").textContent =
-        `${hours}:${minutes}:${seconds}`;
     }
+  );
 
-    updateUTC();
-    setInterval(updateUTC, 1000);
+  mobileMenu.querySelectorAll("a").forEach(
+    (link) => {
+      link.addEventListener(
+        "click",
+        () => {
+          mobileMenu.classList.remove("open");
+          mobileToggle.textContent = "☰";
 
-    /* =========================================================
-       TOAST
-    ========================================================== */
+          mobileToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+        }
+      );
+    }
+  );
 
-    function showToast(message) {
-      const container = document.getElementById("toastContainer");
+  /* ==========================================================
+     HOW IT WORKS
+     ========================================================== */
 
-      const toast = document.createElement("div");
+  document.getElementById("howItWorks")
+    .addEventListener(
+      "click",
+      () => {
+        showToast(
+          "Choose a drop, watch the simulated ad once, then the opportunity stays unlocked."
+        );
+      }
+    );
 
-      toast.className = "toast";
+  /* ==========================================================
+     NEWSLETTER
+     ========================================================== */
 
-      toast.innerHTML = `
-        <div class="toast-icon">✓</div>
-        <div>
-          <div class="toast-title">LootHub</div>
-          <div class="toast-message">${escapeHtml(message)}</div>
+  document.getElementById("subscribeForm")
+    .addEventListener(
+      "submit",
+      (event) => {
+        event.preventDefault();
+
+        const input =
+          document.getElementById("emailInput");
+
+        const email =
+          input.value.trim();
+
+        if (!email) {
+          return;
+        }
+
+        try {
+          localStorage.setItem(
+            "loothub-demo-email",
+            email
+          );
+        } catch {}
+
+        input.value = "";
+
+        showToast(
+          "You are now subscribed to LootHub alerts."
+        );
+      }
+    );
+
+  /* ==========================================================
+     UTC CLOCK
+     ========================================================== */
+
+  function updateUTCClock() {
+    const now = new Date();
+
+    const h = String(
+      now.getUTCHours()
+    ).padStart(2,"0");
+
+    const m = String(
+      now.getUTCMinutes()
+    ).padStart(2,"0");
+
+    const s = String(
+      now.getUTCSeconds()
+    ).padStart(2,"0");
+
+    document.getElementById(
+      "utcClock"
+    ).textContent =
+      `${h}:${m}:${s}`;
+  }
+
+  updateUTCClock();
+
+  setInterval(
+    updateUTCClock,
+    1000
+  );
+
+  /* ==========================================================
+     TICKER STATS
+     ========================================================== */
+
+  function updateTickerStats() {
+    const total =
+      state.allItems.length;
+
+    const codes =
+      state.allItems.filter(
+        (item) =>
+          item.type === "code"
+      ).length;
+
+    document.getElementById(
+      "tickerTotal"
+    ).textContent =
+      total.toLocaleString();
+
+    document.getElementById(
+      "tickerTotal2"
+    ).textContent =
+      total.toLocaleString();
+
+    document.getElementById(
+      "tickerCodes"
+    ).textContent =
+      codes.toLocaleString();
+
+    document.getElementById(
+      "tickerCodes2"
+    ).textContent =
+      codes.toLocaleString();
+  }
+
+  /* ==========================================================
+     TOAST
+     ========================================================== */
+
+  function showToast(message) {
+    const container =
+      document.getElementById(
+        "toastContainer"
+      );
+
+    const toast =
+      document.createElement("div");
+
+    toast.className = "toast";
+
+    toast.innerHTML = `
+      <div class="toast-icon">✓</div>
+
+      <div>
+        <div class="toast-title">
+          LootHub
         </div>
-      `;
 
-      container.appendChild(toast);
+        <div class="toast-text">
+          ${escapeHTML(message)}
+        </div>
+      </div>
+    `;
 
-      setTimeout(() => {
-        toast.classList.add("removing");
+    container.appendChild(toast);
 
-        setTimeout(() => {
-          toast.remove();
-        }, 220);
+    window.setTimeout(
+      () => {
+        toast.classList.add("out");
 
-      }, 2800);
-    }
+        window.setTimeout(
+          () => toast.remove(),
+          220
+        );
+      },
+      2800
+    );
+  }
 
-    function escapeHtml(value) {
-      return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-    }
+  /* ==========================================================
+     LOCAL LANGUAGE RESTORE
+     ========================================================== */
 
-    /* =========================================================
-       INITIALIZATION
-    ========================================================== */
+  function restoreLanguage() {
+    try {
+      const stored =
+        localStorage.getItem(
+          "loothub-language"
+        );
 
-    const savedLanguage = localStorage.getItem("loothub-language");
+      if (
+        ["en","tr","es"].includes(stored)
+      ) {
+        languageCurrent.textContent =
+          stored.toUpperCase();
 
-    if (
-      savedLanguage &&
-      Object.prototype.hasOwnProperty.call(translations, savedLanguage)
-    ) {
-      setLanguage(savedLanguage);
-    } else {
-      setLanguage("en");
-    }
+        languageOptions.forEach(
+          (option) => {
+            option.classList.toggle(
+              "selected",
+              option.dataset.language === stored
+            );
+          }
+        );
+      }
+    } catch {}
+  }
 
-    filterCards();
-  </script>
+  /* ==========================================================
+     INITIALIZATION
+     ========================================================== */
+
+  restoreLanguage();
+  loadData();
+
+</script>
+
 </body>
 </html>
 ```
