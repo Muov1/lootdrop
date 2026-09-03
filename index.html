@@ -4,39 +4,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#070912">
-  <meta
-    name="description"
-    content="LootHub — Free games, giveaways, promo codes and gaming rewards."
-  >
-  <title>LootHub — Gaming Drops</title>
+  <meta name="theme-color" content="#060811">
+  <title>LootHub — Free Gaming Drops</title>
 
   <style>
     :root {
       --bg: #060811;
-      --bg-2: #090c16;
-      --surface: #0c101c;
-      --surface-2: #111728;
-      --surface-3: #151d31;
+      --bg2: #090d18;
+      --panel: #0e1422;
+      --panel2: #131a2b;
+      --panel3: #182138;
+
       --border: rgba(255,255,255,.075);
-      --border-strong: rgba(126,92,255,.42);
+      --border-hover: rgba(125,94,255,.42);
 
       --text: #f7f8fc;
-      --text-soft: #d1d5e1;
-      --muted: #8b94a9;
-      --muted-dark: #626b7e;
+      --soft: #d0d5e2;
+      --muted: #8992a7;
+      --dim: #626b7e;
 
-      --purple: #7e5cff;
-      --purple-2: #a16cff;
-      --blue: #43b7ff;
-      --cyan: #25d8ee;
-      --green: #3ee88b;
-      --yellow: #f6c95f;
-      --red: #ff6178;
+      --purple: #7d5cff;
+      --purple2: #9e6cff;
+      --cyan: #31d8ef;
+      --green: #3fe88c;
+      --yellow: #f3c65d;
+      --red: #ff647b;
 
-      --shadow: 0 26px 80px rgba(0,0,0,.45);
+      --shadow: 0 30px 90px rgba(0,0,0,.48);
       --radius: 18px;
-      --radius-sm: 10px;
     }
 
     * {
@@ -54,9 +49,9 @@
       overflow-x: hidden;
       color: var(--text);
       background:
-        radial-gradient(circle at 7% 0%, rgba(126,92,255,.17), transparent 25%),
-        radial-gradient(circle at 96% 8%, rgba(67,183,255,.07), transparent 22%),
-        linear-gradient(180deg, #060811 0%, #080b15 55%, #05070d 100%);
+        radial-gradient(circle at 5% 0%, rgba(125,92,255,.17), transparent 24%),
+        radial-gradient(circle at 95% 10%, rgba(49,216,239,.07), transparent 21%),
+        linear-gradient(180deg,#060811,#080b15 55%,#05070d);
       font-family:
         Inter,
         ui-sans-serif,
@@ -67,22 +62,22 @@
         sans-serif;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      z-index: -2;
+      z-index: -1;
       pointer-events: none;
-      opacity: .5;
+      opacity: .45;
       background-image:
-        linear-gradient(rgba(255,255,255,.017) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.017) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,.017) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.017) 1px,transparent 1px);
       background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, black, transparent 92%);
-    }
-
-    body.modal-open {
-      overflow: hidden;
+      mask-image: linear-gradient(to bottom,black,transparent 92%);
     }
 
     button,
@@ -100,17 +95,12 @@
     }
 
     /* =========================================================
-       APP / TOPBAR
+       TICKER
     ========================================================== */
 
-    .app {
-      min-height: 100vh;
-      width: 100%;
-    }
-
     .ticker {
+      height: 36px;
       width: 100%;
-      height: 37px;
       overflow: hidden;
       border-bottom: 1px solid rgba(255,255,255,.045);
       background: rgba(3,5,11,.82);
@@ -118,13 +108,13 @@
     }
 
     .ticker-track {
-      display: flex;
       width: max-content;
       min-width: 100%;
       height: 100%;
+      display: flex;
       align-items: center;
-      white-space: nowrap;
       animation: ticker 34s linear infinite;
+      white-space: nowrap;
     }
 
     .ticker-item {
@@ -140,16 +130,16 @@
     }
 
     .ticker-item strong {
-      color: var(--text-soft);
+      color: var(--soft);
     }
 
     .live-dot {
       width: 6px;
       height: 6px;
-      flex: 0 0 auto;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 12px rgba(62,232,139,.85);
+      box-shadow: 0 0 12px rgba(63,232,140,.85);
+      flex: 0 0 auto;
     }
 
     @keyframes ticker {
@@ -174,14 +164,14 @@
     .navbar-inner {
       width: 100%;
       height: 100%;
-      padding: 0 clamp(14px, 3vw, 48px);
+      padding: 0 clamp(13px,3vw,48px);
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 19px;
     }
 
     .logo {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
@@ -195,15 +185,14 @@
       height: 39px;
       display: grid;
       place-items: center;
-      border: 1px solid rgba(255,255,255,.11);
       border-radius: 12px;
-      color: white;
-      background: linear-gradient(135deg,#694aff,#a06aff);
-      box-shadow: 0 10px 28px rgba(126,92,255,.3);
+      border: 1px solid rgba(255,255,255,.1);
+      background: linear-gradient(135deg,#694aff,#a069ff);
+      box-shadow: 0 10px 28px rgba(125,92,255,.3);
     }
 
-    .logo-muted {
-      color: #cfc6ff;
+    .logo-light {
+      color: #cec4ff;
     }
 
     .nav-links {
@@ -245,17 +234,17 @@
       padding: 0 10px;
       border: 1px solid var(--border);
       border-radius: 9px;
-      color: var(--text-soft);
       background: rgba(255,255,255,.022);
+      color: var(--soft);
       font-size: 10px;
       font-weight: 850;
       font-variant-numeric: tabular-nums;
     }
 
     .clock-label {
-      color: var(--muted-dark);
+      color: var(--dim);
       font-size: 8px;
-      letter-spacing: .75px;
+      letter-spacing: .7px;
     }
 
     .language {
@@ -271,7 +260,7 @@
       gap: 6px;
       border: 1px solid var(--border);
       border-radius: 9px;
-      color: var(--text-soft);
+      color: var(--soft);
       background: rgba(255,255,255,.022);
       cursor: pointer;
       font-size: 10px;
@@ -280,9 +269,9 @@
     }
 
     .language-button:hover {
-      border-color: var(--border-strong);
-      background: rgba(126,92,255,.08);
       color: white;
+      border-color: var(--border-hover);
+      background: rgba(125,92,255,.08);
     }
 
     .language-arrow {
@@ -336,7 +325,7 @@
     .language-option:hover,
     .language-option.selected {
       color: white;
-      background: rgba(126,92,255,.1);
+      background: rgba(125,92,255,.1);
     }
 
     .mobile-toggle {
@@ -345,16 +334,16 @@
       height: 38px;
       border: 1px solid var(--border);
       border-radius: 9px;
-      color: var(--text-soft);
       background: rgba(255,255,255,.022);
+      color: var(--soft);
       cursor: pointer;
     }
 
     .mobile-menu {
       position: fixed;
+      top: 117px;
       left: 12px;
       right: 12px;
-      top: 120px;
       z-index: 900;
       display: none;
       padding: 8px;
@@ -388,8 +377,7 @@
 
     .hero {
       position: relative;
-      width: 100%;
-      padding: clamp(58px, 8vw, 105px) clamp(14px, 5vw, 72px) 58px;
+      padding: clamp(58px,8vw,105px) clamp(13px,5vw,72px) 58px;
       overflow: hidden;
     }
 
@@ -397,16 +385,15 @@
       position: absolute;
       width: 630px;
       height: 630px;
-      right: -220px;
       top: -260px;
+      right: -220px;
       border-radius: 50%;
-      background: rgba(126,92,255,.09);
+      background: rgba(125,92,255,.09);
       filter: blur(95px);
       pointer-events: none;
     }
 
     .hero-inner {
-      width: 100%;
       display: grid;
       grid-template-columns: minmax(0,1.08fr) minmax(380px,.92fr);
       gap: clamp(35px,6vw,100px);
@@ -419,23 +406,18 @@
       gap: 8px;
       margin-bottom: 19px;
       padding: 7px 10px;
-      border: 1px solid rgba(126,92,255,.22);
+      border: 1px solid rgba(125,92,255,.22);
       border-radius: 999px;
-      background: rgba(126,92,255,.08);
-      color: #cbc2ff;
+      background: rgba(125,92,255,.08);
+      color: #cec5ff;
       font-size: 9px;
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
 
-    .hero-chip .live-dot {
-      width: 6px;
-      height: 6px;
-    }
-
     .hero h1 {
-      max-width: 920px;
+      max-width: 900px;
       font-size: clamp(45px,6.3vw,90px);
       line-height: .96;
       letter-spacing: -5px;
@@ -447,9 +429,9 @@
       background: linear-gradient(
         100deg,
         #fff 8%,
-        #d8d0ff 38%,
-        #9c7cff 70%,
-        #69d7ff 100%
+        #d9d1ff 40%,
+        #9c7dff 70%,
+        #68d9ff 100%
       );
       -webkit-background-clip: text;
       background-clip: text;
@@ -490,25 +472,24 @@
       border: 1px solid rgba(255,255,255,.08);
       color: white;
       background: linear-gradient(135deg,#694aff,#9a62ff);
-      box-shadow: 0 12px 30px rgba(126,92,255,.24);
+      box-shadow: 0 12px 30px rgba(125,92,255,.24);
     }
 
     .primary-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 17px 38px rgba(126,92,255,.35);
+      box-shadow: 0 17px 38px rgba(125,92,255,.35);
     }
 
     .secondary-btn {
       border: 1px solid var(--border);
-      color: var(--text-soft);
+      color: var(--soft);
       background: rgba(255,255,255,.025);
     }
 
     .secondary-btn:hover {
       transform: translateY(-2px);
-      border-color: rgba(255,255,255,.13);
-      background: rgba(255,255,255,.055);
       color: white;
+      background: rgba(255,255,255,.055);
     }
 
     /* =========================================================
@@ -516,8 +497,8 @@
     ========================================================== */
 
     .hero-visual {
-      position: relative;
       min-height: 425px;
+      position: relative;
       perspective: 1200px;
     }
 
@@ -528,11 +509,9 @@
       border: 1px solid rgba(255,255,255,.09);
       border-radius: 21px;
       background:
-        radial-gradient(circle at 80% 0%, rgba(126,92,255,.18), transparent 32%),
+        radial-gradient(circle at 80% 0%,rgba(125,92,255,.18),transparent 32%),
         linear-gradient(145deg,rgba(18,25,43,.97),rgba(9,13,24,.97));
-      box-shadow:
-        var(--shadow),
-        inset 0 1px 0 rgba(255,255,255,.04);
+      box-shadow: var(--shadow);
       transform: rotateY(-7deg) rotateX(3deg);
     }
 
@@ -579,7 +558,7 @@
       padding: 0 10px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      color: var(--muted-dark);
+      color: var(--dim);
       background: rgba(0,0,0,.18);
       font-size: 8px;
     }
@@ -602,11 +581,11 @@
       height: 66px;
       display: grid;
       place-items: center;
+      font-size: 23px;
       background:
-        radial-gradient(circle at 20% 20%,rgba(126,92,255,.45),transparent 34%),
+        radial-gradient(circle at 20% 20%,rgba(125,92,255,.45),transparent 34%),
         radial-gradient(circle at 80% 80%,rgba(37,216,238,.18),transparent 30%),
         #12192a;
-      font-size: 23px;
     }
 
     .fake-info {
@@ -646,12 +625,12 @@
     }
 
     /* =========================================================
-       CONTENT HEAD
+       CONTENT
     ========================================================== */
 
     .content {
       width: 100%;
-      padding: 5px clamp(14px, 3vw, 48px) 75px;
+      padding: 5px clamp(13px,3vw,48px) 75px;
     }
 
     .content-head {
@@ -677,7 +656,7 @@
       font-weight: 950;
     }
 
-    .section-text {
+    .section-description {
       max-width: 720px;
       margin-top: 6px;
       color: var(--muted);
@@ -694,7 +673,7 @@
       left: 13px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--muted-dark);
+      color: var(--dim);
       font-size: 13px;
       pointer-events: none;
     }
@@ -709,23 +688,21 @@
       color: white;
       background: rgba(255,255,255,.025);
       font-size: 11px;
-      transition: .2s ease;
-    }
-
-    .search-input::placeholder {
-      color: var(--muted-dark);
     }
 
     .search-input:focus {
-      border-color: rgba(126,92,255,.5);
-      background: rgba(126,92,255,.04);
-      box-shadow: 0 0 0 4px rgba(126,92,255,.055);
+      border-color: rgba(125,92,255,.5);
+      box-shadow: 0 0 0 4px rgba(125,92,255,.055);
+    }
+
+    .search-input::placeholder {
+      color: var(--dim);
     }
 
     .search-clear {
       position: absolute;
-      right: 7px;
       top: 50%;
+      right: 7px;
       width: 29px;
       height: 29px;
       transform: translateY(-50%);
@@ -755,8 +732,8 @@
     .filters {
       display: flex;
       gap: 7px;
-      padding: 4px 1px 12px;
       overflow-x: auto;
+      padding: 4px 1px 12px;
       scrollbar-width: none;
     }
 
@@ -778,21 +755,17 @@
       transition: .18s ease;
     }
 
-    .filter:hover {
-      color: white;
-      background: rgba(255,255,255,.05);
-    }
-
+    .filter:hover,
     .filter.active {
       color: white;
-      border-color: rgba(126,92,255,.38);
-      background: rgba(126,92,255,.12);
+      background: rgba(125,92,255,.12);
+      border-color: rgba(125,92,255,.38);
     }
 
     .results {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 12px;
       margin: 1px 0 12px;
     }
@@ -839,29 +812,31 @@
     }
 
     .card {
+      position: relative;
       min-width: 0;
       overflow: hidden;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background:
-        linear-gradient(
-          180deg,
-          rgba(16,22,38,.92),
-          rgba(10,14,25,.96)
-        );
+        linear-gradient(180deg,rgba(16,22,38,.92),rgba(10,14,25,.96));
+      cursor: pointer;
       transition:
         transform .23s ease,
         border-color .23s ease,
         box-shadow .23s ease;
-      animation: cardIn .35s ease both;
+      animation: cardIn .34s ease both;
     }
 
     .card:hover {
       transform: translateY(-5px);
-      border-color: var(--border-strong);
+      border-color: var(--border-hover);
       box-shadow:
         0 18px 45px rgba(0,0,0,.25),
-        0 0 0 1px rgba(126,92,255,.035);
+        0 0 0 1px rgba(125,92,255,.035);
+    }
+
+    .card.hidden {
+      display: none;
     }
 
     @keyframes cardIn {
@@ -869,6 +844,7 @@
         opacity: 0;
         transform: translateY(9px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
@@ -882,29 +858,9 @@
       border-bottom: 1px solid var(--border);
     }
 
-    .card-visual::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background:
-        linear-gradient(
-          120deg,
-          transparent 25%,
-          rgba(255,255,255,.035) 50%,
-          transparent 75%
-        );
-      transform: translateX(-100%);
-      transition: transform .6s ease;
-    }
-
-    .card:hover .card-visual::before {
-      transform: translateX(100%);
-    }
-
     .theme-purple {
       background:
-        radial-gradient(circle at 18% 20%,rgba(126,92,255,.58),transparent 30%),
+        radial-gradient(circle at 18% 20%,rgba(125,92,255,.58),transparent 30%),
         radial-gradient(circle at 84% 78%,rgba(37,216,238,.18),transparent 28%),
         linear-gradient(135deg,#171e36,#0c1120);
     }
@@ -912,7 +868,7 @@
     .theme-blue {
       background:
         radial-gradient(circle at 78% 25%,rgba(70,174,255,.3),transparent 29%),
-        radial-gradient(circle at 18% 80%,rgba(126,92,255,.24),transparent 35%),
+        radial-gradient(circle at 18% 80%,rgba(125,92,255,.24),transparent 35%),
         linear-gradient(135deg,#131d35,#0a101d);
     }
 
@@ -933,36 +889,34 @@
     .theme-gold {
       background:
         radial-gradient(circle at 25% 24%,rgba(246,201,95,.28),transparent 30%),
-        radial-gradient(circle at 82% 75%,rgba(126,92,255,.2),transparent 30%),
+        radial-gradient(circle at 82% 75%,rgba(125,92,255,.2),transparent 30%),
         linear-gradient(135deg,#251d16,#101319);
     }
 
     .theme-cyan {
       background:
         radial-gradient(circle at 80% 20%,rgba(37,216,238,.29),transparent 32%),
-        radial-gradient(circle at 23% 73%,rgba(126,92,255,.34),transparent 30%),
+        radial-gradient(circle at 23% 73%,rgba(125,92,255,.34),transparent 30%),
         linear-gradient(135deg,#101e33,#09111c);
     }
 
     .visual-icon {
       position: absolute;
       inset: 0;
-      z-index: 1;
       display: grid;
       place-items: center;
       font-size: 63px;
       filter: drop-shadow(0 17px 24px rgba(0,0,0,.38));
     }
 
-    .platform {
+    .platform,
+    .badge {
       position: absolute;
-      left: 11px;
+      z-index: 3;
       top: 11px;
-      z-index: 4;
       padding: 6px 8px;
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 7px;
-      color: #d0c8ff;
       background: rgba(6,9,16,.75);
       backdrop-filter: blur(9px);
       font-size: 8px;
@@ -970,31 +924,21 @@
       letter-spacing: .65px;
     }
 
-    .deal-badge {
-      position: absolute;
+    .platform {
+      left: 11px;
+      color: #d0c8ff;
+    }
+
+    .badge {
       right: 11px;
-      top: 11px;
-      z-index: 4;
-      padding: 6px 8px;
-      border: 1px solid rgba(255,255,255,.09);
-      border-radius: 7px;
       color: var(--green);
-      background: rgba(6,9,16,.75);
-      backdrop-filter: blur(9px);
-      font-size: 8px;
-      font-weight: 950;
-      letter-spacing: .5px;
     }
 
-    .deal-badge.discount {
-      color: var(--yellow);
-    }
-
-    .deal-badge.code {
+    .badge.code {
       color: #a9ddff;
     }
 
-    .deal-badge.reward {
+    .badge.reward {
       color: #ffb1be;
     }
 
@@ -1003,7 +947,7 @@
     }
 
     .category {
-      color: var(--muted-dark);
+      color: var(--dim);
       font-size: 8px;
       font-weight: 950;
       letter-spacing: 1px;
@@ -1037,150 +981,57 @@
       padding: 4px 6px;
       border: 1px solid rgba(255,255,255,.055);
       border-radius: 6px;
-      color: var(--muted-dark);
+      color: var(--dim);
       background: rgba(255,255,255,.02);
       font-size: 7px;
       font-weight: 800;
     }
 
-    .divider {
-      height: 1px;
-      margin: 13px 0;
-      background: rgba(255,255,255,.05);
-    }
-
-    .card-bottom {
+    .card-hint {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      margin-top: 13px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.05);
     }
 
-    .price {
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 950;
-    }
-
-    .card-action {
-      min-height: 33px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      padding: 0 10px;
-      border: 1px solid rgba(126,92,255,.23);
-      border-radius: 8px;
-      color: #d1c8ff;
-      background: rgba(126,92,255,.08);
-      cursor: pointer;
+    .card-hint-text {
+      color: var(--dim);
       font-size: 8px;
-      font-weight: 950;
-      transition: .18s ease;
+      font-weight: 750;
     }
 
-    .card-action:hover {
-      color: white;
-      border-color: rgba(126,92,255,.62);
-      background: var(--purple);
-      box-shadow: 0 8px 20px rgba(126,92,255,.22);
+    .card-arrow {
+      color: #a99bff;
+      font-size: 12px;
+      font-weight: 900;
+      transition: transform .2s ease;
     }
 
-    .card-action.unlocked {
-      color: #8ef1b7;
-      border-color: rgba(62,232,139,.17);
+    .card:hover .card-arrow {
+      transform: translateX(3px);
+    }
+
+    .unlocked-pill {
+      padding: 5px 7px;
+      border: 1px solid rgba(62,232,139,.15);
+      border-radius: 6px;
+      color: #8deeb5;
       background: rgba(62,232,139,.06);
-    }
-
-    .card-action.unlocked:hover {
-      color: #06110a;
-      background: var(--green);
-      border-color: var(--green);
+      font-size: 7px;
+      font-weight: 900;
     }
 
     /* =========================================================
-       CODE
-    ========================================================== */
-
-    .code-box {
-      display: flex;
-      align-items: stretch;
-      overflow: hidden;
-      margin-top: 11px;
-      border: 1px dashed rgba(126,92,255,.34);
-      border-radius: 9px;
-      background: rgba(126,92,255,.045);
-    }
-
-    .code-value {
-      flex: 1;
-      min-width: 0;
-      padding: 9px;
-      color: #d5cdff;
-      font-family:
-        ui-monospace,
-        SFMono-Regular,
-        Menlo,
-        Monaco,
-        Consolas,
-        monospace;
-      font-size: 9px;
-      font-weight: 850;
-      letter-spacing: .7px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      filter: blur(4px);
-      user-select: none;
-      transition: filter .25s ease;
-    }
-
-    .code-value.revealed {
-      filter: none;
-      user-select: text;
-    }
-
-    .copy-btn {
-      flex: 0 0 auto;
-      padding: 0 10px;
-      border: 0;
-      border-left: 1px dashed rgba(126,92,255,.3);
-      color: #ac9dff;
-      background: rgba(126,92,255,.08);
-      cursor: pointer;
-      font-size: 8px;
-      font-weight: 950;
-      transition: .18s ease;
-    }
-
-    .copy-btn:hover {
-      color: white;
-      background: rgba(126,92,255,.2);
-    }
-
-    .copy-btn.ready {
-      color: #8ef1b7;
-      background: rgba(62,232,139,.07);
-    }
-
-    .locked-note {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 7px;
-      color: var(--muted-dark);
-      font-size: 8px;
-      font-weight: 700;
-    }
-
-    /* =========================================================
-       LOAD MORE / EMPTY
+       EMPTY
     ========================================================== */
 
     .empty {
       grid-column: 1 / -1;
-      min-height: 250px;
       display: none;
+      min-height: 250px;
       align-items: center;
       justify-content: center;
       flex-direction: column;
@@ -1200,9 +1051,9 @@
       display: grid;
       place-items: center;
       margin-bottom: 12px;
-      border: 1px solid rgba(126,92,255,.17);
+      border: 1px solid rgba(125,92,255,.17);
       border-radius: 14px;
-      background: rgba(126,92,255,.08);
+      background: rgba(125,92,255,.08);
       color: #ab9eff;
       font-size: 20px;
     }
@@ -1220,6 +1071,10 @@
       line-height: 1.6;
     }
 
+    /* =========================================================
+       LOAD MORE
+    ========================================================== */
+
     .load-more-wrap {
       display: flex;
       justify-content: center;
@@ -1231,8 +1086,8 @@
       padding: 0 18px;
       border: 1px solid var(--border);
       border-radius: 10px;
+      color: var(--soft);
       background: rgba(255,255,255,.025);
-      color: var(--text-soft);
       cursor: pointer;
       font-size: 10px;
       font-weight: 900;
@@ -1241,8 +1096,8 @@
 
     .load-more:hover {
       color: white;
-      border-color: rgba(126,92,255,.35);
-      background: rgba(126,92,255,.09);
+      border-color: rgba(125,92,255,.35);
+      background: rgba(125,92,255,.09);
     }
 
     .load-more.hidden {
@@ -1250,7 +1105,7 @@
     }
 
     /* =========================================================
-       INFO STRIP
+       FEATURES
     ========================================================== */
 
     .features {
@@ -1263,7 +1118,6 @@
     .feature {
       min-height: 145px;
       padding: 19px;
-      overflow: hidden;
       border: 1px solid var(--border);
       border-radius: var(--radius);
       background:
@@ -1273,7 +1127,7 @@
 
     .feature:hover {
       transform: translateY(-3px);
-      border-color: rgba(126,92,255,.24);
+      border-color: rgba(125,92,255,.24);
     }
 
     .feature-icon {
@@ -1302,159 +1156,38 @@
     }
 
     /* =========================================================
-       ALERT PANEL
+       DETAIL MODAL
     ========================================================== */
 
-    .alert-panel {
-      margin-top: 44px;
-      padding: clamp(25px,4vw,38px);
-      overflow: hidden;
-      border: 1px solid rgba(126,92,255,.18);
-      border-radius: 21px;
-      background:
-        radial-gradient(circle at 82% 15%,rgba(126,92,255,.17),transparent 31%),
-        linear-gradient(145deg,rgba(18,25,43,.92),rgba(9,13,24,.96));
-    }
-
-    .alert-label {
-      color: #a99cff;
-      font-size: 8px;
-      font-weight: 950;
-      letter-spacing: 1.25px;
-      text-transform: uppercase;
-    }
-
-    .alert-title {
-      margin-top: 8px;
-      font-size: clamp(21px,3vw,30px);
-      letter-spacing: -1px;
-      font-weight: 950;
-    }
-
-    .alert-description {
-      max-width: 720px;
-      margin-top: 7px;
-      color: var(--muted);
-      font-size: 10px;
-      line-height: 1.65;
-    }
-
-    .subscribe {
-      display: flex;
-      max-width: 530px;
-      gap: 8px;
-      margin-top: 19px;
-    }
-
-    .subscribe-input {
-      flex: 1;
-      min-width: 0;
-      height: 42px;
-      padding: 0 13px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      outline: none;
-      color: white;
-      background: rgba(0,0,0,.2);
-      font-size: 10px;
-    }
-
-    .subscribe-input:focus {
-      border-color: rgba(126,92,255,.48);
-      box-shadow: 0 0 0 4px rgba(126,92,255,.05);
-    }
-
-    /* =========================================================
-       FOOTER
-    ========================================================== */
-
-    .footer {
-      width: 100%;
-      margin-top: 50px;
-      padding: 24px clamp(14px,3vw,48px);
-      border-top: 1px solid var(--border);
-      background: rgba(3,5,10,.45);
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--text-soft);
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .footer-mark {
-      width: 25px;
-      height: 25px;
-      display: grid;
-      place-items: center;
-      border-radius: 7px;
-      color: white;
-      background: linear-gradient(135deg,#694aff,#9a62ff);
-      font-size: 9px;
-    }
-
-    .footer-copy {
-      color: var(--muted-dark);
-      font-size: 8px;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-link {
-      color: var(--muted-dark);
-      font-size: 8px;
-      font-weight: 750;
-      transition: .18s ease;
-    }
-
-    .footer-link:hover {
-      color: var(--text-soft);
-    }
-
-    /* =========================================================
-       AD GATE MODAL
-    ========================================================== */
-
-    .modal-backdrop {
+    .modal {
       position: fixed;
       inset: 0;
-      z-index: 3000;
+      z-index: 2500;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 18px;
       background: rgba(2,3,8,.78);
-      backdrop-filter: blur(13px);
+      backdrop-filter: blur(14px);
     }
 
-    .modal-backdrop.open {
+    .modal.open {
       display: flex;
     }
 
-    .gate-modal {
-      width: min(500px,100%);
-      overflow: hidden;
+    .detail-modal {
+      width: min(760px,100%);
+      max-height: min(820px,92vh);
+      overflow-y: auto;
       border: 1px solid rgba(255,255,255,.1);
-      border-radius: 20px;
+      border-radius: 21px;
       background:
-        radial-gradient(circle at 50% 0%,rgba(126,92,255,.17),transparent 35%),
+        radial-gradient(circle at 75% 0%,rgba(125,92,255,.18),transparent 32%),
         linear-gradient(160deg,#11182a,#090d18);
       box-shadow: var(--shadow);
-      animation: modalIn .25s ease both;
+      animation: modalIn .24s ease both;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,.12) transparent;
     }
 
     @keyframes modalIn {
@@ -1468,193 +1201,273 @@
       }
     }
 
-    .gate-head {
+    .detail-top {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding: 17px 18px;
+      padding: 16px 18px;
       border-bottom: 1px solid var(--border);
     }
 
-    .gate-head-left {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      font-size: 12px;
-      font-weight: 950;
-    }
-
-    .gate-icon {
-      width: 31px;
-      height: 31px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(126,92,255,.18);
-      border-radius: 9px;
-      background: rgba(126,92,255,.09);
-      color: #b19fff;
-    }
-
-    .close-modal {
-      width: 31px;
-      height: 31px;
-      border: 0;
-      border-radius: 8px;
-      background: rgba(255,255,255,.035);
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 15px;
-    }
-
-    .close-modal:hover {
-      color: white;
-      background: rgba(255,255,255,.07);
-    }
-
-    .gate-body {
-      padding: 24px 20px 20px;
-      text-align: center;
-    }
-
-    .ad-box {
-      min-height: 145px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.06);
-      border-radius: 14px;
-      background:
-        radial-gradient(circle at 50% 50%,rgba(126,92,255,.18),transparent 42%),
-        linear-gradient(135deg,#101629,#080c17);
-    }
-
-    .ad-box::after {
-      content: "";
-      position: absolute;
-      left: -45%;
-      top: 50%;
-      width: 190%;
-      height: 1px;
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(126,92,255,.65),
-          rgba(37,216,238,.45),
-          transparent
-        );
-      animation: scan 2.7s linear infinite;
-    }
-
-    @keyframes scan {
-      from { transform: translateY(-65px); }
-      to { transform: translateY(65px); }
-    }
-
-    .ad-label {
-      position: relative;
-      z-index: 1;
-      padding: 6px 9px;
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 7px;
-      background: rgba(0,0,0,.2);
-      color: var(--muted);
+    .detail-platform {
+      color: #b7a9ff;
       font-size: 8px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .ad-title {
-      position: relative;
-      z-index: 1;
-      margin-top: 10px;
-      font-size: 17px;
       font-weight: 950;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .ad-subtitle {
-      position: relative;
-      z-index: 1;
+    .detail-category {
       margin-top: 4px;
       color: var(--muted);
       font-size: 9px;
     }
 
-    .gate-title {
-      margin-top: 19px;
-      font-size: 19px;
+    .detail-close {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 8px;
+      color: var(--muted);
+      background: rgba(255,255,255,.035);
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .detail-close:hover {
+      color: white;
+      background: rgba(255,255,255,.07);
+    }
+
+    .detail-content {
+      padding: 20px;
+    }
+
+    .detail-visual {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .detail-icon {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: 82px;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,.42));
+    }
+
+    .detail-title {
+      margin-top: 20px;
+      font-size: 28px;
+      line-height: 1.12;
+      letter-spacing: -1px;
       font-weight: 950;
     }
 
-    .gate-description {
-      max-width: 400px;
-      margin: 7px auto 0;
+    .detail-description {
+      max-width: 650px;
+      margin-top: 9px;
       color: var(--muted);
-      font-size: 9px;
-      line-height: 1.65;
+      font-size: 11px;
+      line-height: 1.75;
     }
 
-    .gate-actions {
+    .detail-tags {
       display: flex;
-      gap: 8px;
-      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 13px;
+    }
+
+    .detail-tag {
+      padding: 5px 7px;
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 6px;
+      color: var(--muted);
+      background: rgba(255,255,255,.025);
+      font-size: 7px;
+      font-weight: 800;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
       margin-top: 18px;
     }
 
-    .gate-btn {
-      min-height: 40px;
-      min-width: 125px;
+    .detail-stat {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: rgba(255,255,255,.018);
+    }
+
+    .detail-stat-label {
+      color: var(--dim);
+      font-size: 7px;
+      font-weight: 900;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    .detail-stat-value {
+      margin-top: 5px;
+      color: var(--soft);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    /* =========================================================
+       LOCKED CONTENT
+    ========================================================== */
+
+    .reveal-area {
+      margin-top: 18px;
+      padding: 15px;
+      border: 1px solid rgba(125,92,255,.17);
+      border-radius: 13px;
+      background: rgba(125,92,255,.045);
+    }
+
+    .reveal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .reveal-label {
+      color: #aa9cff;
+      font-size: 8px;
+      font-weight: 950;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .reveal-status {
+      color: var(--muted);
+      font-size: 8px;
+      font-weight: 750;
+    }
+
+    .code-display {
+      position: relative;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      margin-top: 11px;
+      overflow: hidden;
+      border: 1px dashed rgba(125,92,255,.32);
+      border-radius: 10px;
+      background: rgba(0,0,0,.18);
+    }
+
+    .code-hidden-value {
+      width: 100%;
+      padding: 0 15px;
+      color: #d5cdff;
+      font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        monospace;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-align: center;
+      filter: blur(7px);
+      user-select: none;
+      transition: .3s ease;
+    }
+
+    .code-display.revealed .code-hidden-value {
+      filter: none;
+      user-select: text;
+    }
+
+    .code-copy {
+      width: 100%;
+      min-height: 42px;
+      margin-top: 9px;
+      border: 1px solid rgba(62,232,139,.17);
       border-radius: 9px;
+      color: #8deeb5;
+      background: rgba(62,232,139,.06);
       cursor: pointer;
       font-size: 9px;
       font-weight: 950;
       transition: .18s ease;
     }
 
-    .gate-cancel {
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: rgba(255,255,255,.025);
+    .code-copy:hover {
+      color: #06110a;
+      border-color: var(--green);
+      background: var(--green);
     }
 
-    .gate-cancel:hover {
-      color: white;
-      background: rgba(255,255,255,.055);
+    .code-copy:disabled {
+      cursor: not-allowed;
+      opacity: .45;
     }
 
-    .gate-watch {
-      border: 1px solid rgba(126,92,255,.25);
+    .reveal-button {
+      width: 100%;
+      min-height: 43px;
+      margin-top: 11px;
+      border: 1px solid rgba(125,92,255,.25);
+      border-radius: 9px;
       color: white;
       background: linear-gradient(135deg,#694aff,#9a62ff);
-      box-shadow: 0 10px 25px rgba(126,92,255,.2);
+      box-shadow: 0 10px 25px rgba(125,92,255,.18);
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 950;
+      transition: .18s ease;
     }
 
-    .gate-watch:hover {
+    .reveal-button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(126,92,255,.3);
+      box-shadow: 0 14px 31px rgba(125,92,255,.3);
     }
 
-    .gate-watch:disabled {
-      cursor: not-allowed;
-      opacity: .55;
-      transform: none;
-    }
-
-    .progress-wrap {
+    .revealed-message {
       display: none;
-      margin-top: 17px;
-      text-align: left;
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid rgba(62,232,139,.14);
+      border-radius: 9px;
+      color: #8deeb5;
+      background: rgba(62,232,139,.055);
+      font-size: 8px;
+      font-weight: 850;
+      text-align: center;
     }
 
-    .progress-wrap.visible {
+    .revealed-message.show {
       display: block;
     }
 
-    .progress-meta {
+    /* =========================================================
+       AD SIMULATION
+    ========================================================== */
+
+    .ad-panel {
+      margin-top: 18px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(0,0,0,.12);
+    }
+
+    .ad-header {
       display: flex;
       justify-content: space-between;
       color: var(--muted);
@@ -1662,15 +1475,15 @@
       font-weight: 800;
     }
 
-    .progress-track {
+    .ad-progress {
       height: 6px;
       overflow: hidden;
-      margin-top: 7px;
+      margin-top: 9px;
       border-radius: 999px;
       background: rgba(255,255,255,.05);
     }
 
-    .progress-bar {
+    .ad-progress-bar {
       width: 0%;
       height: 100%;
       border-radius: inherit;
@@ -1678,43 +1491,93 @@
       transition: width .1s linear;
     }
 
-    .unlock-wrap {
+    /* =========================================================
+       ANTI AD-BLOCK OVERLAY
+    ========================================================== */
+
+    .adblock-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 6000;
       display: none;
-      margin-top: 18px;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(2,3,8,.94);
+      backdrop-filter: blur(17px);
     }
 
-    .unlock-wrap.visible {
-      display: block;
+    .adblock-overlay.show {
+      display: flex;
     }
 
-    .unlock-success {
-      padding: 13px;
-      border: 1px solid rgba(62,232,139,.15);
-      border-radius: 10px;
-      background: rgba(62,232,139,.06);
-      color: #98f1bb;
-      font-size: 9px;
-      font-weight: 850;
+    .adblock-box {
+      width: min(510px,100%);
+      padding: 25px;
+      border: 1px solid rgba(255,97,120,.2);
+      border-radius: 19px;
+      background:
+        radial-gradient(circle at 80% 0%,rgba(255,97,120,.08),transparent 35%),
+        linear-gradient(160deg,#11182a,#090d18);
+      box-shadow: var(--shadow);
+      text-align: center;
     }
 
-    .unlock-action {
-      width: 100%;
-      min-height: 41px;
-      margin-top: 8px;
-      border: 1px solid rgba(62,232,139,.2);
+    .adblock-icon {
+      width: 53px;
+      height: 53px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 14px;
+      border: 1px solid rgba(255,97,120,.16);
+      border-radius: 14px;
+      background: rgba(255,97,120,.06);
+      color: #ff788d;
+      font-size: 23px;
+    }
+
+    .adblock-title {
+      font-size: 21px;
+      font-weight: 950;
+    }
+
+    .adblock-text {
+      max-width: 430px;
+      margin: 8px auto 0;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .adblock-actions {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 19px;
+    }
+
+    .adblock-recheck {
+      min-height: 40px;
+      padding: 0 15px;
+      border: 1px solid rgba(62,232,139,.16);
       border-radius: 9px;
-      background: rgba(62,232,139,.08);
-      color: #90efb9;
+      color: #8deeb5;
+      background: rgba(62,232,139,.06);
       cursor: pointer;
       font-size: 9px;
-      font-weight: 950;
-      transition: .18s ease;
+      font-weight: 900;
     }
 
-    .unlock-action:hover {
-      color: #06110a;
-      background: var(--green);
-      box-shadow: 0 10px 24px rgba(62,232,139,.2);
+    .adblock-help {
+      min-height: 40px;
+      padding: 0 15px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--muted);
+      background: rgba(255,255,255,.025);
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 900;
     }
 
     /* =========================================================
@@ -1725,7 +1588,7 @@
       position: fixed;
       right: 18px;
       bottom: 18px;
-      z-index: 5000;
+      z-index: 7000;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -1734,35 +1597,34 @@
 
     .toast {
       min-width: 255px;
-      max-width: 360px;
+      max-width: 370px;
       display: flex;
-      align-items: center;
       gap: 10px;
+      align-items: center;
       padding: 11px 12px;
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 11px;
       background: rgba(11,16,28,.97);
       box-shadow: var(--shadow);
       backdrop-filter: blur(20px);
-      animation: toastIn .24s ease forwards;
+      animation: toastIn .25s ease forwards;
     }
 
     .toast.out {
-      animation: toastOut .22s ease forwards;
+      animation: toastOut .2s ease forwards;
     }
 
     .toast-icon {
       width: 26px;
       height: 26px;
-      flex: 0 0 auto;
       display: grid;
       place-items: center;
+      flex: 0 0 auto;
       border: 1px solid rgba(62,232,139,.14);
       border-radius: 8px;
-      background: rgba(62,232,139,.08);
       color: #83efae;
+      background: rgba(62,232,139,.08);
       font-size: 10px;
-      font-weight: 950;
     }
 
     .toast-title {
@@ -1797,6 +1659,66 @@
     }
 
     /* =========================================================
+       FOOTER
+    ========================================================== */
+
+    .footer {
+      width: 100%;
+      margin-top: 50px;
+      padding: 24px clamp(13px,3vw,48px);
+      border-top: 1px solid var(--border);
+      background: rgba(3,5,10,.45);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--soft);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .footer-mark {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      color: white;
+      background: linear-gradient(135deg,#694aff,#9a62ff);
+      font-size: 9px;
+    }
+
+    .footer-copy {
+      color: var(--dim);
+      font-size: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-link {
+      color: var(--dim);
+      font-size: 8px;
+      font-weight: 750;
+    }
+
+    .footer-link:hover {
+      color: var(--soft);
+    }
+
+    /* =========================================================
        RESPONSIVE
     ========================================================== */
 
@@ -1814,8 +1736,8 @@
       }
 
       .hero-visual {
-        max-width: 760px;
         width: 100%;
+        max-width: 760px;
         margin: 0 auto;
       }
 
@@ -1838,6 +1760,10 @@
       }
 
       .features {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -1889,31 +1815,30 @@
         height: 205px;
       }
 
-      .subscribe {
+      .subscribe,
+      .adblock-actions {
         flex-direction: column;
       }
 
-      .subscribe-input,
-      .subscribe .primary-btn {
-        width: 100%;
+      .detail-modal {
+        max-height: 94vh;
       }
 
-      .footer {
-        padding-left: 12px;
-        padding-right: 12px;
+      .detail-content {
+        padding: 15px;
+      }
+
+      .detail-visual {
+        height: 180px;
+      }
+
+      .detail-title {
+        font-size: 24px;
       }
 
       .footer-inner {
         align-items: flex-start;
         flex-direction: column;
-      }
-
-      .gate-actions {
-        flex-direction: column-reverse;
-      }
-
-      .gate-btn {
-        width: 100%;
       }
 
       .toast-container {
@@ -1922,8 +1847,8 @@
       }
 
       .toast {
-        min-width: 0;
         width: 100%;
+        min-width: 0;
       }
     }
 
@@ -1944,75 +1869,89 @@
 
 <div class="app">
 
-  <!-- =========================================================
-       LIVE TICKER
-  ========================================================== -->
+  <!-- =======================================================
+       TICKER
+  ======================================================== -->
 
   <div class="ticker">
     <div class="ticker-track">
 
       <div class="ticker-item">
         <span class="live-dot"></span>
-        <strong>LIVE</strong>
-        <span>global drops are being tracked</span>
+        <strong data-i18n="live">LIVE</strong>
+        <span data-i18n="tracking">global drops are being tracked</span>
       </div>
 
       <div class="ticker-item">
         🎮 <strong id="tickerTotal">0</strong>
-        <span>gaming opportunities</span>
+        <span data-i18n="opportunities">gaming opportunities</span>
       </div>
 
       <div class="ticker-item">
         🎁 <strong id="tickerCodes">0</strong>
-        <span>promo codes</span>
+        <span data-i18n="activeCodes">active promo codes</span>
       </div>
 
       <div class="ticker-item">
-        🌍 <strong>GLOBAL</strong>
-        <span>gaming coverage</span>
+        🌍 <strong data-i18n="global">GLOBAL</strong>
+        <span data-i18n="coverage">gaming coverage</span>
       </div>
 
       <div class="ticker-item">
-        ⚡ <strong>LIVE</strong>
-        <span>feed updates automatically</span>
+        ⚡ <strong data-i18n="liveFeed">LIVE FEED</strong>
+        <span data-i18n="continuous">continuously updated</span>
       </div>
 
       <div class="ticker-item">
         <span class="live-dot"></span>
-        <strong>LIVE</strong>
-        <span>global drops are being tracked</span>
+        <strong data-i18n="live">LIVE</strong>
+        <span data-i18n="tracking">global drops are being tracked</span>
       </div>
 
       <div class="ticker-item">
         🎮 <strong id="tickerTotal2">0</strong>
-        <span>gaming opportunities</span>
+        <span data-i18n="opportunities">gaming opportunities</span>
       </div>
 
       <div class="ticker-item">
         🎁 <strong id="tickerCodes2">0</strong>
-        <span>promo codes</span>
+        <span data-i18n="activeCodes">active promo codes</span>
       </div>
 
     </div>
   </div>
 
-  <!-- =========================================================
-       NAVIGATION
-  ========================================================== -->
+  <!-- =======================================================
+       NAV
+  ======================================================== -->
 
   <header class="navbar">
+
     <div class="navbar-inner">
 
-      <a href="#" class="logo">
+      <a class="logo" href="#">
         <span class="logo-mark">L</span>
-        <span>Loot<span class="logo-muted">Hub</span></span>
+        <span>Loot<span class="logo-light">Hub</span></span>
       </a>
 
       <nav class="nav-links">
-        <a class="nav-link active" href="#drops">Discover</a>
-        <a class="nav-link" href="#drops">Free Games</a>
-        <a class="nav-link" href="#drops">Promo Codes</a>
-        <a class="nav-link" href="#features">Rewards</a>
+
+        <a class="nav-link active" href="#drops">
+          <span data-i18n="discover">Discover</span>
+        </a>
+
+        <a class="nav-link" href="#drops">
+          <span data-i18n="freeGames">Free Games</span>
+        </a>
+
+        <a class="nav-link" href="#drops">
+          <span data-i18n="promoCodes">Promo Codes</span>
+        </a>
+
+        <a class="nav-link" href="#features">
+          <span data-i18n="rewards">Rewards</span>
+        </a>
+
       </nav>
 
       <div class="nav-spacer"></div>
@@ -2038,17 +1977,29 @@
 
           <div class="language-menu">
 
-            <button class="language-option selected" type="button" data-language="en">
+            <button
+              class="language-option selected"
+              data-language="en"
+              type="button"
+            >
               <span>English</span>
               <span>EN</span>
             </button>
 
-            <button class="language-option" type="button" data-language="tr">
+            <button
+              class="language-option"
+              data-language="tr"
+              type="button"
+            >
               <span>Türkçe</span>
               <span>TR</span>
             </button>
 
-            <button class="language-option" type="button" data-language="es">
+            <button
+              class="language-option"
+              data-language="es"
+              type="button"
+            >
               <span>Español</span>
               <span>ES</span>
             </button>
@@ -2061,7 +2012,6 @@
           id="mobileToggle"
           type="button"
           aria-expanded="false"
-          aria-label="Menu"
         >
           ☰
         </button>
@@ -2072,15 +2022,28 @@
   </header>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#drops">Discover</a>
-    <a href="#drops">Free Games</a>
-    <a href="#drops">Promo Codes</a>
-    <a href="#features">Rewards</a>
+
+    <a href="#drops">
+      <span data-i18n="discover">Discover</span>
+    </a>
+
+    <a href="#drops">
+      <span data-i18n="freeGames">Free Games</span>
+    </a>
+
+    <a href="#drops">
+      <span data-i18n="promoCodes">Promo Codes</span>
+    </a>
+
+    <a href="#features">
+      <span data-i18n="rewards">Rewards</span>
+    </a>
+
   </div>
 
-  <!-- =========================================================
+  <!-- =======================================================
        HERO
-  ========================================================== -->
+  ======================================================== -->
 
   <section class="hero">
 
@@ -2092,41 +2055,49 @@
 
         <div class="hero-chip">
           <span class="live-dot"></span>
-          Global gaming discovery
+          <span data-i18n="heroChip">Global gaming discovery</span>
         </div>
 
         <h1>
-          The best loot is
+          <span data-i18n="heroLine1">The best loot is out there.</span>
           <br>
-          <span class="gradient">out there.</span>
+          <span class="gradient" data-i18n="heroLine2">
+            We find it first.
+          </span>
         </h1>
 
-        <p class="hero-description">
-          LootHub gathers free games, giveaways, promo codes and gaming rewards
-          into one constantly updated discovery platform.
+        <p class="hero-description" data-i18n="heroDescription">
+          Free games, rewards, giveaways and promo codes gathered into one
+          constantly updated gaming hub.
         </p>
 
         <div class="hero-actions">
 
           <a href="#drops" class="primary-btn">
             ✦
-            Explore drops
+            <span data-i18n="explore">Explore drops</span>
           </a>
 
-          <button class="secondary-btn" id="howItWorks" type="button">
+          <button
+            class="secondary-btn"
+            id="howItWorks"
+            type="button"
+          >
             ◉
-            How it works
+            <span data-i18n="howItWorks">How it works</span>
           </button>
 
         </div>
 
       </div>
 
-      <div class="hero-visual" aria-hidden="true">
+      <!-- Dashboard -->
+      <div class="hero-visual">
 
         <div class="dashboard">
 
           <div class="dashboard-head">
+
             <div class="dots">
               <span></span>
               <span></span>
@@ -2137,13 +2108,16 @@
               <span class="live-dot"></span>
               LIVE FEED
             </div>
+
           </div>
 
           <div class="dashboard-content">
 
             <div class="fake-search">
               ⌕
-              <span>Search gaming drops...</span>
+              <span data-i18n="mockSearch">
+                Search gaming drops...
+              </span>
             </div>
 
             <div class="fake-grid">
@@ -2155,7 +2129,7 @@
                   <div class="fake-title">Mystery Quest</div>
                   <div class="fake-bottom">
                     <span class="fake-free">FREE</span>
-                    <span class="fake-action">UNLOCK →</span>
+                    <span class="fake-action">OPEN →</span>
                   </div>
                 </div>
               </div>
@@ -2167,7 +2141,7 @@
                   <div class="fake-title">Void Protocol</div>
                   <div class="fake-bottom">
                     <span class="fake-free">FREE</span>
-                    <span class="fake-action">VIEW →</span>
+                    <span class="fake-action">OPEN →</span>
                   </div>
                 </div>
               </div>
@@ -2179,7 +2153,7 @@
                   <div class="fake-title">Avatar Reward</div>
                   <div class="fake-bottom">
                     <span class="fake-free">CODE</span>
-                    <span class="fake-action">COPY →</span>
+                    <span class="fake-action">OPEN →</span>
                   </div>
                 </div>
               </div>
@@ -2191,7 +2165,7 @@
                   <div class="fake-title">Emerald Pack</div>
                   <div class="fake-bottom">
                     <span class="fake-free">REWARD</span>
-                    <span class="fake-action">UNLOCK →</span>
+                    <span class="fake-action">OPEN →</span>
                   </div>
                 </div>
               </div>
@@ -2202,28 +2176,33 @@
         </div>
 
       </div>
+
     </div>
+
   </section>
 
-  <!-- =========================================================
-       MAIN
-  ========================================================== -->
+  <!-- =======================================================
+       CONTENT
+  ======================================================== -->
 
   <main class="content" id="drops">
 
     <div class="content-head">
 
       <div>
-        <div class="eyebrow">Live discovery</div>
 
-        <h2 class="section-title">
+        <div class="eyebrow" data-i18n="eyebrow">
+          Live discovery
+        </div>
+
+        <h2 class="section-title" data-i18n="latestDrops">
           Latest gaming drops
         </h2>
 
-        <p class="section-text">
-          A dynamic feed designed to consume gaming opportunities from APIs,
-          Python collectors and external sources.
+        <p class="section-description" data-i18n="sectionDescription">
+          Click any card to open its full details and unlock its reward.
         </p>
+
       </div>
 
       <div class="search">
@@ -2236,13 +2215,13 @@
           type="search"
           autocomplete="off"
           placeholder="Search games, platforms, codes..."
+          data-i18n-placeholder="searchPlaceholder"
         >
 
         <button
-          id="searchClear"
           class="search-clear"
+          id="searchClear"
           type="button"
-          aria-label="Clear search"
         >
           ×
         </button>
@@ -2251,18 +2230,15 @@
 
     </div>
 
-    <!-- =======================================================
-         FILTERS
-    ======================================================== -->
-
-    <div class="filters" id="filters">
+    <!-- Filters -->
+    <div class="filters">
 
       <button class="filter active" type="button" data-filter="all">
-        All
+        <span data-i18n="all">All</span>
       </button>
 
       <button class="filter" type="button" data-filter="free">
-        Free Games
+        <span data-i18n="freeGames">Free Games</span>
       </button>
 
       <button class="filter" type="button" data-filter="epic">
@@ -2286,56 +2262,63 @@
       </button>
 
       <button class="filter" type="button" data-filter="giveaway">
-        Giveaways
+        <span data-i18n="giveaways">Giveaways</span>
       </button>
 
     </div>
 
     <div class="results">
 
-      <span class="result-count" id="resultCount">
-        Loading opportunities...
+      <span
+        class="result-count"
+        id="resultCount"
+      >
+        0 opportunities
       </span>
 
       <span class="live-status">
         <span class="live-dot"></span>
-        <span>Live feed</span>
+        <span data-i18n="liveUpdating">Live updating</span>
       </span>
 
     </div>
 
     <!-- =======================================================
-         DYNAMIC CARD CONTAINER
+         DYNAMIC GRID
     ======================================================== -->
 
-    <section
-      class="grid"
-      id="dealGrid"
-      aria-live="polite"
-    ></section>
+    <section class="grid" id="dealGrid"></section>
 
     <div class="empty" id="emptyState">
 
       <div class="empty-icon">⌕</div>
 
-      <div class="empty-title">
+      <div
+        class="empty-title"
+        data-i18n="nothingFound"
+      >
         No drops found
       </div>
 
-      <p class="empty-text">
-        Try another search term or choose a different category.
+      <p
+        class="empty-text"
+        data-i18n="nothingText"
+      >
+        Try another search term or choose another category.
       </p>
 
     </div>
 
     <div class="load-more-wrap">
+
       <button
         class="load-more"
         id="loadMore"
         type="button"
       >
-        Load more drops
+        <span data-i18n="loadMore">Load more drops</span>
       </button>
+
     </div>
 
     <!-- =======================================================
@@ -2345,78 +2328,72 @@
     <section class="features" id="features">
 
       <article class="feature">
+
         <div class="feature-icon">⚡</div>
-        <h3 class="feature-title">Fast discovery</h3>
-        <p class="feature-text">
-          Centralize free games, promotional content and gaming rewards
-          without manually visiting every source.
-        </p>
-      </article>
 
-      <article class="feature">
-        <div class="feature-icon">🌍</div>
-        <h3 class="feature-title">Source agnostic</h3>
-        <p class="feature-text">
-          The frontend accepts normalized records regardless of whether they
-          came from an API, Python collector or another approved source.
-        </p>
-      </article>
-
-      <article class="feature">
-        <div class="feature-icon">🔓</div>
-        <h3 class="feature-title">Persistent unlocks</h3>
-        <p class="feature-text">
-          Once an opportunity is unlocked, its state is remembered locally
-          so the same visitor is not repeatedly sent through the ad gate.
-        </p>
-      </article>
-
-    </section>
-
-    <!-- =======================================================
-         ALERT PANEL
-    ======================================================== -->
-
-    <section class="alert-panel">
-
-      <div class="alert-label">
-        Drop alerts
-      </div>
-
-      <h2 class="alert-title">
-        Catch new loot before it disappears.
-      </h2>
-
-      <p class="alert-description">
-        Join the LootHub notification list for newly discovered games,
-        codes and limited-time opportunities.
-      </p>
-
-      <form class="subscribe" id="subscribeForm">
-
-        <input
-          class="subscribe-input"
-          id="emailInput"
-          type="email"
-          autocomplete="email"
-          required
-          placeholder="Enter your email address"
+        <h3
+          class="feature-title"
+          data-i18n="feature1Title"
         >
+          Fast discovery
+        </h3>
 
-        <button class="primary-btn" type="submit">
-          ✦
-          Notify me
-        </button>
+        <p
+          class="feature-text"
+          data-i18n="feature1Text"
+        >
+          Find free games, rewards and promotional opportunities in one place.
+        </p>
 
-      </form>
+      </article>
+
+      <article class="feature">
+
+        <div class="feature-icon">🌍</div>
+
+        <h3
+          class="feature-title"
+          data-i18n="feature2Title"
+        >
+          Global sources
+        </h3>
+
+        <p
+          class="feature-text"
+          data-i18n="feature2Text"
+        >
+          Ready for normalized data from APIs, collectors and approved sources.
+        </p>
+
+      </article>
+
+      <article class="feature">
+
+        <div class="feature-icon">🔓</div>
+
+        <h3
+          class="feature-title"
+          data-i18n="feature3Title"
+        >
+          Unlock once
+        </h3>
+
+        <p
+          class="feature-text"
+          data-i18n="feature3Text"
+        >
+          Once unlocked, the same visitor can return without repeating the gate.
+        </p>
+
+      </article>
 
     </section>
 
   </main>
 
-  <!-- =========================================================
+  <!-- =======================================================
        FOOTER
-  ========================================================== -->
+  ======================================================== -->
 
   <footer class="footer">
 
@@ -2430,10 +2407,37 @@
 
       <div class="footer-links">
 
-        <a href="#drops" class="footer-link">Discover</a>
-        <a href="#features" class="footer-link">About</a>
-        <a href="#features" class="footer-link">Privacy</a>
-        <a href="#features" class="footer-link">Terms</a>
+        <a
+          href="#drops"
+          class="footer-link"
+          data-i18n="discover"
+        >
+          Discover
+        </a>
+
+        <a
+          href="#features"
+          class="footer-link"
+          data-i18n="about"
+        >
+          About
+        </a>
+
+        <a
+          href="#features"
+          class="footer-link"
+          data-i18n="privacy"
+        >
+          Privacy
+        </a>
+
+        <a
+          href="#features"
+          class="footer-link"
+          data-i18n="terms"
+        >
+          Terms
+        </a>
 
       </div>
 
@@ -2444,29 +2448,42 @@
 </div>
 
 <!-- =========================================================
-     AD GATE MODAL
+     DETAIL MODAL
 ========================================================== -->
 
 <div
-  class="modal-backdrop"
-  id="gateBackdrop"
+  class="modal"
+  id="detailModal"
   role="dialog"
   aria-modal="true"
-  aria-labelledby="gateTitle"
+  aria-labelledby="detailTitle"
 >
 
-  <div class="gate-modal">
+  <div class="detail-modal">
 
-    <div class="gate-head">
+    <div class="detail-top">
 
-      <div class="gate-head-left">
-        <span class="gate-icon">▶</span>
-        <span>Reward unlock</span>
+      <div>
+
+        <div
+          class="detail-platform"
+          id="detailPlatform"
+        >
+          EPIC GAMES
+        </div>
+
+        <div
+          class="detail-category"
+          id="detailCategory"
+        >
+          Weekly Giveaway
+        </div>
+
       </div>
 
       <button
-        class="close-modal"
-        id="closeGate"
+        class="detail-close"
+        id="detailClose"
         type="button"
         aria-label="Close"
       >
@@ -2475,80 +2492,225 @@
 
     </div>
 
-    <div class="gate-body">
+    <div class="detail-content">
 
-      <div class="ad-box">
-
-        <div class="ad-label">
-          AD SIMULATION
+      <div
+        class="detail-visual theme-purple"
+        id="detailVisual"
+      >
+        <div
+          class="detail-icon"
+          id="detailIcon"
+        >
+          🎮
         </div>
-
-        <div class="ad-title">
-          Sponsored content
-        </div>
-
-        <div class="ad-subtitle">
-          Local frontend simulation
-        </div>
-
       </div>
 
-      <h3 class="gate-title" id="gateTitle">
-        Watch to unlock
-      </h3>
+      <h2
+        class="detail-title"
+        id="detailTitle"
+      >
+        Game
+      </h2>
 
-      <p class="gate-description" id="gateDescription">
-        Watch the simulated advertisement to unlock this opportunity.
+      <p
+        class="detail-description"
+        id="detailDescription"
+      >
+        Description
       </p>
 
-      <div class="gate-actions" id="gateActions">
+      <div
+        class="detail-tags"
+        id="detailTags"
+      ></div>
 
-        <button
-          class="gate-btn gate-cancel"
-          id="cancelGate"
-          type="button"
-        >
-          Cancel
-        </button>
+      <div class="detail-grid">
 
-        <button
-          class="gate-btn gate-watch"
-          id="watchAd"
-          type="button"
-        >
-          Watch ad
-        </button>
+        <div class="detail-stat">
+          <div
+            class="detail-stat-label"
+            data-i18n="platform"
+          >
+            Platform
+          </div>
+
+          <div
+            class="detail-stat-value"
+            id="detailPlatformStat"
+          >
+            Epic Games
+          </div>
+        </div>
+
+        <div class="detail-stat">
+          <div
+            class="detail-stat-label"
+            data-i18n="status"
+          >
+            Status
+          </div>
+
+          <div
+            class="detail-stat-value"
+            id="detailStatusStat"
+          >
+            Active
+          </div>
+        </div>
 
       </div>
 
-      <div class="progress-wrap" id="progressWrap">
+      <!-- Reveal -->
+      <div class="reveal-area">
 
-        <div class="progress-meta">
-          <span>Watching advertisement</span>
-          <span id="progressNumber">0%</span>
+        <div class="reveal-header">
+
+          <div
+            class="reveal-label"
+            data-i18n="rewardContent"
+          >
+            Reward content
+          </div>
+
+          <div
+            class="reveal-status"
+            id="revealStatus"
+          >
+            Locked
+          </div>
+
         </div>
 
-        <div class="progress-track">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
+        <div class="code-display" id="codeDisplay">
 
-      </div>
+          <div
+            class="code-hidden-value"
+            id="codeValue"
+          >
+            HIDDEN-REWARD
+          </div>
 
-      <div class="unlock-wrap" id="unlockWrap">
-
-        <div class="unlock-success" id="unlockSuccess">
-          ✓ Reward unlocked successfully.
         </div>
 
         <button
-          class="unlock-action"
-          id="unlockAction"
+          class="reveal-button"
+          id="revealButton"
           type="button"
         >
-          Continue →
+          🔒 Watch Ad & Reveal
         </button>
 
+        <button
+          class="code-copy"
+          id="codeCopy"
+          type="button"
+          disabled
+        >
+          Copy Code
+        </button>
+
+        <div
+          class="revealed-message"
+          id="revealedMessage"
+        >
+          ✓ Reward unlocked.
+        </div>
+
       </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+     AD SIMULATION MODAL
+========================================================== -->
+
+<div
+  class="modal"
+  id="adModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="adTitle"
+>
+
+  <div class="detail-modal">
+
+    <div class="detail-top">
+
+      <div>
+        <div class="detail-platform">
+          LOOTHUB REWARDED CONTENT
+        </div>
+
+        <div class="detail-category">
+          AD SIMULATION
+        </div>
+      </div>
+
+      <button
+        class="detail-close"
+        id="adClose"
+        type="button"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="detail-content">
+
+      <div
+        class="ad-panel"
+        style="margin-top:0;"
+      >
+
+        <div class="ad-header">
+          <span id="adText">
+            Sponsored content
+          </span>
+
+          <span id="adPercent">
+            0%
+          </span>
+        </div>
+
+        <div class="ad-progress">
+          <div
+            class="ad-progress-bar"
+            id="adProgressBar"
+          ></div>
+        </div>
+
+      </div>
+
+      <h2
+        class="detail-title"
+        id="adTitle"
+        style="font-size:24px;"
+      >
+        Watch to unlock
+      </h2>
+
+      <p
+        class="detail-description"
+        id="adDescription"
+      >
+        Watch the simulated advertisement to reveal this content.
+      </p>
+
+      <button
+        class="primary-btn"
+        id="startAd"
+        type="button"
+        style="width:100%;margin-top:18px;"
+      >
+        ▶ Start ad
+      </button>
 
     </div>
 
@@ -2556,364 +2718,977 @@
 </div>
 
 <!-- =========================================================
-     TOAST CONTAINER
+     ANTI AD-BLOCK
 ========================================================== -->
 
-<div class="toast-container" id="toastContainer"></div>
+<div
+  class="adblock-overlay"
+  id="adblockOverlay"
+>
+
+  <div class="adblock-box">
+
+    <div class="adblock-icon">⚠</div>
+
+    <h2
+      class="adblock-title"
+      data-i18n="adblockTitle"
+    >
+      Ad blocker detected
+    </h2>
+
+    <p
+      class="adblock-text"
+      data-i18n="adblockText"
+    >
+      LootHub uses advertising to support the platform. Please disable your
+      ad blocker for this site to unlock reward content.
+    </p>
+
+    <div class="adblock-actions">
+
+      <button
+        class="adblock-recheck"
+        id="adblockRecheck"
+        type="button"
+        data-i18n="recheck"
+      >
+        Check again
+      </button>
+
+      <button
+        class="adblock-help"
+        id="adblockHelp"
+        type="button"
+        data-i18n="adblockHelp"
+      >
+        Why is this required?
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- =========================================================
+     TOASTS
+========================================================== -->
+
+<div
+  class="toast-container"
+  id="toastContainer"
+></div>
 
 <script>
   /* ==========================================================
-     LOOTHUB CONFIGURATION
+     LOOTHUB CONFIG
+  ========================================================== */
 
-     Leave API_URL empty to use the built-in demo dataset.
-
-     Expected API response:
-       {
-         "items": [
-           {
-             "id": "unique-id",
-             "title": "Game title",
-             "description": "Description",
-             "platform": "roblox",
-             "type": "code",
-             "category": "Promo Code",
-             "badge": "NEW CODE",
-             "price": "FREE",
-             "oldPrice": "",
-             "icon": "🎁",
-             "theme": "red",
-             "code": "EXAMPLE-CODE",
-             "tags": ["ugc", "promo"],
-             "sourceUrl": "https://example.com",
-             "expiresAt": "2026-09-20T00:00:00Z"
-           }
-         ]
-       }
-
-     Supported platform values:
-       epic, steam, roblox, minecraft, xbox
-
-     Supported type values:
-       free, code, giveaway
-
-     ========================================================== */
-
-  const LOOT_HUB_CONFIG = {
+  const CONFIG = {
     API_URL: "",
     PAGE_SIZE: 12,
-    AD_SIMULATION_MS: 5000,
-    STORAGE_KEY: "loothub-unlocked-v1"
+    AD_DURATION: 5000,
+
+    UNLOCK_STORAGE:
+      "loothub-unlocked-v4",
+
+    LANGUAGE_STORAGE:
+      "loothub-language-v4"
   };
 
   /* ==========================================================
-     DEMO DATA
+     TRANSLATIONS
+  ========================================================== */
 
-     This dataset is only the local fallback so the site works
-     immediately on Vercel without a backend.
-     ========================================================== */
+  const I18N = {
+
+    en: {
+      live: "LIVE",
+      tracking: "global drops are being tracked",
+      opportunities: "gaming opportunities",
+      activeCodes: "active promo codes",
+      global: "GLOBAL",
+      coverage: "gaming coverage",
+      liveFeed: "LIVE FEED",
+      continuous: "continuously updated",
+
+      discover: "Discover",
+      freeGames: "Free Games",
+      promoCodes: "Promo Codes",
+      rewards: "Rewards",
+
+      heroChip: "Global gaming discovery",
+      heroLine1: "The best loot is out there.",
+      heroLine2: "We find it first.",
+      heroDescription:
+        "Free games, rewards, giveaways and promo codes gathered into one constantly updated gaming hub.",
+      explore: "Explore drops",
+      howItWorks: "How it works",
+      mockSearch: "Search gaming drops...",
+
+      eyebrow: "Live discovery",
+      latestDrops: "Latest gaming drops",
+      sectionDescription:
+        "Click any card to open its full details and unlock its reward.",
+      searchPlaceholder:
+        "Search games, platforms, codes...",
+
+      all: "All",
+      giveaways: "Giveaways",
+      liveUpdating: "Live updating",
+      loadMore: "Load more drops",
+
+      nothingFound: "No drops found",
+      nothingText:
+        "Try another search term or choose another category.",
+
+      feature1Title: "Fast discovery",
+      feature1Text:
+        "Find free games, rewards and promotional opportunities in one place.",
+      feature2Title: "Global sources",
+      feature2Text:
+        "Ready for normalized data from APIs, collectors and approved sources.",
+      feature3Title: "Unlock once",
+      feature3Text:
+        "Once unlocked, the same visitor can return without repeating the gate.",
+
+      about: "About",
+      privacy: "Privacy",
+      terms: "Terms",
+
+      platform: "Platform",
+      status: "Status",
+      rewardContent: "Reward content",
+
+      active: "Active",
+      locked: "Locked",
+      unlocked: "Unlocked",
+
+      watchAdReveal: "🔒 Watch Ad & Reveal",
+      watchAdAgain: "Already unlocked",
+      copyCode: "Copy Code",
+      copied: "✓ Copied",
+      rewardUnlocked: "✓ Reward unlocked successfully.",
+
+      watchToUnlock: "Watch to unlock",
+      sponsored: "Sponsored content",
+      adDescription:
+        "Watch the simulated advertisement to reveal this reward.",
+      startAd: "▶ Start ad",
+      watching: "Watching ad",
+
+      adblockTitle: "Ad blocker detected",
+      adblockText:
+        "LootHub uses advertising to support the platform. Please disable your ad blocker for this site to unlock reward content.",
+      recheck: "Check again",
+      adblockHelp: "Why is this required?",
+
+      noDestination:
+        "This reward is unlocked, but no external destination has been configured."
+    },
+
+    tr: {
+      live: "CANLI",
+      tracking: "küresel fırsatlar takip ediliyor",
+      opportunities: "oyun fırsatı",
+      activeCodes: "aktif promosyon kodu",
+      global: "KÜRESEL",
+      coverage: "oyun kapsamı",
+      liveFeed: "CANLI AKIŞ",
+      continuous: "sürekli güncelleniyor",
+
+      discover: "Keşfet",
+      freeGames: "Ücretsiz Oyunlar",
+      promoCodes: "Promosyon Kodları",
+      rewards: "Ödüller",
+
+      heroChip: "Küresel oyun keşfi",
+      heroLine1: "En iyi loot her yerde.",
+      heroLine2: "Biz önce buluruz.",
+      heroDescription:
+        "Ücretsiz oyunları, ödülleri, çekilişleri ve promosyon kodlarını sürekli güncellenen tek bir oyun merkezinde topluyoruz.",
+      explore: "Fırsatları keşfet",
+      howItWorks: "Nasıl çalışır?",
+      mockSearch: "Oyun fırsatlarını ara...",
+
+      eyebrow: "Canlı keşif",
+      latestDrops: "Son oyun fırsatları",
+      sectionDescription:
+        "Her karta tıklayarak tüm detayları açın ve ödülün kilidini açın.",
+      searchPlaceholder:
+        "Oyun, platform veya kod ara...",
+
+      all: "Tümü",
+      giveaways: "Çekilişler",
+      liveUpdating: "Canlı güncelleniyor",
+      loadMore: "Daha fazla fırsat",
+
+      nothingFound: "Fırsat bulunamadı",
+      nothingText:
+        "Başka bir arama yapın veya farklı bir kategori seçin.",
+
+      feature1Title: "Hızlı keşif",
+      feature1Text:
+        "Ücretsiz oyunları, ödülleri ve promosyonları tek yerde bulun.",
+      feature2Title: "Küresel kaynaklar",
+      feature2Text:
+        "API'lerden, Python botlarından ve onaylı kaynaklardan gelen veriler için hazırdır.",
+      feature3Title: "Bir kez aç",
+      feature3Text:
+        "Bir içerik açıldıktan sonra aynı ziyaretçiye tekrar reklam kapısı gösterilmez.",
+
+      about: "Hakkımızda",
+      privacy: "Gizlilik",
+      terms: "Koşullar",
+
+      platform: "Platform",
+      status: "Durum",
+      rewardContent: "Ödül içeriği",
+
+      active: "Aktif",
+      locked: "Kilitli",
+      unlocked: "Açıldı",
+
+      watchAdReveal: "🔒 Reklam İzle ve Aç",
+      watchAdAgain: "Zaten açıldı",
+      copyCode: "Kodu Kopyala",
+      copied: "✓ Kopyalandı",
+      rewardUnlocked: "✓ Ödül başarıyla açıldı.",
+
+      watchToUnlock: "Açmak için reklam izle",
+      sponsored: "Sponsorlu içerik",
+      adDescription:
+        "Bu ödülü açmak için simüle edilmiş reklamı izleyin.",
+      startAd: "▶ Reklamı başlat",
+      watching: "Reklam izleniyor",
+
+      adblockTitle: "Reklam engelleyici algılandı",
+      adblockText:
+        "LootHub platformu reklamlarla desteklenmektedir. Ödül içeriğinin kilidini açmak için bu site için reklam engelleyiciyi kapatın.",
+      recheck: "Tekrar kontrol et",
+      adblockHelp: "Neden gerekli?",
+
+      noDestination:
+        "Ödül açıldı ancak bu içeriğe henüz harici bir bağlantı eklenmemiş."
+    },
+
+    es: {
+      live: "EN VIVO",
+      tracking: "siguiendo oportunidades globales",
+      opportunities: "oportunidades gaming",
+      activeCodes: "códigos promocionales activos",
+      global: "GLOBAL",
+      coverage: "cobertura gaming",
+      liveFeed: "FLUJO EN VIVO",
+      continuous: "actualización continua",
+
+      discover: "Descubrir",
+      freeGames: "Juegos Gratis",
+      promoCodes: "Códigos Promocionales",
+      rewards: "Recompensas",
+
+      heroChip: "Descubrimiento gaming global",
+      heroLine1: "El mejor loot está ahí fuera.",
+      heroLine2: "Nosotros lo encontramos primero.",
+      heroDescription:
+        "Juegos gratis, recompensas, sorteos y códigos promocionales reunidos en un único centro gaming actualizado.",
+      explore: "Explorar oportunidades",
+      howItWorks: "Cómo funciona",
+      mockSearch: "Buscar oportunidades...",
+
+      eyebrow: "Descubrimiento en vivo",
+      latestDrops: "Últimas oportunidades",
+      sectionDescription:
+        "Haz clic en cualquier tarjeta para ver los detalles y desbloquear la recompensa.",
+      searchPlaceholder:
+        "Buscar juegos, plataformas o códigos...",
+
+      all: "Todo",
+      giveaways: "Sorteos",
+      liveUpdating: "Actualización en vivo",
+      loadMore: "Cargar más",
+
+      nothingFound: "No se encontraron oportunidades",
+      nothingText:
+        "Prueba otra búsqueda o selecciona otra categoría.",
+
+      feature1Title: "Descubrimiento rápido",
+      feature1Text:
+        "Encuentra juegos gratis, recompensas y promociones en un solo lugar.",
+      feature2Title: "Fuentes globales",
+      feature2Text:
+        "Preparado para datos normalizados de APIs, recolectores y fuentes aprobadas.",
+      feature3Title: "Desbloquea una vez",
+      feature3Text:
+        "Una vez desbloqueado, el mismo visitante no necesita repetir el proceso.",
+
+      about: "Acerca de",
+      privacy: "Privacidad",
+      terms: "Términos",
+
+      platform: "Plataforma",
+      status: "Estado",
+      rewardContent: "Contenido de recompensa",
+
+      active: "Activo",
+      locked: "Bloqueado",
+      unlocked: "Desbloqueado",
+
+      watchAdReveal: "🔒 Ver anuncio y desbloquear",
+      watchAdAgain: "Ya desbloqueado",
+      copyCode: "Copiar código",
+      copied: "✓ Copiado",
+      rewardUnlocked: "✓ Recompensa desbloqueada correctamente.",
+
+      watchToUnlock: "Mira el anuncio para desbloquear",
+      sponsored: "Contenido patrocinado",
+      adDescription:
+        "Mira el anuncio simulado para revelar esta recompensa.",
+      startAd: "▶ Iniciar anuncio",
+      watching: "Viendo anuncio",
+
+      adblockTitle: "Bloqueador de anuncios detectado",
+      adblockText:
+        "LootHub utiliza publicidad para mantener la plataforma. Desactiva el bloqueador de anuncios para desbloquear el contenido.",
+      recheck: "Comprobar de nuevo",
+      adblockHelp: "¿Por qué es necesario?",
+
+      noDestination:
+        "La recompensa está desbloqueada, pero no se ha configurado un destino externo."
+    }
+  };
+
+  /* ==========================================================
+     DEMO DATABASE
+
+     Backend later replaces this dataset automatically.
+  ========================================================== */
 
   const DEMO_ITEMS = [
+
     {
-      id: "demo-epic-mystery-quest",
-      title: "Mystery Quest",
-      description: "Premium adventure experience available as a limited free claim.",
+      id: "epic-mystery-quest",
+      title: {
+        en: "Mystery Quest",
+        tr: "Gizemli Görev",
+        es: "Misión Misteriosa"
+      },
+      description: {
+        en: "Premium adventure experience available as a limited free claim.",
+        tr: "Sınırlı süreyle ücretsiz alınabilen premium macera oyunu.",
+        es: "Aventura premium disponible gratis durante un tiempo limitado."
+      },
       platform: "epic",
       type: "free",
-      category: "Weekly Giveaway",
+      category: {
+        en: "Weekly Giveaway",
+        tr: "Haftalık Çekiliş",
+        es: "Sorteo Semanal"
+      },
       badge: "100% FREE",
       price: "FREE",
       oldPrice: "$29.99",
       icon: "🛡️",
       theme: "purple",
-      tags: ["adventure", "giveaway", "free"],
+      tags: {
+        en: ["adventure", "giveaway", "free"],
+        tr: ["macera", "çekiliş", "ücretsiz"],
+        es: ["aventura", "sorteo", "gratis"]
+      },
+      code: "",
       sourceUrl: "https://www.epicgames.com/"
     },
+
     {
-      id: "demo-steam-void-protocol",
-      title: "Void Protocol",
-      description: "Fast sci-fi action currently available through a limited promotion.",
+      id: "steam-void-protocol",
+      title: {
+        en: "Void Protocol",
+        tr: "Void Protokolü",
+        es: "Protocolo Void"
+      },
+      description: {
+        en: "Fast sci-fi action currently available as a limited promotion.",
+        tr: "Sınırlı kampanya kapsamında sunulan hızlı bilim kurgu aksiyonu.",
+        es: "Acción de ciencia ficción disponible durante una promoción limitada."
+      },
       platform: "steam",
       type: "free",
-      category: "Free Game",
+      category: {
+        en: "Free Game",
+        tr: "Ücretsiz Oyun",
+        es: "Juego Gratis"
+      },
       badge: "FREE",
       price: "FREE",
       oldPrice: "$24.99",
       icon: "🚀",
       theme: "blue",
-      tags: ["sci-fi", "action", "steam"],
+      tags: {
+        en: ["sci-fi", "action", "steam"],
+        tr: ["bilim kurgu", "aksiyon", "steam"],
+        es: ["ciencia ficción", "acción", "steam"]
+      },
+      code: "",
       sourceUrl: "https://store.steampowered.com/"
     },
+
     {
-      id: "demo-roblox-avatar-reward",
-      title: "Avatar Reward",
-      description: "Limited code for an exclusive Roblox avatar cosmetic.",
+      id: "roblox-avatar-reward",
+      title: {
+        en: "Avatar Reward",
+        tr: "Avatar Ödülü",
+        es: "Recompensa de Avatar"
+      },
+      description: {
+        en: "Limited promotional code for an exclusive avatar cosmetic.",
+        tr: "Özel avatar kozmetiği için sınırlı promosyon kodu.",
+        es: "Código promocional limitado para un cosmético exclusivo."
+      },
       platform: "roblox",
       type: "code",
-      category: "Promo Code",
-      badge: "PROMO CODE",
+      category: {
+        en: "Promo Code",
+        tr: "Promosyon Kodu",
+        es: "Código Promocional"
+      },
+      badge: "NEW CODE",
       price: "FREE",
+      oldPrice: "",
       icon: "🎁",
       theme: "red",
+      tags: {
+        en: ["avatar", "ugc", "promo"],
+        tr: ["avatar", "ugc", "promosyon"],
+        es: ["avatar", "ugc", "promo"]
+      },
       code: "LOOT-7X9Q-2026",
-      tags: ["avatar", "ugc", "promo"],
       sourceUrl: "https://www.roblox.com/"
     },
+
     {
-      id: "demo-minecraft-emerald-pack",
-      title: "Emerald Server Pack",
-      description: "Community reward pack containing limited server cosmetics.",
+      id: "minecraft-emerald-pack",
+      title: {
+        en: "Emerald Server Pack",
+        tr: "Zümrüt Sunucu Paketi",
+        es: "Pack de Servidor Esmeralda"
+      },
+      description: {
+        en: "Community reward pack containing limited server cosmetics.",
+        tr: "Sınırlı sunucu kozmetiklerini içeren topluluk ödül paketi.",
+        es: "Pack de recompensa comunitaria con cosméticos limitados."
+      },
       platform: "minecraft",
-      type: "free",
-      category: "Gaming Reward",
+      type: "code",
+      category: {
+        en: "Community Reward",
+        tr: "Topluluk Ödülü",
+        es: "Recompensa de Comunidad"
+      },
       badge: "REWARD",
       price: "FREE",
+      oldPrice: "",
       icon: "⛏️",
       theme: "green",
-      tags: ["minecraft", "server", "reward"],
+      tags: {
+        en: ["minecraft", "server", "reward"],
+        tr: ["minecraft", "sunucu", "ödül"],
+        es: ["minecraft", "servidor", "recompensa"]
+      },
+      code: "EMERALD-LOOT-26",
       sourceUrl: "#"
     },
+
     {
-      id: "demo-epic-neon-raiders",
-      title: "Neon Raiders",
-      description: "Cyberpunk shooter currently featured in a free giveaway.",
+      id: "epic-neon-raiders",
+      title: {
+        en: "Neon Raiders",
+        tr: "Neon Akıncılar",
+        es: "Neon Raiders"
+      },
+      description: {
+        en: "Cyberpunk shooter featured in a limited free giveaway.",
+        tr: "Sınırlı ücretsiz kampanyada bulunan siberpunk nişancı oyunu.",
+        es: "Shooter cyberpunk disponible en un sorteo gratuito limitado."
+      },
       platform: "epic",
       type: "giveaway",
-      category: "Free Giveaway",
+      category: {
+        en: "Free Giveaway",
+        tr: "Ücretsiz Çekiliş",
+        es: "Sorteo Gratis"
+      },
       badge: "100% FREE",
       price: "FREE",
       oldPrice: "$19.99",
       icon: "👾",
       theme: "cyan",
-      tags: ["cyberpunk", "shooter", "giveaway"],
+      tags: {
+        en: ["cyberpunk", "shooter", "giveaway"],
+        tr: ["siberpunk", "nişancı", "çekiliş"],
+        es: ["cyberpunk", "shooter", "sorteo"]
+      },
+      code: "",
       sourceUrl: "https://www.epicgames.com/"
     },
+
     {
-      id: "demo-steam-kingdoms-reborn",
-      title: "Kingdoms Reborn",
-      description: "Strategy sandbox with a temporary free-play opportunity.",
+      id: "steam-kingdoms-reborn",
+      title: {
+        en: "Kingdoms Reborn",
+        tr: "Yeniden Doğan Krallıklar",
+        es: "Reinos Renacidos"
+      },
+      description: {
+        en: "Strategy sandbox with a temporary free-play opportunity.",
+        tr: "Geçici ücretsiz oynama fırsatı sunan strateji sandbox oyunu.",
+        es: "Sandbox estratégico disponible temporalmente para jugar gratis."
+      },
       platform: "steam",
       type: "free",
-      category: "Free Weekend",
+      category: {
+        en: "Free Weekend",
+        tr: "Ücretsiz Hafta Sonu",
+        es: "Fin de Semana Gratis"
+      },
       badge: "FREE",
       price: "FREE",
       oldPrice: "$29.99",
       icon: "🏰",
       theme: "gold",
-      tags: ["strategy", "sandbox", "steam"],
+      tags: {
+        en: ["strategy", "sandbox", "steam"],
+        tr: ["strateji", "sandbox", "steam"],
+        es: ["estrategia", "sandbox", "steam"]
+      },
+      code: "",
       sourceUrl: "https://store.steampowered.com/"
     },
+
     {
-      id: "demo-roblox-crystal-ugc",
-      title: "Crystal UGC Drop",
-      description: "Unlock a limited cosmetic while the promotional code is active.",
+      id: "roblox-crystal-ugc",
+      title: {
+        en: "Crystal UGC Drop",
+        tr: "Kristal UGC Ödülü",
+        es: "Recompensa UGC Cristal"
+      },
+      description: {
+        en: "Limited cosmetic code available while the promotion is active.",
+        tr: "Kampanya aktif olduğu sürece kullanılabilen sınırlı kozmetik kod.",
+        es: "Código cosmético limitado disponible durante la promoción."
+      },
       platform: "roblox",
       type: "code",
-      category: "Promo Code",
+      category: {
+        en: "Promo Code",
+        tr: "Promosyon Kodu",
+        es: "Código Promocional"
+      },
       badge: "NEW CODE",
       price: "FREE",
+      oldPrice: "",
       icon: "💎",
       theme: "red",
+      tags: {
+        en: ["ugc", "limited", "cosmetic"],
+        tr: ["ugc", "sınırlı", "kozmetik"],
+        es: ["ugc", "limitado", "cosmético"]
+      },
       code: "CRYSTAL-XP26",
-      tags: ["ugc", "limited", "cosmetic"],
       sourceUrl: "https://www.roblox.com/"
     },
+
     {
-      id: "demo-xbox-velocity-rush",
-      title: "Velocity Rush",
-      description: "Race through futuristic cities during a limited free-play event.",
+      id: "xbox-velocity-rush",
+      title: {
+        en: "Velocity Rush",
+        tr: "Hızlı Yarış",
+        es: "Velocity Rush"
+      },
+      description: {
+        en: "Race through futuristic cities during a limited free-play event.",
+        tr: "Sınırlı ücretsiz oynama etkinliğinde geleceğin şehirlerinde yarışın.",
+        es: "Compite por ciudades futuristas durante un evento gratuito limitado."
+      },
       platform: "xbox",
       type: "free",
-      category: "Free Play",
+      category: {
+        en: "Free Play",
+        tr: "Ücretsiz Oynama",
+        es: "Juego Gratis"
+      },
       badge: "FREE PLAY",
       price: "FREE",
       oldPrice: "$39.99",
       icon: "🏎️",
       theme: "green",
-      tags: ["racing", "xbox", "free-play"],
+      tags: {
+        en: ["racing", "xbox", "free-play"],
+        tr: ["yarış", "xbox", "ücretsiz"],
+        es: ["carreras", "xbox", "gratis"]
+      },
+      code: "",
       sourceUrl: "#"
     },
+
     {
-      id: "demo-minecraft-nether-key",
-      title: "Nether Event Key",
-      description: "Limited event key for an eligible Minecraft community reward.",
+      id: "minecraft-nether-key",
+      title: {
+        en: "Nether Event Key",
+        tr: "Nether Etkinlik Anahtarı",
+        es: "Llave del Evento Nether"
+      },
+      description: {
+        en: "Limited event reward key for eligible Minecraft communities.",
+        tr: "Uygun Minecraft toplulukları için sınırlı etkinlik ödül anahtarı.",
+        es: "Llave de recompensa de evento limitada para comunidades de Minecraft."
+      },
       platform: "minecraft",
       type: "code",
-      category: "Community Code",
-      badge: "NEW CODE",
+      category: {
+        en: "Community Code",
+        tr: "Topluluk Kodu",
+        es: "Código Comunitario"
+      },
+      badge: "NEW",
       price: "FREE",
+      oldPrice: "",
       icon: "🔥",
       theme: "red",
+      tags: {
+        en: ["minecraft", "event", "code"],
+        tr: ["minecraft", "etkinlik", "kod"],
+        es: ["minecraft", "evento", "código"]
+      },
       code: "NETHER-26-FREE",
-      tags: ["minecraft", "event", "code"],
       sourceUrl: "#"
     },
+
     {
-      id: "demo-epic-shadow-drift",
-      title: "Shadow Drift",
-      description: "Dark futuristic racing experience available through a giveaway.",
+      id: "epic-shadow-drift",
+      title: {
+        en: "Shadow Drift",
+        tr: "Shadow Drift",
+        es: "Shadow Drift"
+      },
+      description: {
+        en: "Dark futuristic racing experience available through a giveaway.",
+        tr: "Çekiliş kapsamında sunulan karanlık gelecek temalı yarış deneyimi.",
+        es: "Experiencia de carreras futurista disponible mediante un sorteo."
+      },
       platform: "epic",
       type: "giveaway",
-      category: "Giveaway",
+      category: {
+        en: "Giveaway",
+        tr: "Çekiliş",
+        es: "Sorteo"
+      },
       badge: "CLAIM",
       price: "FREE",
       oldPrice: "$19.99",
       icon: "🏁",
       theme: "purple",
-      tags: ["racing", "epic", "giveaway"],
+      tags: {
+        en: ["racing", "epic", "giveaway"],
+        tr: ["yarış", "epic", "çekiliş"],
+        es: ["carreras", "epic", "sorteo"]
+      },
+      code: "",
       sourceUrl: "https://www.epicgames.com/"
     },
+
     {
-      id: "demo-roblox-summer-code",
-      title: "Summer Avatar Code",
-      description: "Seasonal cosmetic code for a limited Roblox avatar item.",
+      id: "roblox-summer-code",
+      title: {
+        en: "Summer Avatar Code",
+        tr: "Yaz Avatar Kodu",
+        es: "Código de Avatar de Verano"
+      },
+      description: {
+        en: "Seasonal cosmetic code for a limited avatar item.",
+        tr: "Sınırlı bir avatar eşyası için sezonluk kozmetik kod.",
+        es: "Código cosmético de temporada para un objeto de avatar limitado."
+      },
       platform: "roblox",
       type: "code",
-      category: "Promo Code",
+      category: {
+        en: "Promo Code",
+        tr: "Promosyon Kodu",
+        es: "Código Promocional"
+      },
       badge: "LIMITED",
       price: "FREE",
+      oldPrice: "",
       icon: "🌴",
       theme: "cyan",
+      tags: {
+        en: ["roblox", "avatar", "summer"],
+        tr: ["roblox", "avatar", "yaz"],
+        es: ["roblox", "avatar", "verano"]
+      },
       code: "SUMMER-LOOT-26",
-      tags: ["roblox", "avatar", "summer"],
       sourceUrl: "https://www.roblox.com/"
     },
+
     {
-      id: "demo-steam-orbit-fall",
-      title: "Orbitfall",
-      description: "Space survival title currently featured as a free promotion.",
+      id: "steam-orbitfall",
+      title: {
+        en: "Orbitfall",
+        tr: "Orbitfall",
+        es: "Orbitfall"
+      },
+      description: {
+        en: "Space survival title currently featured as a free promotion.",
+        tr: "Uzayda hayatta kalma temalı ücretsiz kampanya fırsatı.",
+        es: "Título de supervivencia espacial disponible en una promoción gratuita."
+      },
       platform: "steam",
-      type: "free",
-      category: "Free Promotion",
+      type: "giveaway",
+      category: {
+        en: "Free Promotion",
+        tr: "Ücretsiz Kampanya",
+        es: "Promoción Gratis"
+      },
       badge: "FREE",
       price: "FREE",
       oldPrice: "$21.99",
       icon: "🌌",
       theme: "blue",
-      tags: ["space", "survival", "steam"],
+      tags: {
+        en: ["space", "survival", "steam"],
+        tr: ["uzay", "hayatta kalma", "steam"],
+        es: ["espacio", "supervivencia", "steam"]
+      },
+      code: "",
       sourceUrl: "https://store.steampowered.com/"
     }
+
   ];
 
   /* ==========================================================
-     APPLICATION STATE
-     ========================================================== */
+     STATE
+  ========================================================== */
 
   const state = {
-    allItems: [],
-    filteredItems: [],
-    renderedCount: 0,
+    language: "en",
+    items: [],
+    filtered: [],
+    rendered: 0,
     search: "",
     filter: "all",
-    pendingItem: null,
+
+    selectedItem: null,
+
     adTimer: null,
-    unlockStore: loadUnlockStore()
+    adProgress: 0,
+
+    unlocked:
+      loadUnlocked()
   };
 
   /* ==========================================================
-     DOM REFERENCES
-     ========================================================== */
+     DOM
+  ========================================================== */
 
-  const dealGrid = document.getElementById("dealGrid");
-  const emptyState = document.getElementById("emptyState");
-  const resultCount = document.getElementById("resultCount");
-  const loadMoreButton = document.getElementById("loadMore");
+  const dealGrid =
+    document.getElementById("dealGrid");
 
-  const searchInput = document.getElementById("searchInput");
-  const searchClear = document.getElementById("searchClear");
-  const filterButtons = document.querySelectorAll(".filter");
+  const emptyState =
+    document.getElementById("emptyState");
 
-  const language = document.getElementById("language");
-  const languageButton = document.getElementById("languageButton");
-  const languageCurrent = document.getElementById("languageCurrent");
-  const languageOptions = document.querySelectorAll(".language-option");
+  const loadMore =
+    document.getElementById("loadMore");
 
-  const mobileToggle = document.getElementById("mobileToggle");
-  const mobileMenu = document.getElementById("mobileMenu");
+  const resultCount =
+    document.getElementById("resultCount");
 
-  const gateBackdrop = document.getElementById("gateBackdrop");
-  const closeGateButton = document.getElementById("closeGate");
-  const cancelGateButton = document.getElementById("cancelGate");
-  const watchAdButton = document.getElementById("watchAd");
-  const progressWrap = document.getElementById("progressWrap");
-  const progressBar = document.getElementById("progressBar");
-  const progressNumber = document.getElementById("progressNumber");
-  const unlockWrap = document.getElementById("unlockWrap");
-  const unlockAction = document.getElementById("unlockAction");
-  const unlockSuccess = document.getElementById("unlockSuccess");
-  const gateTitle = document.getElementById("gateTitle");
-  const gateDescription = document.getElementById("gateDescription");
+  const searchInput =
+    document.getElementById("searchInput");
+
+  const searchClear =
+    document.getElementById("searchClear");
+
+  const filterButtons =
+    document.querySelectorAll(".filter");
+
+  const language =
+    document.getElementById("language");
+
+  const languageButton =
+    document.getElementById("languageButton");
+
+  const languageCurrent =
+    document.getElementById("languageCurrent");
+
+  const languageOptions =
+    document.querySelectorAll(".language-option");
+
+  const detailModal =
+    document.getElementById("detailModal");
+
+  const detailClose =
+    document.getElementById("detailClose");
+
+  const detailPlatform =
+    document.getElementById("detailPlatform");
+
+  const detailCategory =
+    document.getElementById("detailCategory");
+
+  const detailVisual =
+    document.getElementById("detailVisual");
+
+  const detailIcon =
+    document.getElementById("detailIcon");
+
+  const detailTitle =
+    document.getElementById("detailTitle");
+
+  const detailDescription =
+    document.getElementById("detailDescription");
+
+  const detailTags =
+    document.getElementById("detailTags");
+
+  const detailPlatformStat =
+    document.getElementById("detailPlatformStat");
+
+  const detailStatusStat =
+    document.getElementById("detailStatusStat");
+
+  const codeDisplay =
+    document.getElementById("codeDisplay");
+
+  const codeValue =
+    document.getElementById("codeValue");
+
+  const revealStatus =
+    document.getElementById("revealStatus");
+
+  const revealButton =
+    document.getElementById("revealButton");
+
+  const codeCopy =
+    document.getElementById("codeCopy");
+
+  const revealedMessage =
+    document.getElementById("revealedMessage");
+
+  const adModal =
+    document.getElementById("adModal");
+
+  const adClose =
+    document.getElementById("adClose");
+
+  const adText =
+    document.getElementById("adText");
+
+  const adPercent =
+    document.getElementById("adPercent");
+
+  const adProgressBar =
+    document.getElementById("adProgressBar");
+
+  const adTitle =
+    document.getElementById("adTitle");
+
+  const adDescription =
+    document.getElementById("adDescription");
+
+  const startAd =
+    document.getElementById("startAd");
+
+  const adblockOverlay =
+    document.getElementById("adblockOverlay");
+
+  const adblockRecheck =
+    document.getElementById("adblockRecheck");
+
+  const adblockHelp =
+    document.getElementById("adblockHelp");
 
   /* ==========================================================
-     UTILITIES
-     ========================================================== */
+     HELPERS
+  ========================================================== */
 
-  function escapeHTML(value) {
-    return String(value ?? "")
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
+  function t(key) {
+    return (
+      I18N[state.language][key] ||
+      I18N.en[key] ||
+      key
+    );
+  }
+
+  function localized(value) {
+    if (
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value)
+    ) {
+      return (
+        value[state.language] ||
+        value.en ||
+        Object.values(value)[0] ||
+        ""
+      );
+    }
+
+    return value ?? "";
+  }
+
+  function localizedArray(value) {
+    if (
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value)
+    ) {
+      return (
+        value[state.language] ||
+        value.en ||
+        []
+      );
+    }
+
+    return Array.isArray(value)
+      ? value
+      : [];
   }
 
   function normalize(value) {
     return String(value ?? "")
-      .toLocaleLowerCase()
+      .toLocaleLowerCase(
+        state.language === "tr"
+          ? "tr-TR"
+          : state.language === "es"
+          ? "es-ES"
+          : "en-US"
+      )
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .trim();
   }
 
-  function isUnlocked(id) {
-    return Boolean(state.unlockStore[id]);
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
   }
 
-  function loadUnlockStore() {
-    try {
-      const stored = localStorage.getItem(
-        LOOT_HUB_CONFIG.STORAGE_KEY
-      );
-
-      if (!stored) {
-        return {};
-      }
-
-      const parsed = JSON.parse(stored);
-
-      if (!parsed || typeof parsed !== "object") {
-        return {};
-      }
-
-      return parsed;
-    } catch {
-      return {};
-    }
-  }
-
-  function persistUnlockStore() {
-    try {
-      localStorage.setItem(
-        LOOT_HUB_CONFIG.STORAGE_KEY,
-        JSON.stringify(state.unlockStore)
-      );
-    } catch {
-      /* Storage can be unavailable in private/restricted environments. */
-    }
-  }
-
-  function setUnlocked(id) {
-    state.unlockStore[id] = {
-      unlockedAt: new Date().toISOString()
+  function platformName(platform) {
+    const names = {
+      epic: "Epic Games",
+      steam: "Steam",
+      roblox: "Roblox",
+      minecraft: "Minecraft",
+      xbox: "Xbox"
     };
 
-    persistUnlockStore();
+    return names[platform] || String(platform || "Other");
   }
 
-  function isCodeItem(item) {
-    return item.type === "code" && Boolean(item.code);
-  }
-
-  function getThemeClass(theme) {
+  function themeClass(theme) {
     const allowed = [
       "purple",
       "blue",
@@ -2928,401 +3703,295 @@
       : "theme-purple";
   }
 
-  function getPlatformLabel(platform) {
-    const labels = {
-      epic: "EPIC GAMES",
-      steam: "STEAM",
-      roblox: "ROBLOX",
-      minecraft: "MINECRAFT",
-      xbox: "XBOX"
+  function isUnlocked(id) {
+    return Boolean(
+      state.unlocked[id]
+    );
+  }
+
+  function loadUnlocked() {
+    try {
+      const value =
+        localStorage.getItem(
+          CONFIG.UNLOCK_STORAGE
+        );
+
+      if (!value) {
+        return {};
+      }
+
+      const parsed =
+        JSON.parse(value);
+
+      return (
+        parsed &&
+        typeof parsed === "object"
+      )
+        ? parsed
+        : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function persistUnlocked() {
+    try {
+      localStorage.setItem(
+        CONFIG.UNLOCK_STORAGE,
+        JSON.stringify(state.unlocked)
+      );
+    } catch {}
+  }
+
+  function unlockItem(id) {
+    state.unlocked[id] = {
+      unlockedAt:
+        new Date().toISOString()
     };
 
-    return labels[platform] || String(platform || "OTHER").toUpperCase();
+    persistUnlocked();
   }
 
-  function getFilterTypeMatches(item) {
-    if (state.filter === "all") {
-      return true;
+  /* ==========================================================
+     LANGUAGE RENDERING
+  ========================================================== */
+
+  function applyLanguage(lang) {
+    if (!I18N[lang]) {
+      return;
     }
 
-    if (
-      state.filter === "epic" ||
-      state.filter === "steam" ||
-      state.filter === "roblox" ||
-      state.filter === "minecraft" ||
-      state.filter === "xbox"
-    ) {
-      return item.platform === state.filter;
-    }
+    state.language = lang;
 
-    return item.type === state.filter;
+    document.documentElement.lang = lang;
+
+    languageCurrent.textContent =
+      lang.toUpperCase();
+
+    languageOptions.forEach(
+      (option) => {
+        option.classList.toggle(
+          "selected",
+          option.dataset.language === lang
+        );
+      }
+    );
+
+    document
+      .querySelectorAll("[data-i18n]")
+      .forEach(
+        (element) => {
+          const key =
+            element.dataset.i18n;
+
+          element.textContent =
+            t(key);
+        }
+      );
+
+    document
+      .querySelectorAll("[data-i18n-placeholder]")
+      .forEach(
+        (element) => {
+          const key =
+            element.dataset.i18nPlaceholder;
+
+          element.placeholder =
+            t(key);
+        }
+      );
+
+    localStorage.setItem(
+      CONFIG.LANGUAGE_STORAGE,
+      lang
+    );
+
+    renderFiltered();
   }
 
-  function getSearchMatches(item) {
+  /* ==========================================================
+     FILTERING
+  ========================================================== */
+
+  function itemMatches(item) {
+    const filter =
+      state.filter;
+
+    const platformMatches =
+      filter === "all" ||
+      filter === item.platform;
+
+    const typeMatches =
+      filter === item.type;
+
+    const filterResult =
+      platformMatches ||
+      typeMatches;
+
+    if (!filterResult) {
+      return false;
+    }
+
     if (!state.search) {
       return true;
     }
 
-    const haystack = normalize([
-      item.title,
-      item.description,
-      item.platform,
-      item.type,
-      item.category,
-      item.badge,
-      ...(Array.isArray(item.tags) ? item.tags : [])
-    ].join(" "));
+    const tags =
+      localizedArray(item.tags);
 
-    return haystack.includes(state.search);
-  }
-
-  /* ==========================================================
-     API NORMALIZATION
-     ========================================================== */
-
-  function normalizeApiItem(raw, index) {
-    if (!raw || typeof raw !== "object") {
-      return null;
-    }
-
-    const platform = normalize(raw.platform || "other");
-    const type = normalize(raw.type || "free");
-
-    const item = {
-      id: String(
-        raw.id ||
-        `${platform}-${normalize(raw.title || "drop")}-${index}`
-      ),
-
-      title: String(raw.title || "Untitled Drop"),
-
-      description: String(
-        raw.description ||
-        "A new gaming opportunity discovered by LootHub."
-      ),
-
-      platform,
-
-      type,
-
-      category: String(
-        raw.category ||
-        (type === "code" ? "Promo Code" : "Gaming Opportunity")
-      ),
-
-      badge: String(
-        raw.badge ||
-        (type === "code" ? "CODE" : "FREE")
-      ),
-
-      price: String(
-        raw.price ||
-        "FREE"
-      ),
-
-      oldPrice: String(
-        raw.oldPrice ||
-        ""
-      ),
-
-      icon: String(
-        raw.icon ||
-        "🎮"
-      ),
-
-      theme: String(
-        raw.theme ||
-        "purple"
-      ),
-
-      code: raw.code ? String(raw.code) : "",
-
-      tags: Array.isArray(raw.tags)
-        ? raw.tags.map((tag) => String(tag))
-        : [],
-
-      sourceUrl: String(
-        raw.sourceUrl ||
-        "#"
-      ),
-
-      expiresAt: raw.expiresAt
-        ? String(raw.expiresAt)
-        : null
-    };
-
-    return item;
-  }
-
-  function normalizePayload(payload) {
-    let source = payload;
-
-    if (payload && Array.isArray(payload.items)) {
-      source = payload.items;
-    }
-
-    if (!Array.isArray(source)) {
-      return [];
-    }
-
-    return source
-      .map((item, index) => normalizeApiItem(item, index))
-      .filter(Boolean);
-  }
-
-  /* ==========================================================
-     DATA LOADING
-     ========================================================== */
-
-  async function loadData() {
-    setLoadingState();
-
-    if (!LOOT_HUB_CONFIG.API_URL) {
-      state.allItems = DEMO_ITEMS.slice();
-
-      updateTickerStats();
-      applyFilters();
-
-      return;
-    }
-
-    try {
-      const response = await fetch(
-        LOOT_HUB_CONFIG.API_URL,
-        {
-          method: "GET",
-          headers: {
-            "Accept": "application/json"
-          },
-          cache: "no-store"
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error(
-          `API responded with ${response.status}`
-        );
-      }
-
-      const payload = await response.json();
-
-      const normalized = normalizePayload(payload);
-
-      state.allItems = normalized;
-
-      updateTickerStats();
-      applyFilters();
-
-      showToast(
-        normalized.length
-          ? `Loaded ${normalized.length.toLocaleString()} live opportunities.`
-          : "The API returned no active opportunities."
-      );
-
-    } catch (error) {
-      state.allItems = DEMO_ITEMS.slice();
-
-      updateTickerStats();
-      applyFilters();
-
-      showToast(
-        "Live API unavailable. Showing local demo data."
-      );
-    }
-  }
-
-  function setLoadingState() {
-    resultCount.textContent = "Loading opportunities...";
-    dealGrid.innerHTML = "";
-
-    emptyState.classList.remove("show");
-    loadMoreButton.classList.add("hidden");
-  }
-
-  /* ==========================================================
-     FILTER PIPELINE
-     ========================================================== */
-
-  function applyFilters() {
-    state.filteredItems = state.allItems.filter((item) => {
-      return (
-        getFilterTypeMatches(item) &&
-        getSearchMatches(item)
-      );
-    });
-
-    state.renderedCount = 0;
-
-    dealGrid.innerHTML = "";
-
-    updateResultCount();
-    renderNextPage();
-  }
-
-  function updateResultCount() {
-    const total = state.filteredItems.length;
-
-    resultCount.textContent =
-      `${total.toLocaleString()} opportunity${total === 1 ? "" : "ies"}`;
-
-    if (total === 1) {
-      resultCount.textContent = "1 opportunity";
-    }
-
-    if (total === 0) {
-      resultCount.textContent = "0 opportunities";
-    }
-  }
-
-  function renderNextPage() {
-    const start = state.renderedCount;
-    const end = Math.min(
-      start + LOOT_HUB_CONFIG.PAGE_SIZE,
-      state.filteredItems.length
+    const searchable = normalize(
+      [
+        localized(item.title),
+        localized(item.description),
+        localized(item.category),
+        item.platform,
+        item.type,
+        item.badge,
+        ...tags
+      ].join(" ")
     );
 
-    if (start >= end) {
-      updateEmptyAndLoadMore();
-      return;
-    }
-
-    const fragment = document.createDocumentFragment();
-
-    for (let i = start; i < end; i++) {
-      const item = state.filteredItems[i];
-      fragment.appendChild(createCard(item));
-    }
-
-    dealGrid.appendChild(fragment);
-
-    state.renderedCount = end;
-
-    updateEmptyAndLoadMore();
+    return searchable.includes(
+      state.search
+    );
   }
 
-  function updateEmptyAndLoadMore() {
-    const hasResults = state.filteredItems.length > 0;
+  function filterItems() {
+    state.filtered =
+      state.items.filter(itemMatches);
+  }
+
+  function renderFiltered() {
+    filterItems();
+
+    state.rendered = 0;
+
+    dealGrid.innerHTML = "";
+
+    renderNextPage();
+
+    updateMeta();
+  }
+
+  function updateMeta() {
+    const count =
+      state.filtered.length;
+
+    if (state.language === "tr") {
+      resultCount.textContent =
+        `${count} fırsat`;
+    } else if (state.language === "es") {
+      resultCount.textContent =
+        `${count} oportunidades`;
+    } else {
+      resultCount.textContent =
+        `${count} ${count === 1 ? "opportunity" : "opportunities"}`;
+    }
 
     emptyState.classList.toggle(
       "show",
-      !hasResults
+      count === 0
     );
 
-    loadMoreButton.classList.toggle(
+    loadMore.classList.toggle(
       "hidden",
-      !hasResults ||
-      state.renderedCount >= state.filteredItems.length
+      count === 0 ||
+      state.rendered >= count
     );
+  }
+
+  function renderNextPage() {
+    const start =
+      state.rendered;
+
+    const end =
+      Math.min(
+        start + CONFIG.PAGE_SIZE,
+        state.filtered.length
+      );
+
+    if (start >= end) {
+      updateMeta();
+      return;
+    }
+
+    const fragment =
+      document.createDocumentFragment();
+
+    for (
+      let index = start;
+      index < end;
+      index++
+    ) {
+      fragment.appendChild(
+        createCard(
+          state.filtered[index]
+        )
+      );
+    }
+
+    dealGrid.appendChild(
+      fragment
+    );
+
+    state.rendered = end;
+
+    updateMeta();
   }
 
   /* ==========================================================
      CARD CREATION
-     ========================================================== */
+  ========================================================== */
 
   function createCard(item) {
-    const card = document.createElement("article");
+    const card =
+      document.createElement("article");
 
     card.className = "card";
 
-    card.dataset.id = item.id;
-    card.dataset.platform = item.platform;
-    card.dataset.type = item.type;
+    card.dataset.id =
+      item.id;
 
-    const unlocked = isUnlocked(item.id);
-    const codeItem = isCodeItem(item);
+    const unlocked =
+      isUnlocked(item.id);
 
-    const tags = Array.isArray(item.tags)
-      ? item.tags.slice(0, 4)
-      : [];
+    const tags =
+      localizedArray(item.tags);
 
-    const tagsHTML = tags.length
-      ? `
-        <div class="tags">
-          ${tags
-            .map(
-              (tag) =>
-                `<span class="tag">${escapeHTML(tag)}</span>`
-            )
-            .join("")}
-        </div>
-      `
-      : "";
+    const title =
+      localized(item.title);
 
-    const actionHTML = codeItem
-      ? `
-        <div class="code-box">
+    const description =
+      localized(item.description);
 
-          <span
-            class="code-value ${unlocked ? "revealed" : ""}"
-            data-code-id="${escapeHTML(item.id)}"
-          >${escapeHTML(item.code)}</span>
+    const category =
+      localized(item.category);
 
-          <button
-            class="copy-btn ${unlocked ? "ready" : ""}"
-            type="button"
-            data-copy-id="${escapeHTML(item.id)}"
-          >${unlocked ? "Copy" : "🔒 Copy"}</button>
-
-        </div>
-
-        <div class="locked-note">
-          ${unlocked ? "✓ Unlocked and ready to copy" : "◉ Watch a short ad before copying"}
-        </div>
-      `
-      : `
-        <div class="divider"></div>
-
-        <div class="card-bottom">
-
-          <div>
-            <div class="price">${escapeHTML(item.price)}</div>
-
-            ${
-              item.oldPrice
-                ? `<div class="old-price">${escapeHTML(item.oldPrice)}</div>`
-                : ""
-            }
-          </div>
-
-          <button
-            class="card-action ${unlocked ? "unlocked" : ""}"
-            type="button"
-            data-unlock-id="${escapeHTML(item.id)}"
-          >
-            ${
-              unlocked
-                ? "✓ Unlocked"
-                : "🔒 Unlock"
-            }
-          </button>
-
-        </div>
-
-        <div class="locked-note">
-          ${
-            unlocked
-              ? "✓ Already unlocked"
-              : "◉ Watch a short ad to reveal"
-          }
-        </div>
-      `;
+    const tagsHTML =
+      tags
+        .slice(0,4)
+        .map(
+          (tag) =>
+            `<span class="tag">${escapeHTML(tag)}</span>`
+        )
+        .join("");
 
     card.innerHTML = `
-      <div class="card-visual ${getThemeClass(item.theme)}">
+      <div class="card-visual ${themeClass(item.theme)}">
 
         <span class="platform">
-          ${escapeHTML(getPlatformLabel(item.platform))}
+          ${escapeHTML(
+            platformName(item.platform)
+          )}
         </span>
 
-        <span
-          class="deal-badge ${
-            item.type === "code"
-              ? "code"
-              : item.type === "giveaway"
-              ? "reward"
-              : ""
-          }"
-        >
+        <span class="badge ${
+          item.type === "code"
+            ? "code"
+            : item.type === "giveaway"
+            ? "reward"
+            : ""
+        }">
           ${escapeHTML(item.badge)}
         </span>
 
@@ -3335,146 +4004,560 @@
       <div class="card-body">
 
         <div class="category">
-          ${escapeHTML(item.category)}
+          ${escapeHTML(category)}
         </div>
 
         <h3 class="card-title">
-          ${escapeHTML(item.title)}
+          ${escapeHTML(title)}
         </h3>
 
         <p class="card-description">
-          ${escapeHTML(item.description)}
+          ${escapeHTML(description)}
         </p>
 
-        ${tagsHTML}
+        ${
+          tagsHTML
+            ? `<div class="tags">${tagsHTML}</div>`
+            : ""
+        }
 
-        ${actionHTML}
+        <div class="card-hint">
+
+          ${
+            unlocked
+              ? `<span class="unlocked-pill">
+                  ✓ ${escapeHTML(t("unlocked"))}
+                </span>`
+              : `<span class="card-hint-text">
+                  ${escapeHTML(
+                    state.language === "tr"
+                      ? "Detayları açmak için tıkla"
+                      : state.language === "es"
+                      ? "Haz clic para ver los detalles"
+                      : "Click to open details"
+                  )}
+                </span>`
+          }
+
+          <span class="card-arrow">→</span>
+
+        </div>
 
       </div>
     `;
 
-    bindCardEvents(card, item);
+    card.addEventListener(
+      "click",
+      () => {
+        openDetail(item);
+      }
+    );
 
     return card;
   }
 
-  function bindCardEvents(card, item) {
-    const unlockButton =
-      card.querySelector("[data-unlock-id]");
+  /* ==========================================================
+     DETAIL MODAL
+  ========================================================== */
 
-    const copyButton =
-      card.querySelector("[data-copy-id]");
+  function openDetail(item) {
+    state.selectedItem = item;
 
-    if (unlockButton) {
-      unlockButton.addEventListener("click", () => {
-        handleUnlockClick(item);
-      });
+    detailPlatform.textContent =
+      platformName(item.platform);
+
+    detailCategory.textContent =
+      localized(item.category);
+
+    detailVisual.className =
+      `detail-visual ${themeClass(item.theme)}`;
+
+    detailIcon.textContent =
+      item.icon;
+
+    detailTitle.textContent =
+      localized(item.title);
+
+    detailDescription.textContent =
+      localized(item.description);
+
+    detailPlatformStat.textContent =
+      platformName(item.platform);
+
+    detailStatusStat.textContent =
+      isUnlocked(item.id)
+        ? t("unlocked")
+        : t("active");
+
+    detailTags.innerHTML =
+      localizedArray(item.tags)
+        .map(
+          (tag) =>
+            `<span class="detail-tag">${escapeHTML(tag)}</span>`
+        )
+        .join("");
+
+    updateRevealState();
+
+    detailModal.classList.add("open");
+
+    document.body.classList.add(
+      "modal-open"
+    );
+  }
+
+  function closeDetail() {
+    detailModal.classList.remove("open");
+
+    document.body.classList.remove(
+      "modal-open"
+    );
+
+    state.selectedItem = null;
+  }
+
+  detailClose.addEventListener(
+    "click",
+    closeDetail
+  );
+
+  detailModal.addEventListener(
+    "click",
+    (event) => {
+      if (
+        event.target === detailModal
+      ) {
+        closeDetail();
+      }
+    }
+  );
+
+  /* ==========================================================
+     REVEAL STATE
+  ========================================================== */
+
+  function updateRevealState() {
+    const item =
+      state.selectedItem;
+
+    if (!item) {
+      return;
     }
 
-    if (copyButton) {
-      copyButton.addEventListener("click", () => {
-        handleCopyClick(item);
-      });
+    const unlocked =
+      isUnlocked(item.id);
+
+    const code =
+      item.code || "";
+
+    codeValue.textContent =
+      code || "NO-CODE";
+
+    if (unlocked) {
+
+      codeDisplay.classList.add(
+        "revealed"
+      );
+
+      revealStatus.textContent =
+        t("unlocked");
+
+      revealButton.textContent =
+        t("watchAdAgain");
+
+      revealButton.disabled =
+        true;
+
+      revealButton.style.opacity =
+        ".5";
+
+      codeCopy.disabled =
+        !Boolean(code);
+
+      revealedMessage.textContent =
+        t("rewardUnlocked");
+
+      revealedMessage.classList.add(
+        "show"
+      );
+
+      detailStatusStat.textContent =
+        t("unlocked");
+
+    } else {
+
+      codeDisplay.classList.remove(
+        "revealed"
+      );
+
+      revealStatus.textContent =
+        t("locked");
+
+      revealButton.textContent =
+        t("watchAdReveal");
+
+      revealButton.disabled =
+        false;
+
+      revealButton.style.opacity =
+        "1";
+
+      codeCopy.disabled = true;
+
+      revealedMessage.classList.remove(
+        "show"
+      );
+
+      detailStatusStat.textContent =
+        t("active");
     }
   }
 
   /* ==========================================================
-     UNLOCK STATE LOGIC
-     ========================================================== */
+     REVEAL BUTTON
+  ========================================================== */
 
-  function handleUnlockClick(item) {
-    if (isUnlocked(item.id)) {
-      finishUnlockedAction(item);
+  revealButton.addEventListener(
+    "click",
+    () => {
+
+      if (!state.selectedItem) {
+        return;
+      }
+
+      if (
+        isUnlocked(
+          state.selectedItem.id
+        )
+      ) {
+        return;
+      }
+
+      /*
+        In production this is where the real
+        rewarded-ad provider starts.
+
+        The current implementation is intentionally
+        a local simulation.
+      */
+
+      if (
+        window.LootHubAdBlocked === true
+      ) {
+        showAdBlockOverlay();
+        return;
+      }
+
+      openAdModal();
+    }
+  );
+
+  /* ==========================================================
+     AD MODAL
+  ========================================================== */
+
+  function openAdModal() {
+    const item =
+      state.selectedItem;
+
+    if (!item) {
       return;
     }
 
-    openAdGate(item, "unlock");
-  }
+    adText.textContent =
+      t("sponsored");
 
-  function handleCopyClick(item) {
-    if (!isCodeItem(item)) {
-      return;
-    }
+    adTitle.textContent =
+      t("watchToUnlock");
 
-    if (isUnlocked(item.id)) {
-      copyCodeFromItem(item);
-      return;
-    }
+    adDescription.textContent =
+      t("adDescription");
 
-    openAdGate(item, "copy");
-  }
+    adPercent.textContent =
+      "0%";
 
-  function finishUnlockedAction(item) {
-    if (isCodeItem(item)) {
-      copyCodeFromItem(item);
-      return;
-    }
+    adProgressBar.style.width =
+      "0%";
 
-    if (item.sourceUrl && item.sourceUrl !== "#") {
-      window.open(
-        item.sourceUrl,
-        "_blank",
-        "noopener,noreferrer"
-      );
+    startAd.disabled = false;
 
-      return;
-    }
+    startAd.textContent =
+      t("startAd");
 
-    showToast(
-      "This drop is unlocked. No external destination was provided."
+    adModal.classList.add(
+      "open"
+    );
+
+    document.body.classList.add(
+      "modal-open"
     );
   }
 
-  async function copyCodeFromItem(item) {
-    if (!item.code) {
-      showToast("This opportunity does not contain a code.");
-      return;
-    }
-
-    const success = await copyText(item.code);
-
-    if (success) {
-      showToast(
-        `"${item.code}" copied to clipboard.`
+  function closeAdModal() {
+    if (state.adTimer) {
+      clearInterval(
+        state.adTimer
       );
 
-      updateVisibleCard(item.id);
-    } else {
-      showToast(
-        "Clipboard access was blocked by the browser."
+      state.adTimer = null;
+    }
+
+    adModal.classList.remove(
+      "open"
+    );
+
+    if (
+      !detailModal.classList.contains(
+        "open"
+      )
+    ) {
+      document.body.classList.remove(
+        "modal-open"
       );
     }
   }
 
+  adClose.addEventListener(
+    "click",
+    closeAdModal
+  );
+
+  adModal.addEventListener(
+    "click",
+    (event) => {
+
+      if (
+        event.target === adModal &&
+        !state.adTimer
+      ) {
+        closeAdModal();
+      }
+
+    }
+  );
+
+  /* ==========================================================
+     START SIMULATED AD
+  ========================================================== */
+
+  startAd.addEventListener(
+    "click",
+    () => {
+
+      if (
+        state.adTimer ||
+        !state.selectedItem
+      ) {
+        return;
+      }
+
+      startAd.disabled =
+        true;
+
+      startAd.textContent =
+        t("watching");
+
+      const started =
+        performance.now();
+
+      state.adProgress =
+        0;
+
+      state.adTimer =
+        setInterval(
+          () => {
+
+            const elapsed =
+              performance.now() -
+              started;
+
+            const percent =
+              Math.min(
+                100,
+                Math.round(
+                  (
+                    elapsed /
+                    CONFIG.AD_DURATION
+                  ) * 100
+                )
+              );
+
+            state.adProgress =
+              percent;
+
+            adProgressBar.style.width =
+              `${percent}%`;
+
+            adPercent.textContent =
+              `${percent}%`;
+
+            if (percent >= 100) {
+
+              clearInterval(
+                state.adTimer
+              );
+
+              state.adTimer =
+                null;
+
+              unlockCurrentItem();
+
+            }
+
+          },
+          100
+        );
+
+    }
+  );
+
+  function unlockCurrentItem() {
+    const item =
+      state.selectedItem;
+
+    if (!item) {
+      return;
+    }
+
+    unlockItem(item.id);
+
+    closeAdModal();
+
+    updateRevealState();
+
+    updateVisibleCard(
+      item.id
+    );
+
+    showToast(
+      t("rewardUnlocked")
+    );
+  }
+
+  /* ==========================================================
+     UPDATE SINGLE CARD
+  ========================================================== */
+
+  function updateVisibleCard(id) {
+
+    const item =
+      state.items.find(
+        (entry) =>
+          entry.id === id
+      );
+
+    if (!item) {
+      return;
+    }
+
+    const currentCard =
+      dealGrid.querySelector(
+        `[data-id="${CSS.escape(id)}"]`
+      );
+
+    if (!currentCard) {
+      return;
+    }
+
+    currentCard.replaceWith(
+      createCard(item)
+    );
+  }
+
+  /* ==========================================================
+     COPY CODE
+  ========================================================== */
+
+  codeCopy.addEventListener(
+    "click",
+    async () => {
+
+      const item =
+        state.selectedItem;
+
+      if (
+        !item ||
+        !isUnlocked(item.id) ||
+        !item.code
+      ) {
+        return;
+      }
+
+      const copied =
+        await copyText(
+          item.code
+        );
+
+      if (!copied) {
+        showToast(
+          "Clipboard permission was blocked by the browser."
+        );
+
+        return;
+      }
+
+      codeCopy.textContent =
+        t("copied");
+
+      showToast(
+        `"${item.code}" copied.`
+      );
+
+      setTimeout(
+        () => {
+          if (
+            state.selectedItem &&
+            state.selectedItem.id ===
+              item.id
+          ) {
+            codeCopy.textContent =
+              t("copyCode");
+          }
+        },
+        1800
+      );
+    }
+  );
+
   async function copyText(text) {
+
     try {
+
       if (
         navigator.clipboard &&
         window.isSecureContext
       ) {
-        await navigator.clipboard.writeText(text);
+        await navigator.clipboard.writeText(
+          text
+        );
+
         return true;
       }
 
       const textarea =
-        document.createElement("textarea");
+        document.createElement(
+          "textarea"
+        );
 
-      textarea.value = text;
+      textarea.value =
+        text;
 
-      textarea.setAttribute(
-        "readonly",
-        ""
+      textarea.style.position =
+        "fixed";
+
+      textarea.style.left =
+        "-9999px";
+
+      document.body.appendChild(
+        textarea
       );
-
-      textarea.style.position = "fixed";
-      textarea.style.left = "-9999px";
-
-      document.body.appendChild(textarea);
 
       textarea.select();
 
       const result =
-        document.execCommand("copy");
+        document.execCommand(
+          "copy"
+        );
 
       textarea.remove();
 
@@ -3485,269 +4568,40 @@
     }
   }
 
-  function updateVisibleCard(id) {
-    const item = state.allItems.find(
-      (entry) => entry.id === id
-    );
-
-    if (!item) {
-      return;
-    }
-
-    const oldCard =
-      dealGrid.querySelector(
-        `[data-id="${CSS.escape(id)}"]`
-      );
-
-    if (!oldCard) {
-      return;
-    }
-
-    const newCard = createCard(item);
-
-    oldCard.replaceWith(newCard);
-  }
-
-  /* ==========================================================
-     AD GATE
-     ========================================================== */
-
-  function openAdGate(item, action) {
-    if (isUnlocked(item.id)) {
-      finishUnlockedAction(item);
-      return;
-    }
-
-    state.pendingItem = {
-      item,
-      action
-    };
-
-    resetAdGate();
-
-    gateBackdrop.classList.add("open");
-    document.body.classList.add("modal-open");
-
-    gateTitle.textContent =
-      action === "copy"
-        ? "Watch to reveal the code"
-        : "Watch to unlock";
-
-    gateDescription.textContent =
-      action === "copy"
-        ? `Watch the simulated advertisement to reveal "${item.title}" and copy its code.`
-        : `Watch the simulated advertisement to unlock "${item.title}".`;
-  }
-
-  function resetAdGate() {
-    if (state.adTimer) {
-      clearInterval(state.adTimer);
-      state.adTimer = null;
-    }
-
-    progressWrap.classList.remove("visible");
-    unlockWrap.classList.remove("visible");
-
-    progressBar.style.width = "0%";
-    progressNumber.textContent = "0%";
-
-    watchAdButton.disabled = false;
-    watchAdButton.style.display = "";
-
-    cancelGateButton.style.display = "";
-
-    unlockAction.textContent = "Continue →";
-
-    unlockSuccess.textContent =
-      "✓ Reward unlocked successfully.";
-  }
-
-  function closeAdGate() {
-    if (state.adTimer) {
-      clearInterval(state.adTimer);
-      state.adTimer = null;
-    }
-
-    gateBackdrop.classList.remove("open");
-    document.body.classList.remove("modal-open");
-
-    state.pendingItem = null;
-  }
-
-  closeGateButton.addEventListener(
-    "click",
-    closeAdGate
-  );
-
-  cancelGateButton.addEventListener(
-    "click",
-    closeAdGate
-  );
-
-  gateBackdrop.addEventListener(
-    "click",
-    (event) => {
-      if (event.target === gateBackdrop) {
-        closeAdGate();
-      }
-    }
-  );
-
-  document.addEventListener(
-    "keydown",
-    (event) => {
-      if (
-        event.key === "Escape" &&
-        gateBackdrop.classList.contains("open")
-      ) {
-        closeAdGate();
-      }
-    }
-  );
-
-  /* ==========================================================
-     SIMULATED REWARDED AD
-     ========================================================== */
-
-  watchAdButton.addEventListener(
-    "click",
-    () => {
-      if (
-        state.adTimer ||
-        !state.pendingItem
-      ) {
-        return;
-      }
-
-      watchAdButton.disabled = true;
-      cancelGateButton.style.display = "none";
-      progressWrap.classList.add("visible");
-
-      const startedAt = performance.now();
-
-      state.adTimer = setInterval(() => {
-        const elapsed =
-          performance.now() - startedAt;
-
-        const percentage = Math.min(
-          100,
-          Math.round(
-            (elapsed /
-              LOOT_HUB_CONFIG.AD_SIMULATION_MS) *
-              100
-          )
-        );
-
-        progressBar.style.width =
-          `${percentage}%`;
-
-        progressNumber.textContent =
-          `${percentage}%`;
-
-        if (percentage >= 100) {
-          clearInterval(state.adTimer);
-          state.adTimer = null;
-
-          unlockCurrentItem();
-        }
-      }, 100);
-    }
-  );
-
-  function unlockCurrentItem() {
-    if (!state.pendingItem) {
-      return;
-    }
-
-    const {
-      item
-    } = state.pendingItem;
-
-    setUnlocked(item.id);
-
-    progressBar.style.width = "100%";
-    progressNumber.textContent = "100%";
-
-    watchAdButton.style.display = "none";
-
-    gateTitle.textContent =
-      "Reward unlocked";
-
-    gateDescription.textContent =
-      "The opportunity is now permanently unlocked for this browser.";
-
-    unlockSuccess.textContent =
-      isCodeItem(item)
-        ? "✓ Code revealed. You can now copy it."
-        : "✓ Drop unlocked successfully.";
-
-    unlockWrap.classList.add("visible");
-
-    updateVisibleCard(item.id);
-  }
-
-  unlockAction.addEventListener(
-    "click",
-    async () => {
-      if (!state.pendingItem) {
-        return;
-      }
-
-      const {
-        item,
-        action
-      } = state.pendingItem;
-
-      closeAdGate();
-
-      if (action === "copy") {
-        await copyCodeFromItem(item);
-        return;
-      }
-
-      if (
-        item.sourceUrl &&
-        item.sourceUrl !== "#"
-      ) {
-        window.open(
-          item.sourceUrl,
-          "_blank",
-          "noopener,noreferrer"
-        );
-
-        return;
-      }
-
-      showToast(
-        `"${item.title}" is unlocked.`
-      );
-    }
-  );
-
   /* ==========================================================
      SEARCH
-     ========================================================== */
+  ========================================================== */
 
   searchInput.addEventListener(
     "input",
     () => {
+
       state.search =
-        normalize(searchInput.value);
+        normalize(
+          searchInput.value
+        );
 
       searchClear.classList.toggle(
         "visible",
-        Boolean(searchInput.value)
+        Boolean(
+          searchInput.value
+        )
       );
 
-      applyFilters();
+      renderFiltered();
+
     }
   );
 
   searchClear.addEventListener(
     "click",
     () => {
-      searchInput.value = "";
-      state.search = "";
+
+      searchInput.value =
+        "";
+
+      state.search =
+        "";
 
       searchClear.classList.remove(
         "visible"
@@ -3755,37 +4609,50 @@
 
       searchInput.focus();
 
-      applyFilters();
+      renderFiltered();
+
     }
   );
 
   /* ==========================================================
      FILTERS
-     ========================================================== */
+  ========================================================== */
 
-  filterButtons.forEach((button) => {
-    button.addEventListener(
-      "click",
-      () => {
-        filterButtons.forEach(
-          (item) => item.classList.remove("active")
-        );
+  filterButtons.forEach(
+    (button) => {
 
-        button.classList.add("active");
+      button.addEventListener(
+        "click",
+        () => {
 
-        state.filter =
-          button.dataset.filter || "all";
+          filterButtons.forEach(
+            (item) =>
+              item.classList.remove(
+                "active"
+              )
+          );
 
-        applyFilters();
-      }
-    );
-  });
+          button.classList.add(
+            "active"
+          );
+
+          state.filter =
+            button.dataset.filter ||
+            "all";
+
+          renderFiltered();
+
+        }
+      );
+
+    }
+  );
 
   /* ==========================================================
      LOAD MORE
-     ========================================================== */
+  ========================================================== */
 
-  loadMoreButton.addEventListener(
+  loadMore.addEventListener(
     "click",
     () => {
       renderNextPage();
@@ -3794,87 +4661,103 @@
 
   /* ==========================================================
      LANGUAGE
-     ========================================================== */
+  ========================================================== */
 
   languageButton.addEventListener(
     "click",
     (event) => {
+
       event.stopPropagation();
 
       const open =
-        language.classList.toggle("open");
+        language.classList.toggle(
+          "open"
+        );
 
       languageButton.setAttribute(
         "aria-expanded",
         String(open)
       );
+
     }
   );
 
-  languageOptions.forEach((option) => {
-    option.addEventListener(
-      "click",
-      () => {
-        const value =
-          option.dataset.language || "en";
+  languageOptions.forEach(
+    (option) => {
 
-        languageCurrent.textContent =
-          value.toUpperCase();
+      option.addEventListener(
+        "click",
+        () => {
 
-        languageOptions.forEach(
-          (item) =>
-            item.classList.toggle(
-              "selected",
-              item === option
-            )
-        );
+          applyLanguage(
+            option.dataset.language
+          );
 
-        language.classList.remove("open");
+          language.classList.remove(
+            "open"
+          );
 
-        languageButton.setAttribute(
-          "aria-expanded",
-          "false"
-        );
+          languageButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
 
-        localStorage.setItem(
-          "loothub-language",
-          value
-        );
+          if (
+            state.selectedItem
+          ) {
+            updateRevealState();
+          }
 
-        showToast(
-          value === "tr"
-            ? "Dil Türkçe olarak değiştirildi."
-            : value === "es"
-            ? "Idioma cambiado a Español."
-            : "Language changed to English."
-        );
-      }
-    );
-  });
+        }
+      );
+
+    }
+  );
 
   document.addEventListener(
     "click",
     (event) => {
-      if (!language.contains(event.target)) {
-        language.classList.remove("open");
+
+      if (
+        !language.contains(
+          event.target
+        )
+      ) {
+        language.classList.remove(
+          "open"
+        );
 
         languageButton.setAttribute(
           "aria-expanded",
           "false"
         );
       }
+
     }
   );
 
   /* ==========================================================
-     MOBILE MENU
-     ========================================================== */
+     MOBILE
+  ========================================================== */
+
+  const mobileToggle =
+    document.getElementById(
+      "mobileToggle"
+    );
+
+  const mobileMenu =
+    document.getElementById(
+      "mobileMenu"
+    );
 
   mobileToggle.addEventListener(
     "click",
     () => {
+
       const open =
-        mobileMenu.classList.toggle("open");
+        mobileMenu.classList.toggle(
+          "open"
+        );
 
       mobileToggle.textContent =
         open ? "×" : "☰";
@@ -3883,117 +4766,107 @@
         "aria-expanded",
         String(open)
       );
+
     }
   );
 
-  mobileMenu.querySelectorAll("a").forEach(
-    (link) => {
-      link.addEventListener(
-        "click",
-        () => {
-          mobileMenu.classList.remove("open");
-          mobileToggle.textContent = "☰";
+  mobileMenu
+    .querySelectorAll("a")
+    .forEach(
+      (link) => {
 
-          mobileToggle.setAttribute(
-            "aria-expanded",
-            "false"
-          );
-        }
-      );
-    }
-  );
+        link.addEventListener(
+          "click",
+          () => {
 
-  /* ==========================================================
-     HOW IT WORKS
-     ========================================================== */
+            mobileMenu.classList.remove(
+              "open"
+            );
 
-  document.getElementById("howItWorks")
-    .addEventListener(
-      "click",
-      () => {
-        showToast(
-          "Choose a drop, watch the simulated ad once, then the opportunity stays unlocked."
+            mobileToggle.textContent =
+              "☰";
+
+            mobileToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
         );
+
       }
     );
 
   /* ==========================================================
-     NEWSLETTER
-     ========================================================== */
+     HOW IT WORKS
+  ========================================================== */
 
-  document.getElementById("subscribeForm")
+  document
+    .getElementById("howItWorks")
     .addEventListener(
-      "submit",
-      (event) => {
-        event.preventDefault();
-
-        const input =
-          document.getElementById("emailInput");
-
-        const email =
-          input.value.trim();
-
-        if (!email) {
-          return;
-        }
-
-        try {
-          localStorage.setItem(
-            "loothub-demo-email",
-            email
-          );
-        } catch {}
-
-        input.value = "";
+      "click",
+      () => {
 
         showToast(
-          "You are now subscribed to LootHub alerts."
+          state.language === "tr"
+            ? "Bir karta tıkla → detayları aç → reklamı bir kez izle → içerik kalıcı olarak açılır."
+            : state.language === "es"
+            ? "Haz clic → abre los detalles → mira el anuncio una vez → el contenido queda desbloqueado."
+            : "Click a card → open details → watch the ad once → the content stays unlocked."
         );
+
       }
     );
 
   /* ==========================================================
      UTC CLOCK
-     ========================================================== */
+  ========================================================== */
 
-  function updateUTCClock() {
-    const now = new Date();
+  function updateUTC() {
 
-    const h = String(
-      now.getUTCHours()
-    ).padStart(2,"0");
+    const now =
+      new Date();
 
-    const m = String(
-      now.getUTCMinutes()
-    ).padStart(2,"0");
+    const h =
+      String(
+        now.getUTCHours()
+      ).padStart(2,"0");
 
-    const s = String(
-      now.getUTCSeconds()
-    ).padStart(2,"0");
+    const m =
+      String(
+        now.getUTCMinutes()
+      ).padStart(2,"0");
+
+    const s =
+      String(
+        now.getUTCSeconds()
+      ).padStart(2,"0");
 
     document.getElementById(
       "utcClock"
     ).textContent =
       `${h}:${m}:${s}`;
+
   }
 
-  updateUTCClock();
+  updateUTC();
 
   setInterval(
-    updateUTCClock,
+    updateUTC,
     1000
   );
 
   /* ==========================================================
-     TICKER STATS
-     ========================================================== */
+     TICKER COUNTERS
+  ========================================================== */
 
-  function updateTickerStats() {
+  function updateTicker() {
+
     const total =
-      state.allItems.length;
+      state.items.length;
 
     const codes =
-      state.allItems.filter(
+      state.items.filter(
         (item) =>
           item.type === "code"
       ).length;
@@ -4017,25 +4890,32 @@
       "tickerCodes2"
     ).textContent =
       codes.toLocaleString();
+
   }
 
   /* ==========================================================
      TOAST
-     ========================================================== */
+  ========================================================== */
 
   function showToast(message) {
+
     const container =
       document.getElementById(
         "toastContainer"
       );
 
     const toast =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
-    toast.className = "toast";
+    toast.className =
+      "toast";
 
     toast.innerHTML = `
-      <div class="toast-icon">✓</div>
+      <div class="toast-icon">
+        ✓
+      </div>
 
       <div>
         <div class="toast-title">
@@ -4048,35 +4928,399 @@
       </div>
     `;
 
-    container.appendChild(toast);
+    container.appendChild(
+      toast
+    );
 
-    window.setTimeout(
+    setTimeout(
       () => {
-        toast.classList.add("out");
 
-        window.setTimeout(
+        toast.classList.add(
+          "out"
+        );
+
+        setTimeout(
           () => toast.remove(),
           220
         );
+
       },
       2800
     );
   }
 
   /* ==========================================================
-     LOCAL LANGUAGE RESTORE
-     ========================================================== */
+     API LOADING
+  ========================================================== */
+
+  async function loadItems() {
+
+    if (!CONFIG.API_URL) {
+
+      state.items =
+        DEMO_ITEMS.slice();
+
+      updateTicker();
+      renderFiltered();
+
+      return;
+
+    }
+
+    try {
+
+      const response =
+        await fetch(
+          CONFIG.API_URL,
+          {
+            headers: {
+              "Accept":
+                "application/json"
+            },
+            cache: "no-store"
+          }
+        );
+
+      if (!response.ok) {
+        throw new Error(
+          `HTTP ${response.status}`
+        );
+      }
+
+      const payload =
+        await response.json();
+
+      const source =
+        Array.isArray(payload)
+          ? payload
+          : Array.isArray(
+              payload.items
+            )
+          ? payload.items
+          : [];
+
+      state.items =
+        source
+          .map(
+            normalizeApiItem
+          )
+          .filter(Boolean);
+
+      updateTicker();
+      renderFiltered();
+
+    } catch {
+
+      state.items =
+        DEMO_ITEMS.slice();
+
+      updateTicker();
+      renderFiltered();
+
+      showToast(
+        "Live API unavailable. Demo data is being shown."
+      );
+
+    }
+  }
+
+  function normalizeApiItem(
+    raw,
+    index
+  ) {
+
+    if (
+      !raw ||
+      typeof raw !== "object"
+    ) {
+      return null;
+    }
+
+    return {
+      id:
+        String(
+          raw.id ||
+          `api-${index}-${Date.now()}`
+        ),
+
+      title:
+        raw.title ||
+        {
+          en:
+            String(
+              raw.name ||
+              "Untitled Drop"
+            )
+        },
+
+      description:
+        raw.description ||
+        {
+          en:
+            "A new gaming opportunity discovered by LootHub."
+        },
+
+      platform:
+        String(
+          raw.platform ||
+          "other"
+        ).toLowerCase(),
+
+      type:
+        String(
+          raw.type ||
+          "free"
+        ).toLowerCase(),
+
+      category:
+        raw.category ||
+        {
+          en:
+            "Gaming Opportunity"
+        },
+
+      badge:
+        String(
+          raw.badge ||
+          "FREE"
+        ),
+
+      price:
+        String(
+          raw.price ||
+          "FREE"
+        ),
+
+      oldPrice:
+        String(
+          raw.oldPrice ||
+          ""
+        ),
+
+      icon:
+        String(
+          raw.icon ||
+          "🎮"
+        ),
+
+      theme:
+        String(
+          raw.theme ||
+          "purple"
+        ),
+
+      tags:
+        raw.tags ||
+        {
+          en: []
+        },
+
+      code:
+        raw.code
+          ? String(raw.code)
+          : "",
+
+      sourceUrl:
+        String(
+          raw.sourceUrl ||
+          "#"
+        )
+    };
+  }
+
+  /* ==========================================================
+     ANTI-ADBLOCK
+
+     This is intentionally a reasonable browser-side
+     detection layer, not a claim of 100% bypass-proof
+     detection.
+  ========================================================== */
+
+  async function detectAdBlocker() {
+
+    window.LootHubAdBlocked =
+      false;
+
+    const bait =
+      document.createElement(
+        "div"
+      );
+
+    bait.className =
+      "ad ads adsbox ad-banner ad-container";
+
+    bait.style.position =
+      "absolute";
+
+    bait.style.width =
+      "10px";
+
+    bait.style.height =
+      "10px";
+
+    bait.style.left =
+      "-9999px";
+
+    bait.style.pointerEvents =
+      "none";
+
+    bait.innerHTML =
+      "&nbsp;";
+
+    document.body.appendChild(
+      bait
+    );
+
+    await new Promise(
+      (resolve) =>
+        setTimeout(
+          resolve,
+          80
+        )
+    );
+
+    const computed =
+      window.getComputedStyle(
+        bait
+      );
+
+    const hidden =
+      bait.offsetHeight === 0 ||
+      bait.offsetWidth === 0 ||
+      computed.display === "none" ||
+      computed.visibility === "hidden";
+
+    bait.remove();
+
+    window.LootHubAdBlocked =
+      hidden;
+
+    return hidden;
+  }
+
+  function showAdBlockOverlay() {
+    adblockOverlay.classList.add(
+      "show"
+    );
+
+    document.body.classList.add(
+      "modal-open"
+    );
+  }
+
+  async function recheckAdBlock() {
+
+    const blocked =
+      await detectAdBlocker();
+
+    if (blocked) {
+
+      showAdBlockOverlay();
+
+      showToast(
+        state.language === "tr"
+          ? "Reklam engelleyici hâlâ aktif."
+          : state.language === "es"
+          ? "El bloqueador sigue activo."
+          : "The ad blocker is still active."
+      );
+
+      return;
+
+    }
+
+    adblockOverlay.classList.remove(
+      "show"
+    );
+
+    document.body.classList.remove(
+      "modal-open"
+    );
+
+    showToast(
+      state.language === "tr"
+        ? "Reklam kontrolü başarılı."
+        : state.language === "es"
+        ? "La comprobación de anuncios fue exitosa."
+        : "Ad check passed."
+    );
+
+  }
+
+  adblockRecheck.addEventListener(
+    "click",
+    recheckAdBlock
+  );
+
+  adblockHelp.addEventListener(
+    "click",
+    () => {
+
+      showToast(
+        state.language === "tr"
+          ? "LootHub'ın ücretsiz kalmasına yardımcı olmak için reklamlar kullanılır."
+          : state.language === "es"
+          ? "La publicidad ayuda a mantener LootHub gratuito."
+          : "Advertising helps keep LootHub free."
+      );
+
+    }
+  );
+
+  /* ==========================================================
+     KEYBOARD
+  ========================================================== */
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        event.key !== "Escape"
+      ) {
+        return;
+      }
+
+      if (
+        detailModal.classList.contains(
+          "open"
+        )
+      ) {
+        closeDetail();
+      }
+
+      if (
+        adModal.classList.contains(
+          "open"
+        ) &&
+        !state.adTimer
+      ) {
+        closeAdModal();
+      }
+
+    }
+  );
+
+  /* ==========================================================
+     RESTORE LANGUAGE
+  ========================================================== */
 
   function restoreLanguage() {
+
     try {
+
       const stored =
         localStorage.getItem(
-          "loothub-language"
+          CONFIG.LANGUAGE_STORAGE
         );
 
       if (
-        ["en","tr","es"].includes(stored)
+        ["en","tr","es"]
+          .includes(stored)
       ) {
+        state.language =
+          stored;
+
         languageCurrent.textContent =
           stored.toUpperCase();
 
@@ -4084,20 +5328,32 @@
           (option) => {
             option.classList.toggle(
               "selected",
-              option.dataset.language === stored
+              option.dataset.language ===
+                stored
             );
           }
         );
       }
+
     } catch {}
+
   }
 
   /* ==========================================================
      INITIALIZATION
-     ========================================================== */
+  ========================================================== */
 
-  restoreLanguage();
-  loadData();
+  async function init() {
+
+    restoreLanguage();
+
+    await detectAdBlocker();
+
+    await loadItems();
+
+  }
+
+  init();
 
 </script>
 
